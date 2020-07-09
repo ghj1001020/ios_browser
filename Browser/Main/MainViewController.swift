@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 
+
 class MainViewController : UIViewController , UITextFieldDelegate {
     
     
@@ -23,6 +24,8 @@ class MainViewController : UIViewController , UITextFieldDelegate {
     @IBOutlet var viewTxtMode: UIView!
     @IBOutlet var viewEditMode: UIView!
     @IBOutlet var dim: UIView!
+    @IBOutlet var btnBack: UIButton!
+    @IBOutlet var btnNext: UIButton!
     
     
     var jsBridge : JsBridge!
@@ -63,7 +66,7 @@ class MainViewController : UIViewController , UITextFieldDelegate {
         wv_main?.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)    // .new - 값이 변경될때마다 이벤트를 받음
         
         // 기본 웹페이지 로딩
-        loadUrl(_url: "https://www.naver.com")
+        loadUrl(_url: DefineCode.DEFAULT_PAGE )
     }
     
     // 웹뷰 url 로딩
@@ -211,6 +214,81 @@ class MainViewController : UIViewController , UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         dim.isHidden = true
     }
+    
+    
+    // 이전페이지로 이동
+    @IBAction func onToolbarPrevPage(_ sender: UIButton) {
+        Log.p(_tag: TAG, _message: "onToolbarPrevPage")
+        guard let wvMain = wv_main else {
+            return
+        }
+        
+        if( wvMain.canGoBack ) {
+            wvMain.goBack()
+        }
+    }
+    
+    // 다음페이지로 이동
+    @IBAction func onToolbarNextPage(_ sender: UIButton) {
+        Log.p(_tag: TAG, _message: "onToolbarNextPage")
+        guard let wvMain = wv_main else {
+            return
+        }
+        
+        if( wvMain.canGoForward ) {
+            wvMain.goForward()
+        }
+    }
+    
+    // 기본페이지로 이동
+    @IBAction func onToolbarHomePage(_ sender: UIButton) {
+        Log.p(_tag: TAG, _message: "onToolbarHomePage")
+        
+        let defaultPage = DefineCode.DEFAULT_PAGE
+        loadUrl(_url: defaultPage)
+    }
+    
+    // 북마크로 이동
+    @IBAction func onToolbarBookmark(_ sender: UIButton) {
+        Log.p(_tag: TAG, _message: "onToolbarBookmark")
+    }
+    
+    // 설정으로 이동
+    @IBAction func onToolbarMore(_ sender: UIButton) {
+        Log.p(_tag: TAG, _message: "onToolbarMore")
+    }
+    
+    
+    // 웹뷰 앞으로/뒤로가기 버튼 UI
+    func changePageMoveButton() {
+        guard let wvMain = wv_main else {
+            return
+        }
+        
+        // 뒤로가기 버튼
+        if( wvMain.canGoBack ) {
+            btnBack.isHidden = false
+        }
+        else {
+            btnBack.isHidden = true
+        }
+        
+        // 앞으로가기 버튼
+        if( wvMain.canGoForward ) {
+            btnNext.isHidden = false
+        }
+        else {
+            btnNext.isHidden = true
+        }
+    }
+    
+    
+    // todo 테스트 하드코딩
+    @IBAction func onTestPage(_ sender: UIButton) {
+//        loadUrl(_url: "https://m.help.kt.com/store/s_KtStoreSearch.do")
+        loadUrl(_url: "https://m.help.kt.com/store/s_KtStoreAgreement.do")
+    }
+    
 }
 
 // WKUIDelegate - 웹페이지 대신 네이티브에서 사용자 인터페이스를 표시하는 메서드 제공
@@ -223,16 +301,38 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
 
     // alert()
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        Log.p(_tag: TAG, _message: "alert : " + message)
         
+        let alert = UIAlertController(title: "" , message: message , preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인" , style: .default , handler: { _ in
+            completionHandler()
+        }))
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     // confirm()
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        Log.p(_tag: TAG, _message: "confirm : " + message)
         
+        let alert = UIAlertController(title: "" , message: message , preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인" , style: .default , handler: { _ in
+            completionHandler(true)
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: { _ in
+            completionHandler(false)
+        }))
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     // textInput()
     func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+        
         
     }
     
@@ -259,6 +359,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         let url : String? = webView.url?.absoluteString
         lbWebTitle.text = url
         editUrl.text = url
+        
+        changePageMoveButton()
     }
     
     // 웹뷰에서 컨텐츠를 받기 시작
@@ -279,6 +381,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         let url : String? = webView.url?.absoluteString
         lbWebTitle.setTextWithIcon(_text: Util.getUrlDomain(_url: url), _icon: "ic_lock")
         editUrl.text = url
+        
+        changePageMoveButton()
     }
 
     // 웹컨텐츠 프로세스 종료
@@ -305,4 +409,5 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.allow)
     }
+    
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="30f-QB-7BH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="30f-QB-7BH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -117,8 +117,128 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mI5-8f-Eo6">
-                                <rect key="frame" x="0.0" y="101" width="414" height="761"/>
+                                <rect key="frame" x="0.0" y="101" width="414" height="676"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smm-RH-9cf" userLabel="bottom_setting">
+                                <rect key="frame" x="0.0" y="777" width="414" height="36"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAD-g7-N2g" userLabel="btn_back">
+                                        <rect key="frame" x="16" y="2" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="Qa7-x5-ISC"/>
+                                            <constraint firstAttribute="height" constant="32" id="uUa-Qh-XJw"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                        <state key="normal" image="ic_back">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onToolbarPrevPage:" destination="30f-QB-7BH" eventType="touchUpInside" id="gw4-Ne-Zgk"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3P-aI-gRw">
+                                        <rect key="frame" x="48" y="13" width="55.5" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="4DW-wD-oq1"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwQ-Pj-hCb" userLabel="btn_next">
+                                        <rect key="frame" x="103.5" y="2" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="PCp-kE-R9S"/>
+                                            <constraint firstAttribute="width" constant="32" id="vm7-V0-gcg"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="0.0"/>
+                                        <state key="normal" image="ic_next"/>
+                                        <connections>
+                                            <action selector="onToolbarNextPage:" destination="30f-QB-7BH" eventType="touchUpInside" id="Qhe-iu-2xo"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VS-Y0-VQ7">
+                                        <rect key="frame" x="135.5" y="13" width="55.5" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="lJP-Li-MFf"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBA-eC-Ibw" userLabel="btn_home">
+                                        <rect key="frame" x="191" y="2" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="P7L-q5-OKL"/>
+                                            <constraint firstAttribute="height" constant="32" id="uRf-iZ-glF"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="1" minY="1" maxX="1" maxY="1"/>
+                                        <state key="normal" image="ic_home"/>
+                                        <connections>
+                                            <action selector="onToolbarHomePage:" destination="30f-QB-7BH" eventType="touchUpInside" id="byX-y1-f4f"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4a4-vH-zed">
+                                        <rect key="frame" x="223" y="13" width="55.5" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="C8L-62-agF"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k08-6Q-lW1" userLabel="btn_bookmark">
+                                        <rect key="frame" x="278.5" y="2" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="DbH-Wu-BpC"/>
+                                            <constraint firstAttribute="width" constant="32" id="gOD-RK-Drd"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="1" minY="1" maxX="1" maxY="1"/>
+                                        <state key="normal" image="ic_toolbar_bookmark"/>
+                                        <connections>
+                                            <action selector="onToolbarBookmark:" destination="30f-QB-7BH" eventType="touchUpInside" id="42Q-7F-Yz6"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2n2-19-0hB">
+                                        <rect key="frame" x="310.5" y="13" width="55.5" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="TcO-Vh-hhj"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-dt-xr8" userLabel="btn_more">
+                                        <rect key="frame" x="366" y="2" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="0g2-9y-Anp"/>
+                                            <constraint firstAttribute="height" constant="32" id="HjJ-SO-2UK"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_more"/>
+                                        <connections>
+                                            <action selector="onToolbarMore:" destination="30f-QB-7BH" eventType="touchUpInside" id="21l-wp-B0G"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4a4-vH-zed" firstAttribute="leading" secondItem="bBA-eC-Ibw" secondAttribute="trailing" id="3Tl-Rk-2MH"/>
+                                    <constraint firstItem="4a4-vH-zed" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="3XM-Tf-Cc2"/>
+                                    <constraint firstItem="jAD-g7-N2g" firstAttribute="leading" secondItem="smm-RH-9cf" secondAttribute="leading" constant="16" id="4uz-be-5Xy"/>
+                                    <constraint firstItem="bBA-eC-Ibw" firstAttribute="leading" secondItem="4VS-Y0-VQ7" secondAttribute="trailing" id="5yv-6U-7QB"/>
+                                    <constraint firstItem="2n2-19-0hB" firstAttribute="leading" secondItem="k08-6Q-lW1" secondAttribute="trailing" id="8mr-Gr-WPp"/>
+                                    <constraint firstItem="4VS-Y0-VQ7" firstAttribute="width" secondItem="D3P-aI-gRw" secondAttribute="width" id="Axc-g2-eRU"/>
+                                    <constraint firstItem="4a4-vH-zed" firstAttribute="width" secondItem="D3P-aI-gRw" secondAttribute="width" id="Fx0-xT-DdE"/>
+                                    <constraint firstItem="jAD-g7-N2g" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="JwF-8F-ih0"/>
+                                    <constraint firstItem="rwQ-Pj-hCb" firstAttribute="leading" secondItem="D3P-aI-gRw" secondAttribute="trailing" id="My0-nX-ek7"/>
+                                    <constraint firstAttribute="trailing" secondItem="IRd-dt-xr8" secondAttribute="trailing" constant="16" id="PQ7-Ya-rfx"/>
+                                    <constraint firstItem="k08-6Q-lW1" firstAttribute="leading" secondItem="4a4-vH-zed" secondAttribute="trailing" id="Qzw-qE-n89"/>
+                                    <constraint firstItem="k08-6Q-lW1" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="TW4-Ac-ybY"/>
+                                    <constraint firstItem="rwQ-Pj-hCb" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="W8I-Lb-8Lm"/>
+                                    <constraint firstItem="D3P-aI-gRw" firstAttribute="leading" secondItem="jAD-g7-N2g" secondAttribute="trailing" id="kgf-O8-BYh"/>
+                                    <constraint firstItem="IRd-dt-xr8" firstAttribute="leading" secondItem="2n2-19-0hB" secondAttribute="trailing" id="lBx-CV-1d8"/>
+                                    <constraint firstItem="bBA-eC-Ibw" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="lCX-89-Mm7"/>
+                                    <constraint firstItem="2n2-19-0hB" firstAttribute="width" secondItem="D3P-aI-gRw" secondAttribute="width" id="lXw-N3-Iwx"/>
+                                    <constraint firstItem="2n2-19-0hB" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="pSD-ZD-RQK"/>
+                                    <constraint firstItem="4VS-Y0-VQ7" firstAttribute="leading" secondItem="rwQ-Pj-hCb" secondAttribute="trailing" id="qKZ-oL-CnI"/>
+                                    <constraint firstAttribute="height" constant="36" id="tQw-MG-r0R"/>
+                                    <constraint firstItem="4VS-Y0-VQ7" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="uLF-yd-amH"/>
+                                    <constraint firstItem="IRd-dt-xr8" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="wyq-Fw-iic"/>
+                                    <constraint firstItem="D3P-aI-gRw" firstAttribute="centerY" secondItem="smm-RH-9cf" secondAttribute="centerY" id="zw2-yK-ERs"/>
+                                </constraints>
                             </view>
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xnl-dO-agX">
                                 <rect key="frame" x="0.0" y="101" width="414" height="5"/>
@@ -129,19 +249,30 @@
                                 </constraints>
                             </progressView>
                             <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vc-1E-EF8" userLabel="dim">
-                                <rect key="frame" x="0.0" y="101" width="414" height="761"/>
+                                <rect key="frame" x="0.0" y="101" width="414" height="676"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmr-fA-J0t">
+                                <rect key="frame" x="184" y="433" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onTestPage:" destination="30f-QB-7BH" eventType="touchUpInside" id="VSY-XG-e7b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8Vc-1E-EF8" firstAttribute="top" secondItem="mI5-8f-Eo6" secondAttribute="top" id="0MO-jx-t4q"/>
+                            <constraint firstItem="smm-RH-9cf" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="1CC-8Y-AM1"/>
                             <constraint firstItem="fmE-kQ-LZh" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="2Ke-NJ-FEb"/>
                             <constraint firstItem="jt5-Th-ebU" firstAttribute="top" secondItem="THo-Cy-hLa" secondAttribute="top" id="3GF-jT-Dn7"/>
                             <constraint firstItem="THo-Cy-hLa" firstAttribute="trailing" secondItem="8Vc-1E-EF8" secondAttribute="trailing" id="6Cg-wp-xLW"/>
                             <constraint firstItem="mI5-8f-Eo6" firstAttribute="top" secondItem="fmE-kQ-LZh" secondAttribute="bottom" id="AEa-xp-Ap2"/>
+                            <constraint firstItem="smm-RH-9cf" firstAttribute="top" secondItem="mI5-8f-Eo6" secondAttribute="bottom" id="DPa-fo-JLX"/>
                             <constraint firstItem="jt5-Th-ebU" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="Hvh-6k-HDD"/>
                             <constraint firstItem="8Vc-1E-EF8" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="Me2-yu-m6k"/>
+                            <constraint firstItem="smm-RH-9cf" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="Qa5-aF-rKE"/>
+                            <constraint firstItem="lmr-fA-J0t" firstAttribute="centerY" secondItem="UnH-mM-5Pr" secondAttribute="centerY" id="Tr6-GS-ZWC"/>
                             <constraint firstItem="Pyn-fE-D61" firstAttribute="leading" secondItem="UnH-mM-5Pr" secondAttribute="leading" id="Uid-rO-gI5"/>
                             <constraint firstItem="Xnl-dO-agX" firstAttribute="top" secondItem="mI5-8f-Eo6" secondAttribute="top" id="WW7-KF-Pjx"/>
                             <constraint firstItem="Xnl-dO-agX" firstAttribute="trailing" secondItem="THo-Cy-hLa" secondAttribute="trailing" id="Wp3-OP-3AS"/>
@@ -150,16 +281,22 @@
                             <constraint firstItem="THo-Cy-hLa" firstAttribute="trailing" secondItem="mI5-8f-Eo6" secondAttribute="trailing" id="Yqe-YB-bur"/>
                             <constraint firstItem="Xnl-dO-agX" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="ZYP-gg-Gkj"/>
                             <constraint firstItem="THo-Cy-hLa" firstAttribute="trailing" secondItem="fmE-kQ-LZh" secondAttribute="trailing" id="dDE-Jn-QlZ"/>
+                            <constraint firstItem="THo-Cy-hLa" firstAttribute="bottom" secondItem="smm-RH-9cf" secondAttribute="bottom" id="kji-fq-Zak"/>
                             <constraint firstItem="fmE-kQ-LZh" firstAttribute="top" secondItem="THo-Cy-hLa" secondAttribute="top" id="o5P-t7-lhA"/>
-                            <constraint firstItem="THo-Cy-hLa" firstAttribute="bottom" secondItem="8Vc-1E-EF8" secondAttribute="bottom" id="sQM-Sa-7YK"/>
-                            <constraint firstItem="THo-Cy-hLa" firstAttribute="bottom" secondItem="mI5-8f-Eo6" secondAttribute="bottom" id="uYV-8o-pcA"/>
+                            <constraint firstItem="THo-Cy-hLa" firstAttribute="trailing" secondItem="smm-RH-9cf" secondAttribute="trailing" id="rvP-lt-5vt"/>
+                            <constraint firstItem="smm-RH-9cf" firstAttribute="top" secondItem="8Vc-1E-EF8" secondAttribute="bottom" id="sQM-Sa-7YK"/>
                             <constraint firstItem="THo-Cy-hLa" firstAttribute="trailing" secondItem="Pyn-fE-D61" secondAttribute="trailing" id="vZf-JO-nb9"/>
                             <constraint firstItem="mI5-8f-Eo6" firstAttribute="top" secondItem="jt5-Th-ebU" secondAttribute="bottom" id="wAq-0a-cgh"/>
+                            <constraint firstItem="lmr-fA-J0t" firstAttribute="centerX" secondItem="UnH-mM-5Pr" secondAttribute="centerX" id="xPH-u5-9k9"/>
                             <constraint firstItem="mI5-8f-Eo6" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="yyS-Dp-3uJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="THo-Cy-hLa"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btnBack" destination="jAD-g7-N2g" id="6xy-ai-P9w"/>
+                        <outlet property="btnNext" destination="rwQ-Pj-hCb" id="LVL-1J-rRr"/>
                         <outlet property="dim" destination="8Vc-1E-EF8" id="z4z-eL-Z1C"/>
                         <outlet property="editUrl" destination="h5p-da-Ef9" id="oBF-mk-ueN"/>
                         <outlet property="lbWebTitle" destination="vff-e5-6x1" id="QOT-vc-xwm"/>
@@ -175,8 +312,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_back" width="72" height="72"/>
         <image name="ic_bookmark" width="28.5" height="28.5"/>
         <image name="ic_delete" width="28.5" height="28.5"/>
+        <image name="ic_home" width="72" height="72"/>
+        <image name="ic_more" width="72" height="72"/>
+        <image name="ic_next" width="72" height="72"/>
         <image name="ic_refresh" width="28.5" height="28.5"/>
+        <image name="ic_toolbar_bookmark" width="72" height="72"/>
     </resources>
 </document>
