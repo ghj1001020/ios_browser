@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--More Dialog Controller-->
+        <scene sceneID="Wxf-tf-SE9">
+            <objects>
+                <viewController storyboardIdentifier="MoreDialog" id="8OK-HQ-CZb" customClass="MoreDialogController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XWp-eh-TQB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dn-aM-EQa" userLabel="dim">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTv-Fx-LOG">
+                                <rect key="frame" x="0.0" y="896" width="414" height="76"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqa-xg-kjt" userLabel="cookie">
+                                        <rect key="frame" x="32" y="16" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="A6E-p7-6Qn"/>
+                                            <constraint firstAttribute="height" constant="36" id="KPD-IU-Vfc"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="ic_toolbar_cookie"/>
+                                        <connections>
+                                            <action selector="onMenuCookie:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="XwM-u8-WKx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bm7-0l-WH4" userLabel="print">
+                                        <rect key="frame" x="100" y="16" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="aLF-FP-I6J"/>
+                                            <constraint firstAttribute="height" constant="36" id="t8p-Fh-vI7"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="ic_toolbar_printer"/>
+                                        <connections>
+                                            <action selector="onMenuPrint:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="Pgu-UC-xtd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="iqa-xg-kjt" secondAttribute="bottom" constant="24" id="F89-z0-hM1"/>
+                                    <constraint firstAttribute="bottom" secondItem="bm7-0l-WH4" secondAttribute="bottom" constant="24" id="Ug3-9n-xDv"/>
+                                    <constraint firstItem="bm7-0l-WH4" firstAttribute="top" secondItem="rTv-Fx-LOG" secondAttribute="top" constant="16" id="VUm-dO-QGU"/>
+                                    <constraint firstItem="iqa-xg-kjt" firstAttribute="top" secondItem="rTv-Fx-LOG" secondAttribute="top" constant="16" id="Xzr-NF-yaT"/>
+                                    <constraint firstItem="bm7-0l-WH4" firstAttribute="leading" secondItem="iqa-xg-kjt" secondAttribute="trailing" constant="32" id="in3-Kv-FcW"/>
+                                    <constraint firstItem="iqa-xg-kjt" firstAttribute="leading" secondItem="rTv-Fx-LOG" secondAttribute="leading" constant="32" id="kid-2k-Xp7"/>
+                                    <constraint firstAttribute="height" constant="76" id="tsF-cW-zyy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rTv-Fx-LOG" secondAttribute="bottom" constant="-76" id="X2y-KV-OnG"/>
+                            <constraint firstItem="6dn-aM-EQa" firstAttribute="leading" secondItem="ahz-fU-93C" secondAttribute="leading" id="Xu9-eH-41a"/>
+                            <constraint firstItem="rTv-Fx-LOG" firstAttribute="leading" secondItem="ahz-fU-93C" secondAttribute="leading" id="Yp0-l0-EOX"/>
+                            <constraint firstItem="rTv-Fx-LOG" firstAttribute="trailing" secondItem="ahz-fU-93C" secondAttribute="trailing" id="ez2-lj-koG"/>
+                            <constraint firstItem="ahz-fU-93C" firstAttribute="trailing" secondItem="6dn-aM-EQa" secondAttribute="trailing" id="lOQ-OX-Pzv"/>
+                            <constraint firstItem="6dn-aM-EQa" firstAttribute="top" secondItem="ahz-fU-93C" secondAttribute="top" id="mAU-H0-uq1"/>
+                            <constraint firstAttribute="bottom" secondItem="6dn-aM-EQa" secondAttribute="bottom" id="raO-qy-ziU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ahz-fU-93C"/>
+                    </view>
+                    <connections>
+                        <outlet property="dim" destination="6dn-aM-EQa" id="yc0-qO-uCV"/>
+                        <outlet property="viewDialog" destination="rTv-Fx-LOG" id="oHW-hH-GWC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qbC-iP-hrR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-246.37681159420291" y="56.919642857142854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_toolbar_cookie" width="120" height="120"/>
+        <image name="ic_toolbar_printer" width="120" height="120"/>
+    </resources>
+</document>

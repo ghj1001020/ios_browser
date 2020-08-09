@@ -10,8 +10,7 @@ import UIKit
 import WebKit
 
 
-class MainViewController : UIViewController , UITextFieldDelegate {
-    
+class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentInteractionControllerDelegate, MoreDialogProtocol {
     
     private let TAG : String = "MainViewController"
     
@@ -256,6 +255,18 @@ class MainViewController : UIViewController , UITextFieldDelegate {
     // 설정으로 이동
     @IBAction func onToolbarMore(_ sender: UIButton) {
         Log.p(_tag: TAG, _message: "onToolbarMore")
+        
+        let storyboard : UIStoryboard = UIStoryboard(name: "MoreDialog", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "MoreDialog" ) as? MoreDialogController else
+        {
+            return
+        }
+
+        controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
+        controller.requestId = 0
+        controller.listener = self
+        
+        self.present(controller, animated: false, completion: nil)
     }
     
     
@@ -289,6 +300,108 @@ class MainViewController : UIViewController , UITextFieldDelegate {
         loadUrl(_url: "https://m.help.kt.com/store/s_KtStoreAgreement.do")
     }
     
+    // 웹뷰에서 파일 다운로드
+    func wkWebViewFileDownload( type : Int , url : URL ) {
+        
+        let task = URLSession.shared.downloadTask(with: url) { (_url: URL?, _response: URLResponse?, _error: Error?) in
+            
+            guard let _response = _response as? HTTPURLResponse else {
+                return
+            }
+            
+            guard let _url = _url else {
+                return
+            }
+            
+            Log.p(_tag: self.TAG, _message: "statusCode= \(_response.statusCode)")
+            
+            if( _response.statusCode != 200 ) {
+                return
+            }
+            
+            do {
+                var documentUrl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                documentUrl = documentUrl.appendingPathComponent( _response.suggestedFilename ?? _url.lastPathComponent )
+                
+                if( FileManager.default.fileExists(atPath: documentUrl.path) ) {
+                    try FileManager.default.removeItem(at: documentUrl)
+                }
+                try FileManager.default.moveItem(at: _url, to: documentUrl)
+                
+                if( type == DefineCode.URL_DOWNLOAD_IMG ) {
+                    let image : UIImage? = UIImage(data: try Data(contentsOf: documentUrl))
+                    if let image = image {
+                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    }
+                }
+                else if( type == DefineCode.URL_DOWNLOAD_FILE ) {
+                    self.showFileDownloadViewController()
+                }
+            }
+            catch {
+                Log.p(_tag: self.TAG, _message: "error=\(error.localizedDescription)")
+            }
+        }
+        task.resume()
+    }
+    
+    // UIActivityViewController 노출
+    func showFileDownloadViewController() {
+        DispatchQueue.main.async {
+            do {
+                let dirUrl : URL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
+                let contents  = try FileManager.default.contentsOfDirectory(at: dirUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+                for content in contents {
+                    let downloadView = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+                    downloadView.excludedActivityTypes = [.addToReadingList, .airDrop, .assignToContact, .copyToPasteboard, .mail, .markupAsPDF, .message, .openInIBooks, .postToFacebook, .postToFlickr, .postToTencentWeibo, .postToTwitter, .postToVimeo, .postToWeibo, .print , .saveToCameraRoll]
+
+                    self.present( downloadView, animated: true, completion: nil )
+                }
+            }
+            catch {
+                Log.p(_tag: self.TAG, _message: "downloadView err=\(error.localizedDescription)" )
+            }
+        }
+    }
+    
+    // 더보기 메뉴 클릭 리스너
+    func onMoreMenuClick(requestId: Int, selected: Int) {
+        switch selected {
+        // 쿠키
+        case DefineCode.MORE_MENU_COOKIE:
+            Log.p(_tag: TAG, _message: "MORE_MENU_COOKIE")
+            
+        // 프린트
+        case DefineCode.MORE_MENU_PRINT:
+            Log.p(_tag: TAG, _message: "MORE_MENU_PRINT")
+            onPrint()
+        default: break
+            
+        }
+    }
+    
+    // 프린트
+    func onPrint() {
+        let printInfo : UIPrintInfo = UIPrintInfo(dictionary: nil)
+        printInfo.jobName = wv_main?.title ?? "웹 브라우저"
+        printInfo.orientation = .portrait
+        printInfo.outputType = .general
+        printInfo.duplex = .none
+        
+        let printController = UIPrintInteractionController()
+        printController.printInfo = printInfo
+        printController.showsNumberOfCopies = true  // 복사본을 여러개만들수 있음
+        printController.showsPaperSelectionForLoadedPapers = true   // 페이지 범위 지정 가능
+        printController.printFormatter = wv_main?.viewPrintFormatter()
+        printController.printingItem = wv_main?.url
+        
+        printController.present(animated: true, completionHandler: { controller , isCompleted , error in
+            if( !isCompleted && error != nil ) {
+                Log.p(_tag: self.TAG, _message: "print failed = \(error?.localizedDescription ?? "")")
+            }
+        })
+    }
 }
 
 // WKUIDelegate - 웹페이지 대신 네이티브에서 사용자 인터페이스를 표시하는 메서드 제공
@@ -400,14 +513,82 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         
     }
     
-    // 웹탐색을 허용할지 취소할지 결정
+    // URL이 로드 될때 웹탐색을 허용할지 취소할지 결정 (목적지는 알고 있지만 아직 이동은 하지 않은 상태에서 이동 허가제어 가능)
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        Log.p(_tag: TAG, _message: "decidePolicyFor navigationAction")
+
+        let request : URLRequest = navigationAction.request
+        
+        guard let url: URL = request.url else {
+            return
+        }
+
+        let ext : String = url.pathExtension.lowercased()
+        
+        // 파일 다운로드
+        let downloadType = checkDownloadUrl(ext: ext, mimeType: "")
+        if( downloadType != DefineCode.URL_DOWNLOAD_NONE ) {
+            showDownloadConfirmDialog(downloadType: downloadType, url: url)
+            
+            self.showWebViewLoadingBar(isShow: false, _progress: 0)
+            decisionHandler(.cancel)
+            return;
+        }
+        
         decisionHandler(.allow)
     }
     
     // 응답이 완료된후 웹탐색을 허용할지 취소할지 결정
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
+        let response = navigationResponse.response
+        
+        guard let url: URL = response.url else {
+            decisionHandler(.cancel)
+            return
+        }
+        
+        let mimeType : String = (response.mimeType ?? "").lowercased()
+        let ext : String = url.pathExtension.lowercased()
+        Log.p(_tag: TAG, _message: "navigationResponse url=\(url.absoluteString) , mimeType=\(mimeType) , ext=\(ext)")
+
+        // 파일 다운로드
+        let downloadType = checkDownloadUrl(ext: ext, mimeType: mimeType)
+        if( downloadType != DefineCode.URL_DOWNLOAD_NONE ) {
+            showDownloadConfirmDialog(downloadType: downloadType, url: url)
+            
+            self.showWebViewLoadingBar(isShow: false, _progress: 0)
+            decisionHandler(.cancel)
+            return;
+        }
+
         decisionHandler(.allow)
     }
     
+    // URL 타입 구하기
+    func checkDownloadUrl( ext: String , mimeType: String ) -> Int {
+        var type = DefineCode.URL_DOWNLOAD_NONE
+        
+        let imageArr = ["png", "jpg", "jpeg", "image/png", "image/jpg", "image/jpeg"]
+        let fileArr = ["pdf", "zip", "application/pdf", "application/zip"]
+        // 이미지 확인
+        if( imageArr.contains( ext ) || imageArr.contains( mimeType ) ) {
+            type = DefineCode.URL_DOWNLOAD_IMG
+        }
+        // 파일 확인
+        else if( fileArr.contains( ext ) || fileArr.contains( mimeType ) ) {
+            type = DefineCode.URL_DOWNLOAD_FILE
+        }
+        
+        return type
+    }
+    
+    // 다운로드 확인 다이얼로그
+    func showDownloadConfirmDialog( downloadType : Int , url : URL ) {
+        let action1 = UIAlertAction(title: "취소", style: .cancel)
+        let action2 = UIAlertAction(title: "확인", style: .default) { (action: UIAlertAction) in
+            self.wkWebViewFileDownload(type: downloadType, url: url)
+        }
+        Util.showAlertDialog(controller: self, title: "", message: "파일을 다운로드 하시겠습니까?", action1: action1, action2: action2)
+    }
 }

@@ -31,4 +31,20 @@ class Util
         let domain = url?.host ?? ""
         return domain
     }
+    
+    // 얼럿 다이얼로그
+    static func showAlertDialog( controller: UIViewController , title: String , message: String , action1 : UIAlertAction? , action2 : UIAlertAction? ) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        if let action1 = action1 {
+            alert.addAction(action1)
+        }
+        if let action2 = action2 {
+            alert.addAction(action2)
+        }
+        
+        controller.present(alert, animated: true, completion: nil )
+        
+        return alert
+    }
 }

@@ -10,7 +10,7 @@
         <!--Main View Controller-->
         <scene sceneID="gns-B7-sIQ">
             <objects>
-                <viewController id="30f-QB-7BH" customClass="MainViewController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" id="30f-QB-7BH" customClass="MainViewController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UnH-mM-5Pr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

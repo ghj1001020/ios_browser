@@ -11,4 +11,13 @@ import Foundation
 class DefineCode {
     
     public static let DEFAULT_PAGE = "https://www.naver.com"
+    
+    // 다운로드 유형
+    public static let URL_DOWNLOAD_NONE = 0
+    public static let URL_DOWNLOAD_IMG = 1;
+    public static let URL_DOWNLOAD_FILE = 2;
+    
+    // 더보기 메뉴코드
+    public static let MORE_MENU_COOKIE = 0
+    public static let MORE_MENU_PRINT = 1
 }
