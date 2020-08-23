@@ -53,7 +53,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
         
         // 웹뷰
         jsBridge = JsBridge()
-        let config = jsBridge.initJsBridge()
+        let config = jsBridge.initJsBridge( listener: self )
         wv_main = WKWebView(frame: CGRect(x: 0, y: 0, width: view_web.frame.width, height: view_web.frame.height), configuration: config)
         view_web.addSubview(wv_main)    // 웹뷰 추가
         wv_main?.uiDelegate = self  // JS 이벤트 콜백
@@ -297,8 +297,46 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
     // todo 테스트 하드코딩
     @IBAction func onTestPage(_ sender: UIButton) {
 //        loadUrl(_url: "https://m.help.kt.com/store/s_KtStoreSearch.do")
-        loadUrl(_url: "https://m.help.kt.com/store/s_KtStoreAgreement.do")
+//        loadUrl(_url: "https://m.help.kt.com/store/s_KtStoreAgreement.do")
+        
+//        let cookieStore : WKHTTPCookieStore = WKWebsiteDataStore.default().httpCookieStore
+//        cookieStore.getAllCookies { cookies in
+//            for cookie in cookies {
+//                let name = cookie.name
+//                let value = cookie.value
+//                Log.p(_tag: self.TAG, _message: "\(cookie.domain) .. \(name) .. \(value)")
+//            }
+//        }
+        
+//        guard let url = wv_main?.url else {
+//            return
+//        }
+//
+//        guard let cookies : [HTTPCookie] = HTTPCookieStorage.shared.cookies(for: url ) else {
+//            return
+//        }
+//
+//        for cookie in cookies {
+//            Log.p(_tag: TAG, _message: "\(cookie.name) ... \(cookie.value)")
+//        }
+        
+        let htmlPath = Bundle.main.path(forResource: "BridgePage", ofType: "html", inDirectory: "BridgePage")
+        
+        guard let path = htmlPath else {
+            return
+        }
+        
+        let htmlUrl = URL(fileURLWithPath: path)
+        
+        let request = URLRequest(url: htmlUrl)
+        wv_main?.load(request)
     }
+    
+    // todo 테스트 하드코딩
+    @IBAction func onAppCall(_ sender: Any) {
+        onWebMessageReturn()
+    }
+    
     
     // 웹뷰에서 파일 다운로드
     func wkWebViewFileDownload( type : Int , url : URL ) {
@@ -345,7 +383,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
         task.resume()
     }
     
-    // UIActivityViewController 노출
+    // 파일다운로드 UIActivityViewController 노출
     func showFileDownloadViewController() {
         DispatchQueue.main.async {
             do {
@@ -371,6 +409,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
         // 쿠키
         case DefineCode.MORE_MENU_COOKIE:
             Log.p(_tag: TAG, _message: "MORE_MENU_COOKIE")
+            moveCookie()
             
         // 프린트
         case DefineCode.MORE_MENU_PRINT:
@@ -379,6 +418,19 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
         default: break
             
         }
+    }
+    
+    // 쿠키 페이지로 이동
+    func moveCookie() {
+        let storyboard : UIStoryboard = UIStoryboard(name: "Cookie", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "Cookie") as? CookieViewController else {
+            return
+        }
+        
+        controller.modalPresentationStyle = .fullScreen
+        
+        controller.url = wv_main?.url?.absoluteString
+        self.present(controller, animated: true, completion: nil )
     }
     
     // 프린트
@@ -401,6 +453,28 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
                 Log.p(_tag: self.TAG, _message: "print failed = \(error?.localizedDescription ?? "")")
             }
         })
+    }
+    
+    // 앱 -> 웹에 메시지 전달
+    func onWebMessage() {
+        let dto = JsGetMessageData.init(title: "알림", message: "App에서 전달한 메시지 !!!!!")
+        let jsonString = Util.dtoToJsonString(dto: dto)
+        
+        jsBridge.callJsFunction(webView: wv_main, funcName: "appGetMessage", [jsonString] )
+    }
+    
+    // 앱 -> 웹에 메시지 전달 후 리턴값 받음
+    func onWebMessageReturn() {
+        let dto = JsGetMessageData.init(title: "알림", message: "App에서 전달한 메시지 !!!!!")
+        let jsonString = Util.dtoToJsonString(dto: dto)
+        
+        jsBridge.callJsFunction(webView: wv_main, funcName: "appGetMessageReturn", [jsonString] ) {
+            (result, error) in
+            
+            if result is String {
+                _ = Util.showAlertDialog(controller: self, title: "", message: result as! String, action1: nil, action2: nil)
+            }
+        }
     }
 }
 
@@ -589,6 +663,30 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         let action2 = UIAlertAction(title: "확인", style: .default) { (action: UIAlertAction) in
             self.wkWebViewFileDownload(type: downloadType, url: url)
         }
-        Util.showAlertDialog(controller: self, title: "", message: "파일을 다운로드 하시겠습니까?", action1: action1, action2: action2)
+        _ = Util.showAlertDialog(controller: self, title: "", message: "파일을 다운로드 하시겠습니까?", action1: action1, action2: action2)
+    }
+}
+
+// 웹 -> 네이티비 호출 콜백 프로토콜
+extension MainViewController : JsBridgeProtocol {
+    
+    func jsBridgeCallback(requestId: Int, params: String) {
+        switch requestId {
+        case DefineCode.JS_ALERT_POPUP:
+            onJsAlertPopup( params: params )
+        default: break
+            
+        }
+    }
+    
+    // 얼럿팝업
+    func onJsAlertPopup( params : String ) {
+        Log.p(_tag: TAG, _message: "onJsAlertPopup \(params)")
+        
+        guard let dto = Util.jsonStringToDto(type: JsAlertPopupData.self, params: params) else {
+            return
+        }
+
+        _ = Util.showAlertDialog(controller: self, title: dto.title, message: dto.message, action1: nil, action2: nil)
     }
 }

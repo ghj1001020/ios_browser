@@ -36,8 +36,8 @@ class MoreDialogController : UIViewController {
     }
 
     @IBAction func onMenuCookie(_ sender: UIButton) {
-        listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_COOKIE)
         dismiss(animated: true, completion: nil)
+        listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_COOKIE)
     }
     
     @IBAction func onMenuPrint(_ sender: UIButton) {

@@ -15,8 +15,13 @@
 		C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2443EFC24B1CDF500E5778E /* DefineCode.swift */; };
 		C2443F0424B3689300E5778E /* libswiftCoreLocation.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */; };
 		C2443F0524B3689300E5778E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0324B3689300E5778E /* CoreLocation.framework */; };
+		C25487BD24EA309300F850AC /* BridgePage in Resources */ = {isa = PBXBuildFile; fileRef = C25487BC24EA309300F850AC /* BridgePage */; };
+		C25487C024F0F18D00F850AC /* JsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25487BF24F0F18D00F850AC /* JsData.swift */; };
 		C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */; };
 		C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */; };
+		C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CE824E030E3001CAE44 /* Cookie.storyboard */; };
+		C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CEA24E03102001CAE44 /* CookieViewController.swift */; };
+		C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CEC24E6F4DE001CAE44 /* CookieTableCell.swift */; };
 		C2FECC28242F0A0800FD1878 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FECC27242F0A0800FD1878 /* Log.swift */; };
 		C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FECC29242F0A6600FD1878 /* StringExt.swift */; };
 		C2FECC2D242F4B3900FD1878 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FECC2C242F4B3900FD1878 /* CustomUI.swift */; };
@@ -61,8 +66,13 @@
 		C2443F0024B35AD300E5778E /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreLocation.tbd; path = usr/lib/swift/libswiftCoreLocation.tbd; sourceTree = SDKROOT; };
 		C2443F0324B3689300E5778E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C25487BC24EA309300F850AC /* BridgePage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BridgePage; sourceTree = "<group>"; };
+		C25487BF24F0F18D00F850AC /* JsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsData.swift; sourceTree = "<group>"; };
 		C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreDialog.storyboard; sourceTree = "<group>"; };
 		C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDialogController.swift; sourceTree = "<group>"; };
+		C2F43CE824E030E3001CAE44 /* Cookie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cookie.storyboard; sourceTree = "<group>"; };
+		C2F43CEA24E03102001CAE44 /* CookieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieViewController.swift; sourceTree = "<group>"; };
+		C2F43CEC24E6F4DE001CAE44 /* CookieTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieTableCell.swift; sourceTree = "<group>"; };
 		C2FECC27242F0A0800FD1878 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		C2FECC29242F0A6600FD1878 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		C2FECC2C242F4B3900FD1878 /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
@@ -111,6 +121,8 @@
 		C21B8431242715CA00A1C057 /* Browser */ = {
 			isa = PBXGroup;
 			children = (
+				C25487BB24E97D2400F850AC /* Resources */,
+				C2F43CE724E030C6001CAE44 /* Cookie */,
 				C2443EFE24B35AD300E5778E /* Browser.entitlements */,
 				C2FECC23242E39EF00FD1878 /* Common */,
 				C21B8459242A413800A1C057 /* Webkit */,
@@ -137,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				C21B845A242A414C00A1C057 /* JsBridge.swift */,
+				C25487BF24F0F18D00F850AC /* JsData.swift */,
 			);
 			path = Webkit;
 			sourceTree = "<group>";
@@ -149,6 +162,32 @@
 				C2443F0024B35AD300E5778E /* HomeKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C25487B324E97CB900F850AC /* www */ = {
+			isa = PBXGroup;
+			children = (
+				C25487BC24EA309300F850AC /* BridgePage */,
+			);
+			path = www;
+			sourceTree = "<group>";
+		};
+		C25487BB24E97D2400F850AC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C25487B324E97CB900F850AC /* www */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C2F43CE724E030C6001CAE44 /* Cookie */ = {
+			isa = PBXGroup;
+			children = (
+				C2F43CE824E030E3001CAE44 /* Cookie.storyboard */,
+				C2F43CEA24E03102001CAE44 /* CookieViewController.swift */,
+				C2F43CEC24E6F4DE001CAE44 /* CookieTableCell.swift */,
+			);
+			path = Cookie;
 			sourceTree = "<group>";
 		};
 		C2FECC23242E39EF00FD1878 /* Common */ = {
@@ -264,7 +303,9 @@
 			files = (
 				C21B843C242715D200A1C057 /* Assets.xcassets in Resources */,
 				C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */,
+				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C21B845624279F5100A1C057 /* Main.storyboard in Resources */,
+				C25487BD24EA309300F850AC /* BridgePage in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +325,8 @@
 			files = (
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
+				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
+				C25487C024F0F18D00F850AC /* JsData.swift in Sources */,
 				C21B8433242715CA00A1C057 /* AppDelegate.swift in Sources */,
 				C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */,
 				C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */,
@@ -291,6 +334,7 @@
 				C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */,
 				C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */,
 				C2FECC2F242F4C2000FD1878 /* Util.swift in Sources */,
+				C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */,
 				C2FECC2D242F4B3900FD1878 /* CustomUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

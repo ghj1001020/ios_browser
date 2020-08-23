@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="30f-QB-7BH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="30f-QB-7BH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -259,6 +259,13 @@
                                     <action selector="onTestPage:" destination="30f-QB-7BH" eventType="touchUpInside" id="VSY-XG-e7b"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ds7-JR-jVs" userLabel="테스트">
+                                <rect key="frame" x="345" y="723" width="39" height="30"/>
+                                <state key="normal" title="테스트"/>
+                                <connections>
+                                    <action selector="onAppCall:" destination="30f-QB-7BH" eventType="touchUpInside" id="ovF-1l-SsA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -271,7 +278,9 @@
                             <constraint firstItem="smm-RH-9cf" firstAttribute="top" secondItem="mI5-8f-Eo6" secondAttribute="bottom" id="DPa-fo-JLX"/>
                             <constraint firstItem="jt5-Th-ebU" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="Hvh-6k-HDD"/>
                             <constraint firstItem="8Vc-1E-EF8" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="Me2-yu-m6k"/>
+                            <constraint firstItem="THo-Cy-hLa" firstAttribute="trailing" secondItem="Ds7-JR-jVs" secondAttribute="trailing" constant="30" id="Nf5-Uh-5vG"/>
                             <constraint firstItem="smm-RH-9cf" firstAttribute="leading" secondItem="THo-Cy-hLa" secondAttribute="leading" id="Qa5-aF-rKE"/>
+                            <constraint firstItem="THo-Cy-hLa" firstAttribute="bottom" secondItem="Ds7-JR-jVs" secondAttribute="bottom" constant="60" id="SW5-VO-UMo"/>
                             <constraint firstItem="lmr-fA-J0t" firstAttribute="centerY" secondItem="UnH-mM-5Pr" secondAttribute="centerY" id="Tr6-GS-ZWC"/>
                             <constraint firstItem="Pyn-fE-D61" firstAttribute="leading" secondItem="UnH-mM-5Pr" secondAttribute="leading" id="Uid-rO-gI5"/>
                             <constraint firstItem="Xnl-dO-agX" firstAttribute="top" secondItem="mI5-8f-Eo6" secondAttribute="top" id="WW7-KF-Pjx"/>

@@ -20,4 +20,7 @@ class DefineCode {
     // 더보기 메뉴코드
     public static let MORE_MENU_COOKIE = 0
     public static let MORE_MENU_PRINT = 1
+    
+    // JS 브릿지 코드
+    public static let JS_ALERT_POPUP = 0
 }

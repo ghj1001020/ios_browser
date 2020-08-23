@@ -11,6 +11,9 @@ import UIKit
 
 class Util
 {
+    static let TAG : String = "Util"
+    
+    
     // hex -> UIColor 로 변환
     static func uiColorByHex(hex:Int , alpha:Float = 1.0) -> UIColor
     {
@@ -36,15 +39,58 @@ class Util
     static func showAlertDialog( controller: UIViewController , title: String , message: String , action1 : UIAlertAction? , action2 : UIAlertAction? ) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        if let action1 = action1 {
-            alert.addAction(action1)
+        if action1 == nil && action2 == nil {
+            alert.addAction( UIAlertAction(title: "확인", style: .cancel, handler: nil) )
         }
-        if let action2 = action2 {
-            alert.addAction(action2)
+        else {
+            if let action1 = action1 {
+                alert.addAction(action1)
+            }
+            if let action2 = action2 {
+                alert.addAction(action2)
+            }
         }
-        
+
         controller.present(alert, animated: true, completion: nil )
         
         return alert
     }
+    
+    // json string -> dto
+    static func jsonStringToDto<T>( type: T.Type , params: String) -> T?  where T:Decodable {
+        if params.isEmpty || "{}" == params {
+            return nil
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let data : T = try decoder.decode( T.self, from: params.data(using: .utf8)! )
+            
+            return data
+        }
+        catch {
+            Log.p( _tag: TAG, _message: error.localizedDescription )
+            return nil
+        }
+    }
+    
+    // dto -> json string
+    static func dtoToJsonString<T:Codable>( dto : T? ) -> String {
+        if dto == nil {
+            return ""
+        }
+        
+        do {
+            let encoder = JSONEncoder()
+            let jsonData : Data = try encoder.encode(dto)
+            let jsonString : String = String(data: jsonData, encoding: .utf8) ?? ""
+            
+            return jsonString
+        }
+        catch {
+            Log.p(_tag: TAG, _message: error.localizedDescription )
+            return ""
+        }
+    }
 }
+
