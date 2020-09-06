@@ -15,6 +15,9 @@ protocol MoreDialogProtocol {
 
 class MoreDialogController : UIViewController {
     
+    private let TAG : String = "MoreDialogCont"
+    
+    
     @IBOutlet var dim: UIView!
     @IBOutlet var viewDialog: UIView!
     var listener : MoreDialogProtocol? = nil
@@ -43,6 +46,10 @@ class MoreDialogController : UIViewController {
     @IBAction func onMenuPrint(_ sender: UIButton) {
         listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_PRINT)
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onMenuPcM(_ sender: UIButton) {
+        Log.p(_tag: TAG, _message: "onMenuPcM")
     }
     
     // 딤클릭 > 다이얼로그 닫기

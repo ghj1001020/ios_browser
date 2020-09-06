@@ -320,16 +320,18 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
 //            Log.p(_tag: TAG, _message: "\(cookie.name) ... \(cookie.value)")
 //        }
         
-        let htmlPath = Bundle.main.path(forResource: "BridgePage", ofType: "html", inDirectory: "BridgePage")
+//        let htmlPath = Bundle.main.path(forResource: "BridgePage", ofType: "html", inDirectory: "BridgePage")
+//
+//        guard let path = htmlPath else {
+//            return
+//        }
+//
+//        let htmlUrl = URL(fileURLWithPath: path)
+//
+//        let request = URLRequest(url: htmlUrl)
+//        wv_main?.load(request)
         
-        guard let path = htmlPath else {
-            return
-        }
-        
-        let htmlUrl = URL(fileURLWithPath: path)
-        
-        let request = URLRequest(url: htmlUrl)
-        wv_main?.load(request)
+        loadUrl(_url: "https://itunes.apple.com/kr/app/%EB%A7%88%EC%9D%B4-%EC%BC%80%EC%9D%B4%ED%8B%B0/id355838434?mt=8")
     }
     
     // todo 테스트 하드코딩
@@ -589,10 +591,9 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     
     // URL이 로드 될때 웹탐색을 허용할지 취소할지 결정 (목적지는 알고 있지만 아직 이동은 하지 않은 상태에서 이동 허가제어 가능)
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        Log.p(_tag: TAG, _message: "decidePolicyFor navigationAction")
-
         let request : URLRequest = navigationAction.request
-        
+        Log.p(_tag: TAG, _message: "decidePolicyFor navigationAction \(request.url?.absoluteString)")
+
         guard let url: URL = request.url else {
             return
         }
@@ -607,6 +608,30 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
             self.showWebViewLoadingBar(isShow: false, _progress: 0)
             decisionHandler(.cancel)
             return;
+        }
+        
+        let strUrl = url.absoluteString
+        
+        // 앱스토어 이동
+        if( strUrl.starts(with: "itms-appss://") || strUrl.starts(with: "itms://") ) {
+            if( UIApplication.shared.canOpenURL(url) ) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                
+                self.showWebViewLoadingBar(isShow: false, _progress: 0)
+                decisionHandler(.cancel)
+                return
+            }
+        }
+        
+        // 앱스토어 이동
+        if( strUrl.starts(with: "https://itunes.apple.com/kr/app/") || strUrl.starts(with: "http://itunes.apple.com/kr/app/") ) {
+            if( UIApplication.shared.canOpenURL(url) ) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                
+                self.showWebViewLoadingBar(isShow: false, _progress: 0)
+                decisionHandler(.cancel)
+                return
+            }
         }
         
         decisionHandler(.allow)
