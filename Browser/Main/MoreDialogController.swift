@@ -20,21 +20,36 @@ class MoreDialogController : UIViewController {
     
     @IBOutlet var dim: UIView!
     @IBOutlet var viewDialog: UIView!
+    @IBOutlet var btnPcMobileMode: UIButton!
+    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     var listener : MoreDialogProtocol? = nil
     var requestId : Int = -1
     
     
     override func viewDidLoad() {
-        // 딤클릭하면 다이얼로그 닫기
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDim(geusture:)) )
-        dim.addGestureRecognizer(tap)
-        dim.isUserInteractionEnabled = true
-        
         // 다이얼로그 애니메이션
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: { ()->Void in
                 self.viewDialog.transform = CGAffineTransform(translationX: 0, y: -self.viewDialog.frame.height)
             }, completion: nil)
+        }
+        
+        initLayout()
+    }
+    
+    func initLayout() {
+        // 딤클릭하면 다이얼로그 닫기
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDim(geusture:)) )
+        dim.addGestureRecognizer(tap)
+        dim.isUserInteractionEnabled = true
+        
+        // 모바일/데스크탑모드 이미지
+        if( delegate.isMobile ) {
+            btnPcMobileMode.setBackgroundImage(UIImage(named: "ic_toolbar_desktop"), for: .normal)
+        }
+        else {
+            btnPcMobileMode.setBackgroundImage(UIImage(named: "ic_toolbar_mobile"), for: .normal)
         }
     }
 
@@ -49,7 +64,8 @@ class MoreDialogController : UIViewController {
     }
     
     @IBAction func onMenuPcM(_ sender: UIButton) {
-        Log.p(_tag: TAG, _message: "onMenuPcM")
+        listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_PC_MOBILE_MODE)
+        dismiss(animated: true, completion: nil)
     }
     
     // 딤클릭 > 다이얼로그 닫기

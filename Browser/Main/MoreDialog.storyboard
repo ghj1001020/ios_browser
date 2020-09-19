@@ -50,7 +50,7 @@
                                             <constraint firstAttribute="width" constant="36" id="blM-xh-WrG"/>
                                             <constraint firstAttribute="height" constant="36" id="ewV-Kv-8Pg"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="ic_desktop"/>
+                                        <state key="normal" backgroundImage="ic_toolbar_desktop"/>
                                         <connections>
                                             <action selector="onMenuPcM:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="yY5-07-dsa"/>
                                         </connections>
@@ -84,6 +84,7 @@
                         <viewLayoutGuide key="safeArea" id="ahz-fU-93C"/>
                     </view>
                     <connections>
+                        <outlet property="btnPcMobileMode" destination="0bp-SK-g6c" id="2gv-K7-QWT"/>
                         <outlet property="dim" destination="6dn-aM-EQa" id="yc0-qO-uCV"/>
                         <outlet property="viewDialog" destination="rTv-Fx-LOG" id="oHW-hH-GWC"/>
                     </connections>
@@ -94,8 +95,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_desktop" width="240" height="240"/>
         <image name="ic_toolbar_cookie" width="120" height="120"/>
+        <image name="ic_toolbar_desktop" width="240" height="240"/>
         <image name="ic_toolbar_printer" width="120" height="120"/>
     </resources>
 </document>

@@ -14,7 +14,8 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
     
     private let TAG : String = "MainViewController"
     
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     var wv_main: WKWebView!
     @IBOutlet var view_web: UIView!
     @IBOutlet var lbWebTitle: UILabel!
@@ -82,7 +83,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
             return
         }
         
-        let urlRequest = URLRequest(url: url )
+        var urlRequest = URLRequest(url: url )
         wv_main?.load( urlRequest )
     }
     
@@ -320,18 +321,19 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
 //            Log.p(_tag: TAG, _message: "\(cookie.name) ... \(cookie.value)")
 //        }
         
-//        let htmlPath = Bundle.main.path(forResource: "BridgePage", ofType: "html", inDirectory: "BridgePage")
-//
-//        guard let path = htmlPath else {
-//            return
-//        }
-//
-//        let htmlUrl = URL(fileURLWithPath: path)
-//
-//        let request = URLRequest(url: htmlUrl)
-//        wv_main?.load(request)
+//        let htmlPath = Bundle.main.path(forResource: "BridgePage", ofType: "html", inDirectory: "www")
+        let htmlPath = Bundle.main.path(forResource: "LinkPage", ofType: "html", inDirectory: "www")
+
+        guard let path = htmlPath else {
+            return
+        }
+
+        let htmlUrl = URL(fileURLWithPath: path)
+
+        let request = URLRequest(url: htmlUrl)
+        wv_main?.load(request)
         
-        loadUrl(_url: "https://itunes.apple.com/kr/app/%EB%A7%88%EC%9D%B4-%EC%BC%80%EC%9D%B4%ED%8B%B0/id355838434?mt=8")
+//        loadUrl(_url: "https://itunes.apple.com/kr/app/%EB%A7%88%EC%9D%B4-%EC%BC%80%EC%9D%B4%ED%8B%B0/id355838434?mt=8")
     }
     
     // todo 테스트 하드코딩
@@ -417,6 +419,11 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
         case DefineCode.MORE_MENU_PRINT:
             Log.p(_tag: TAG, _message: "MORE_MENU_PRINT")
             onPrint()
+            
+        // 데스크탑<->모바일 모드
+        case DefineCode.MORE_MENU_PC_MOBILE_MODE:
+            Log.p(_tag: TAG, _message: "MORE_MENU_PC_MOBILE_MODE")
+            onPcMobileMode()
         default: break
             
         }
@@ -455,6 +462,36 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
                 Log.p(_tag: self.TAG, _message: "print failed = \(error?.localizedDescription ?? "")")
             }
         })
+    }
+    
+    // 데스크탑<->모바일 모드 변경
+    func onPcMobileMode() {
+        guard (wv_main != nil) else {
+            return
+        }
+        
+        guard var url = wv_main.url?.absoluteString else {
+            return
+        }
+        
+        // 커스텀 user-agent
+        if( appDelegate.isMobile ) {
+//            wv_main.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
+            wv_main.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS) AppleWebKit (KHTML, like Gecko) Safari"
+                        
+            url = url.replacingOccurrences(of: "^https://m.", with: "https://www.", options: .regularExpression, range: nil)
+                     .replacingOccurrences(of: "^http://m.", with: "http://www.", options: .regularExpression, range: nil)
+            
+            loadUrl(_url: url)
+        }
+        else {
+            wv_main.customUserAgent = ""
+            
+            wv_main.reload()
+        }
+        Log.p(_tag: TAG, _message: "customUserAgent \(wv_main.customUserAgent)")
+
+        appDelegate.isMobile = !appDelegate.isMobile
     }
     
     // 앱 -> 웹에 메시지 전달
@@ -598,6 +635,41 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
             return
         }
 
+        if( checkRedirectUrl(url: url) ) {
+            decisionHandler(.cancel)
+        }
+        else {
+            decisionHandler(.allow)
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
+        // 모바일/PC 모드 설정
+        if( appDelegate.isMobile ) {
+            preferences.preferredContentMode = .mobile
+        }
+        else {
+            preferences.preferredContentMode = .desktop
+        }
+
+        
+        let request : URLRequest = navigationAction.request
+        Log.p(_tag: TAG, _message: "decidePolicyFor navigationAction \(request.url?.absoluteString)")
+
+        guard let url: URL = request.url else {
+            return
+        }
+        
+        if( checkRedirectUrl(url: url) ) {
+            decisionHandler(.cancel, preferences)
+        }
+        else {
+            decisionHandler(.allow, preferences)
+        }
+    }
+    
+    func checkRedirectUrl( url : URL) -> Bool {
         let ext : String = url.pathExtension.lowercased()
         
         // 파일 다운로드
@@ -606,8 +678,7 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
             showDownloadConfirmDialog(downloadType: downloadType, url: url)
             
             self.showWebViewLoadingBar(isShow: false, _progress: 0)
-            decisionHandler(.cancel)
-            return;
+            return true;
         }
         
         let strUrl = url.absoluteString
@@ -618,8 +689,7 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 
                 self.showWebViewLoadingBar(isShow: false, _progress: 0)
-                decisionHandler(.cancel)
-                return
+                return true
             }
         }
         
@@ -629,13 +699,23 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 
                 self.showWebViewLoadingBar(isShow: false, _progress: 0)
-                decisionHandler(.cancel)
-                return
+                return true
             }
         }
         
-        decisionHandler(.allow)
+        // sms://
+        if( ["sms"].contains( url.scheme ) ) {
+            if( UIApplication.shared.canOpenURL(url) ) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                
+                self.showWebViewLoadingBar(isShow: false, _progress: 0)
+                return true
+            }
+        }
+        
+        return false
     }
+
     
     // 응답이 완료된후 웹탐색을 허용할지 취소할지 결정
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {

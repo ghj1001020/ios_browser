@@ -10,6 +10,9 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    // 모바일/데스크탑 모드 여부
+    public var isMobile = true
 
     var window: UIWindow?
 
