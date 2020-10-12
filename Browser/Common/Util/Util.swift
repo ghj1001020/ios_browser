@@ -92,5 +92,24 @@ class Util
             return ""
         }
     }
+    
+    // parameter query 만들기
+    static func makeQueryParameter( params : [String:String]? ) -> String {
+        var parameter = ""
+        if let _params = params {
+            parameter = "?"
+            for (index, item) in _params.enumerated() {
+                parameter += item.key + "=" + item.value
+                
+                if( index < _params.count-1 ) {
+                    parameter += "&"
+                }
+            }
+            
+            parameter = parameter.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        }
+
+        return parameter
+    }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 
-class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentInteractionControllerDelegate, MoreDialogProtocol {
+class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogProtocol {
     
     private let TAG : String = "MainViewController"
     
@@ -83,7 +83,31 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
             return
         }
         
-        var urlRequest = URLRequest(url: url )
+        let urlRequest = URLRequest(url: url )
+        wv_main?.load( urlRequest )
+    }
+    
+    // 웹뷰 파일 url 로딩
+    func loadFileUrl( htmlUrl : URL? , params : [String:String]? ) {
+        var parameter = ""
+        if let _params = params {
+            parameter = "?"
+            for (index, item) in _params.enumerated() {
+                parameter += item.key + "=" + item.value
+                
+                if( index < _params.count-1 ) {
+                    parameter += "&"
+                }
+            }
+            
+            parameter = parameter.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        }
+
+        guard let url = URL(string: parameter, relativeTo: htmlUrl) else {
+            return
+        }
+
+        let urlRequest = URLRequest(url: url)
         wv_main?.load( urlRequest )
     }
     
@@ -132,7 +156,15 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
     // 웹뷰 새로고침
     @IBAction func onWebViewRefresh(_ sender: UIButton) {
         sender.addClickAnimation( color: UIColor.init(red: 146/255.0, green: 204/255.0, blue: 243/255.0, alpha: 1.0).cgColor )
-        wv_main?.reload()
+        
+        if wv_main.url == nil {
+            if !(editUrl.text?.isEmpty ?? true) {
+                loadUrl(_url: editUrl.text )
+            }
+        }
+        else {
+            wv_main?.reload()
+        }
     }
     
     // edit mode 로 변경
@@ -294,6 +326,35 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
         }
     }
     
+    func getWillMovePageStep( isBack : Bool ) -> Int? {
+        let historyList : WKBackForwardList = wv_main.backForwardList
+        var move : Int? = nil
+        
+        if( isBack ) {
+            for index in stride(from: historyList.backList.count, through: 0, by: -1)   {
+                let itemUrl = historyList.backList[index].url.absoluteString
+
+                if !itemUrl.starts(with: "file:///") && !itemUrl.contains("ErrorPage.html") {
+                    move = index
+                    break
+                }
+            }
+        }
+        else {
+            for index in 0..<historyList.forwardList.count {
+                let itemUrl = historyList.forwardList[index].url.absoluteString
+                
+                if !itemUrl.starts(with: "file:///") && !itemUrl.contains("ErrorPage.html") {
+                    move = index
+                    break
+                }
+            }
+        }
+        
+        Log.p(_tag: TAG, _message: "move=\(move)")
+        return move
+    }
+    
     
     // todo 테스트 하드코딩
     @IBAction func onTestPage(_ sender: UIButton) {
@@ -322,18 +383,29 @@ class MainViewController : UIViewController , UITextFieldDelegate , UIDocumentIn
 //        }
         
 //        let htmlPath = Bundle.main.path(forResource: "BridgePage", ofType: "html", inDirectory: "www")
-        let htmlPath = Bundle.main.path(forResource: "LinkPage", ofType: "html", inDirectory: "www")
-
-        guard let path = htmlPath else {
+//        let htmlPath = Bundle.main.path(forResource: "LinkPage", ofType: "html", inDirectory: "www")
+//
+//        guard let path = htmlPath else {
+//            return
+//        }
+//
+//        let htmlUrl = URL(fileURLWithPath: path)
+//
+//        let request = URLRequest(url: htmlUrl)
+//        wv_main?.load(request)
+//
+////        loadUrl(_url: "https://itunes.apple.com/kr/app/%EB%A7%88%EC%9D%B4-%EC%BC%80%EC%9D%B4%ED%8B%B0/id355838434?mt=8")
+        
+        let storyboard : UIStoryboard = UIStoryboard(name: "ErrorDialog", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "ErrorDialog" ) as? ErrorDialogController else
+        {
             return
         }
 
-        let htmlUrl = URL(fileURLWithPath: path)
+        controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
 
-        let request = URLRequest(url: htmlUrl)
-        wv_main?.load(request)
-        
-//        loadUrl(_url: "https://itunes.apple.com/kr/app/%EB%A7%88%EC%9D%B4-%EC%BC%80%EC%9D%B4%ED%8B%B0/id355838434?mt=8")
+        self.present(controller, animated: false, completion: nil)
+
     }
     
     // todo 테스트 하드코딩
@@ -616,14 +688,52 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         Log.p(_tag: TAG, _message: "webViewWebContentProcessDidTerminate")
     }
     
-    // 웹 탐색중 에러
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        
-    }
+//    // 웹 탐색중 에러
+//    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+//
+//    }
     
     // 웹컨텐츠 로드중 에러
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        let err = error as NSError
         
+        Log.p(_tag: TAG, _message: "didFailProvisionalNavigation \(err.code)")
+
+        switch err.code {
+        case NSURLErrorTimedOut, NSURLErrorCannotConnectToHost, NSURLErrorNotConnectedToInternet, NSURLErrorSecureConnectionFailed :
+//            wv_main?.stopLoading()
+            
+            let message = "에러가 발생하였습니다. ([\(err.code)] \(err.localizedDescription))"
+            let parameter = Util.makeQueryParameter(params: ["errorMsg":message])
+            
+            let storyboard : UIStoryboard = UIStoryboard(name: "ErrorDialog", bundle: nil)
+            if let controller = storyboard.instantiateViewController(withIdentifier: "ErrorDialog" ) as? ErrorDialogController {
+                controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
+                controller.errorMsg = parameter
+
+                self.present(controller, animated: false, completion: nil)
+            }
+
+            showWebViewLoadingBar( isShow: false, _progress: 0 )
+            changePageMoveButton()
+            break
+            
+        default:
+            return
+        }
+    }
+
+    
+    func webView(_ webView: WKWebView, authenticationChallenge challenge: URLAuthenticationChallenge, shouldAllowDeprecatedTLS decisionHandler: @escaping (Bool) -> Void) {
+        
+    }
+
+    // SSL 인증요청에 대한 응답
+    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        if let serverTrust : SecTrust = challenge.protectionSpace.serverTrust {
+            let credential = URLCredential(trust: serverTrust)
+            completionHandler(.useCredential, credential)
+        }
     }
     
     // URL이 로드 될때 웹탐색을 허용할지 취소할지 결정 (목적지는 알고 있지만 아직 이동은 하지 않은 상태에서 이동 허가제어 가능)

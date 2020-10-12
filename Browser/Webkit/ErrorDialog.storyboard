@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Error Dialog Controller-->
+        <scene sceneID="xPI-Gj-mxQ">
+            <objects>
+                <viewController storyboardIdentifier="ErrorDialog" id="YrS-nk-rjT" customClass="ErrorDialogController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jvV-0r-ARR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltD-De-EFc" userLabel="dim">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4h-50-fjX">
+                                <rect key="frame" x="32" y="79" width="350" height="733"/>
+                                <subviews>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-vi-HAu">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="669"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Gd-IQ-F4r">
+                                        <rect key="frame" x="115" y="677" width="120" height="48"/>
+                                        <color key="backgroundColor" red="0.10196078431372549" green="0.45098039215686275" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="7HM-bb-G9B"/>
+                                            <constraint firstAttribute="height" constant="48" id="kvh-rn-K7B"/>
+                                        </constraints>
+                                        <state key="normal" title="확인">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClose:" destination="YrS-nk-rjT" eventType="touchUpInside" id="ONO-Ne-fQA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0Gd-IQ-F4r" firstAttribute="top" secondItem="4ao-vi-HAu" secondAttribute="bottom" constant="8" id="3Lb-xP-e7I"/>
+                                    <constraint firstItem="4ao-vi-HAu" firstAttribute="top" secondItem="C4h-50-fjX" secondAttribute="top" id="Lbg-aW-Vqh"/>
+                                    <constraint firstAttribute="trailing" secondItem="4ao-vi-HAu" secondAttribute="trailing" id="XCF-b7-cJU"/>
+                                    <constraint firstItem="4ao-vi-HAu" firstAttribute="leading" secondItem="C4h-50-fjX" secondAttribute="leading" id="aT6-Yy-qMA"/>
+                                    <constraint firstItem="0Gd-IQ-F4r" firstAttribute="centerX" secondItem="C4h-50-fjX" secondAttribute="centerX" id="oY8-eI-hGJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Gd-IQ-F4r" secondAttribute="bottom" constant="8" id="sKN-gL-qFS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dYS-ur-va3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ltD-De-EFc" secondAttribute="bottom" id="F1d-gI-74T"/>
+                            <constraint firstItem="dYS-ur-va3" firstAttribute="trailing" secondItem="C4h-50-fjX" secondAttribute="trailing" constant="32" id="K6D-K4-lwA"/>
+                            <constraint firstItem="dYS-ur-va3" firstAttribute="bottom" secondItem="C4h-50-fjX" secondAttribute="bottom" constant="50" id="SLQ-d4-Tim"/>
+                            <constraint firstItem="ltD-De-EFc" firstAttribute="top" secondItem="dYS-ur-va3" secondAttribute="top" id="YXo-p2-izb"/>
+                            <constraint firstItem="C4h-50-fjX" firstAttribute="leading" secondItem="dYS-ur-va3" secondAttribute="leading" constant="32" id="a6b-CW-o1n"/>
+                            <constraint firstItem="dYS-ur-va3" firstAttribute="trailing" secondItem="ltD-De-EFc" secondAttribute="trailing" id="f3P-kC-0xi"/>
+                            <constraint firstItem="ltD-De-EFc" firstAttribute="leading" secondItem="dYS-ur-va3" secondAttribute="leading" id="g0A-KZ-bSo"/>
+                            <constraint firstItem="C4h-50-fjX" firstAttribute="top" secondItem="dYS-ur-va3" secondAttribute="top" constant="35" id="mw1-BY-t0k"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="wv_error" destination="4ao-vi-HAu" id="B2v-j2-MVY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nLD-sM-3Gh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-185" y="-64"/>
+        </scene>
+    </scenes>
+</document>
