@@ -383,28 +383,28 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
 //        }
         
 //        let htmlPath = Bundle.main.path(forResource: "BridgePage", ofType: "html", inDirectory: "www")
-//        let htmlPath = Bundle.main.path(forResource: "LinkPage", ofType: "html", inDirectory: "www")
-//
-//        guard let path = htmlPath else {
-//            return
-//        }
-//
-//        let htmlUrl = URL(fileURLWithPath: path)
-//
-//        let request = URLRequest(url: htmlUrl)
-//        wv_main?.load(request)
-//
-////        loadUrl(_url: "https://itunes.apple.com/kr/app/%EB%A7%88%EC%9D%B4-%EC%BC%80%EC%9D%B4%ED%8B%B0/id355838434?mt=8")
-        
-        let storyboard : UIStoryboard = UIStoryboard(name: "ErrorDialog", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: "ErrorDialog" ) as? ErrorDialogController else
-        {
+        let htmlPath = Bundle.main.path(forResource: "LinkPage", ofType: "html", inDirectory: "www")
+
+        guard let path = htmlPath else {
             return
         }
 
-        controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
+        let htmlUrl = URL(fileURLWithPath: path)
 
-        self.present(controller, animated: false, completion: nil)
+        let request = URLRequest(url: htmlUrl)
+        wv_main?.load(request)
+//
+////        loadUrl(_url: "https://itunes.apple.com/kr/app/%EB%A7%88%EC%9D%B4-%EC%BC%80%EC%9D%B4%ED%8B%B0/id355838434?mt=8")
+        
+//        let storyboard : UIStoryboard = UIStoryboard(name: "ErrorDialog", bundle: nil)
+//        guard let controller = storyboard.instantiateViewController(withIdentifier: "ErrorDialog" ) as? ErrorDialogController else
+//        {
+//            return
+//        }
+//
+//        controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
+//
+//        self.present(controller, animated: false, completion: nil)
 
     }
     
@@ -697,7 +697,7 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         let err = error as NSError
         
-        Log.p(_tag: TAG, _message: "didFailProvisionalNavigation \(err.code)")
+        Log.p(_tag: TAG, _message: "didFailProvisionalNavigation \(err.code) \(err.localizedDescription)")
 
         switch err.code {
         case NSURLErrorTimedOut, NSURLErrorCannotConnectToHost, NSURLErrorNotConnectedToInternet, NSURLErrorSecureConnectionFailed :
@@ -813,8 +813,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
             }
         }
         
-        // sms://
-        if( ["sms"].contains( url.scheme ) ) {
+        // sms: tel:
+        if( ["sms" , "tel"].contains( url.scheme ) ) {
             if( UIApplication.shared.canOpenURL(url) ) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 
