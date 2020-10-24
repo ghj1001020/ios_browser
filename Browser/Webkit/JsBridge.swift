@@ -28,6 +28,8 @@ class JsBridge : NSObject , WKScriptMessageHandler {
         userContentController.add(self, name: "appAlertPopup")
         let config = WKWebViewConfiguration()
         config.userContentController = userContentController
+        config.allowsInlineMediaPlayback = true // HTML5 비디오가 인라인으로 재생되는지 전체화면으로 재생되는지
+        config.mediaTypesRequiringUserActionForPlayback = .all  // 모든 미디어 유형에서 재생을 시작하려면 사용자 제스처 필요
         
         self.listener = listener
         return config
