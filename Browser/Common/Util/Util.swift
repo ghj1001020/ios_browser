@@ -111,5 +111,12 @@ class Util
 
         return parameter
     }
+    
+    // Date -> String
+    static func dateToString( date: Date, format: String ) -> String {
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: date)
+    }
 }
 

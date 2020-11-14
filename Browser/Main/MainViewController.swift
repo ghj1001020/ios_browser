@@ -496,6 +496,11 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         case DefineCode.MORE_MENU_PC_MOBILE_MODE:
             Log.p(_tag: TAG, _message: "MORE_MENU_PC_MOBILE_MODE")
             onPcMobileMode()
+            
+        // 방문기록
+        case DefineCode.MORE_MENU_HISTORY:
+            Log.p(_tag: TAG, _message: "MORE_MENU_HISTORY")
+            moveHistory()
         default: break
             
         }
@@ -565,6 +570,19 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
 
         appDelegate.isMobile = !appDelegate.isMobile
     }
+    
+    // 방문기록 페이지로 이동
+    func moveHistory() {
+        let storyboard : UIStoryboard = UIStoryboard(name: "History", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "History") as? HistoryViewController else {
+            return
+        }
+        
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.present(controller, animated: true, completion: nil )
+    }
+    
     
     // 앱 -> 웹에 메시지 전달
     func onWebMessage() {
@@ -681,6 +699,12 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         editUrl.text = url
         
         changePageMoveButton()
+
+        // 방문한페이지 저장
+        if let item = wv_main.backForwardList.currentItem {
+            let history : HistoryData = HistoryData(date: Util.dateToString(date: Date(), format: "yyyyMMdd "), title: item.title ?? "", url: item.url.absoluteString)
+            PreferenceUtil.saveWebPageHistory(item: history)
+        }
     }
 
     // 웹컨텐츠 프로세스 종료

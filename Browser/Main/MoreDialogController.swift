@@ -68,6 +68,12 @@ class MoreDialogController : UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func onMenuHistory(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_HISTORY)
+    }
+    
+    
     // 딤클릭 > 다이얼로그 닫기
     @objc func tapDim( geusture : UITapGestureRecognizer ) {
         dismiss(animated: true, completion: nil)

@@ -16,6 +16,11 @@
 		C2443F0424B3689300E5778E /* libswiftCoreLocation.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */; };
 		C2443F0524B3689300E5778E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0324B3689300E5778E /* CoreLocation.framework */; };
 		C25487C024F0F18D00F850AC /* JsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25487BF24F0F18D00F850AC /* JsData.swift */; };
+		C27444C825582AA2002AF201 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27444C725582AA2002AF201 /* History.storyboard */; };
+		C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444CA25582ABE002AF201 /* HistoryViewController.swift */; };
+		C27444CE25582DA6002AF201 /* HistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444CD25582DA6002AF201 /* HistoryTableCell.swift */; };
+		C27444D1255AB4D9002AF201 /* PreferenceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */; };
+		C27444F5255D6418002AF201 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444F4255D6418002AF201 /* HistoryData.swift */; };
 		C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */; };
 		C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */; };
 		C2A8DEA0253482B000A78EBB /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE9F253482B000A78EBB /* www */; };
@@ -69,6 +74,11 @@
 		C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreLocation.tbd; path = usr/lib/swift/libswiftCoreLocation.tbd; sourceTree = SDKROOT; };
 		C2443F0324B3689300E5778E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C25487BF24F0F18D00F850AC /* JsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsData.swift; sourceTree = "<group>"; };
+		C27444C725582AA2002AF201 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		C27444CA25582ABE002AF201 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		C27444CD25582DA6002AF201 /* HistoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableCell.swift; sourceTree = "<group>"; };
+		C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceUtil.swift; sourceTree = "<group>"; };
+		C27444F4255D6418002AF201 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ErrorDialog.storyboard; sourceTree = "<group>"; };
 		C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialogController.swift; sourceTree = "<group>"; };
 		C2A8DE9F253482B000A78EBB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
@@ -125,6 +135,8 @@
 		C21B8431242715CA00A1C057 /* Browser */ = {
 			isa = PBXGroup;
 			children = (
+				C27444F7255D651E002AF201 /* Data */,
+				C27444C5255828BB002AF201 /* History */,
 				C25487BB24E97D2400F850AC /* Resources */,
 				C2F43CE724E030C6001CAE44 /* Cookie */,
 				C2443EFE24B35AD300E5778E /* Browser.entitlements */,
@@ -178,6 +190,24 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C27444C5255828BB002AF201 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				C27444C725582AA2002AF201 /* History.storyboard */,
+				C27444CA25582ABE002AF201 /* HistoryViewController.swift */,
+				C27444CD25582DA6002AF201 /* HistoryTableCell.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		C27444F7255D651E002AF201 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C27444F4255D6418002AF201 /* HistoryData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		C2F43CE724E030C6001CAE44 /* Cookie */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +235,7 @@
 				C2FECC27242F0A0800FD1878 /* Log.swift */,
 				C2FECC29242F0A6600FD1878 /* StringExt.swift */,
 				C2FECC2E242F4C2000FD1878 /* Util.swift */,
+				C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -301,6 +332,7 @@
 			files = (
 				C2A8DEA0253482B000A78EBB /* www in Resources */,
 				C21B843C242715D200A1C057 /* Assets.xcassets in Resources */,
+				C27444C825582AA2002AF201 /* History.storyboard in Resources */,
 				C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */,
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
@@ -325,16 +357,20 @@
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
+				C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */,
 				C25487C024F0F18D00F850AC /* JsData.swift in Sources */,
 				C21B8433242715CA00A1C057 /* AppDelegate.swift in Sources */,
 				C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */,
 				C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */,
+				C27444F5255D6418002AF201 /* HistoryData.swift in Sources */,
 				C2FECC28242F0A0800FD1878 /* Log.swift in Sources */,
 				C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */,
 				C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */,
+				C27444CE25582DA6002AF201 /* HistoryTableCell.swift in Sources */,
 				C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */,
 				C2FECC2F242F4C2000FD1878 /* Util.swift in Sources */,
 				C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */,
+				C27444D1255AB4D9002AF201 /* PreferenceUtil.swift in Sources */,
 				C2FECC2D242F4B3900FD1878 /* CustomUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
