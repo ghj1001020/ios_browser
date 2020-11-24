@@ -30,6 +30,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     
     var jsBridge : JsBridge!
     var isEditMode : Bool = false
+    var indexSearch : String = ""
     
     
     override func viewDidLoad() {
@@ -66,7 +67,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         wv_main?.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)    // .new - 값이 변경될때마다 이벤트를 받음
         
         // 기본 웹페이지 로딩
-        loadUrl(_url: DefineCode.DEFAULT_PAGE )
+        loadUrl(_url: indexSearch )
     }
     
     // 웹뷰 url 로딩
@@ -258,6 +259,9 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         if( wvMain.canGoBack ) {
             wvMain.goBack()
         }
+        else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     // 다음페이지로 이동
@@ -307,14 +311,6 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     func changePageMoveButton() {
         guard let wvMain = wv_main else {
             return
-        }
-        
-        // 뒤로가기 버튼
-        if( wvMain.canGoBack ) {
-            btnBack.isHidden = false
-        }
-        else {
-            btnBack.isHidden = true
         }
         
         // 앞으로가기 버튼
@@ -724,7 +720,7 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         Log.p(_tag: TAG, _message: "didFailProvisionalNavigation \(err.code) \(err.localizedDescription)")
 
         switch err.code {
-        case NSURLErrorTimedOut, NSURLErrorCannotConnectToHost, NSURLErrorNotConnectedToInternet, NSURLErrorSecureConnectionFailed :
+        case NSURLErrorTimedOut, NSURLErrorCannotConnectToHost, NSURLErrorNotConnectedToInternet, NSURLErrorSecureConnectionFailed, -999, -1003 :
 //            wv_main?.stopLoading()
             
             let message = "에러가 발생하였습니다. ([\(err.code)] \(err.localizedDescription))"

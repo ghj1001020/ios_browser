@@ -34,6 +34,18 @@ class CommUILabel : UILabel {
     }
 }
 
+extension UIViewController {
+    // 바깥뷰 클릭시 소프트 키보드 숨기기
+    func eventHideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector( hideKeyboard ))
+        tap.cancelsTouchesInView = false    // false-제스처 인식뒤에도 터치 이벤트를 다음 view에 전달 (기본값 true-전달안함)
+        view.addGestureRecognizer( tap )
+    }
+    
+    @objc private func hideKeyboard() {
+        view.endEditing( true )
+    }
+}
 
 extension UILabel
 {

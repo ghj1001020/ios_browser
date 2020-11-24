@@ -12,6 +12,7 @@
 		C21B845624279F5100A1C057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C21B845524279F5100A1C057 /* Main.storyboard */; };
 		C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21B845724279F6A00A1C057 /* MainViewController.swift */; };
 		C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21B845A242A414C00A1C057 /* JsBridge.swift */; };
+		C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23D460D256D2F9300EF835C /* Launch.storyboard */; };
 		C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2443EFC24B1CDF500E5778E /* DefineCode.swift */; };
 		C2443F0424B3689300E5778E /* libswiftCoreLocation.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */; };
 		C2443F0524B3689300E5778E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0324B3689300E5778E /* CoreLocation.framework */; };
@@ -24,6 +25,8 @@
 		C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */; };
 		C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */; };
 		C2A8DEA0253482B000A78EBB /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE9F253482B000A78EBB /* www */; };
+		C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2DB7AB3256967D8002A5897 /* Index.storyboard */; };
+		C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB7AB6256967F6002A5897 /* IndexViewController.swift */; };
 		C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */; };
 		C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */; };
 		C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CE824E030E3001CAE44 /* Cookie.storyboard */; };
@@ -68,6 +71,7 @@
 		C21B845524279F5100A1C057 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C21B845724279F6A00A1C057 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C21B845A242A414C00A1C057 /* JsBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsBridge.swift; sourceTree = "<group>"; };
+		C23D460D256D2F9300EF835C /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		C2443EFC24B1CDF500E5778E /* DefineCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineCode.swift; sourceTree = "<group>"; };
 		C2443EFE24B35AD300E5778E /* Browser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Browser.entitlements; sourceTree = "<group>"; };
 		C2443F0024B35AD300E5778E /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
@@ -82,6 +86,8 @@
 		C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ErrorDialog.storyboard; sourceTree = "<group>"; };
 		C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialogController.swift; sourceTree = "<group>"; };
 		C2A8DE9F253482B000A78EBB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		C2DB7AB3256967D8002A5897 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
+		C2DB7AB6256967F6002A5897 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreDialog.storyboard; sourceTree = "<group>"; };
 		C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDialogController.swift; sourceTree = "<group>"; };
 		C2F43CE824E030E3001CAE44 /* Cookie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cookie.storyboard; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 		C21B8431242715CA00A1C057 /* Browser */ = {
 			isa = PBXGroup;
 			children = (
+				C2DB7AB22569678D002A5897 /* Index */,
 				C27444F7255D651E002AF201 /* Data */,
 				C27444C5255828BB002AF201 /* History */,
 				C25487BB24E97D2400F850AC /* Resources */,
@@ -146,6 +153,7 @@
 				C21B8432242715CA00A1C057 /* AppDelegate.swift */,
 				C21B843B242715D200A1C057 /* Assets.xcassets */,
 				C21B8440242715D200A1C057 /* Info.plist */,
+				C23D460D256D2F9300EF835C /* Launch.storyboard */,
 			);
 			path = Browser;
 			sourceTree = "<group>";
@@ -206,6 +214,15 @@
 				C27444F4255D6418002AF201 /* HistoryData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		C2DB7AB22569678D002A5897 /* Index */ = {
+			isa = PBXGroup;
+			children = (
+				C2DB7AB3256967D8002A5897 /* Index.storyboard */,
+				C2DB7AB6256967F6002A5897 /* IndexViewController.swift */,
+			);
+			path = Index;
 			sourceTree = "<group>";
 		};
 		C2F43CE724E030C6001CAE44 /* Cookie */ = {
@@ -332,11 +349,13 @@
 			files = (
 				C2A8DEA0253482B000A78EBB /* www in Resources */,
 				C21B843C242715D200A1C057 /* Assets.xcassets in Resources */,
+				C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */,
 				C27444C825582AA2002AF201 /* History.storyboard in Resources */,
 				C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */,
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
 				C21B845624279F5100A1C057 /* Main.storyboard in Resources */,
+				C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
+				C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
 				C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */,

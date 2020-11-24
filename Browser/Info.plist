@@ -43,9 +43,9 @@
 	<key>UIApplicationSceneManifest</key>
 	<dict/>
 	<key>UILaunchStoryboardName</key>
-	<string>Main</string>
+	<string>Launch</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Index</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
