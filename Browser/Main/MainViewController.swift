@@ -441,6 +441,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
                 if( type == DefineCode.URL_DOWNLOAD_IMG ) {
                     let image : UIImage? = UIImage(data: try Data(contentsOf: documentUrl))
                     if let image = image {
+                        // 사진라이브러리에 저장
                         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                     }
                 }
