@@ -19,9 +19,18 @@
 		C25487C024F0F18D00F850AC /* JsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25487BF24F0F18D00F850AC /* JsData.swift */; };
 		C27444C825582AA2002AF201 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27444C725582AA2002AF201 /* History.storyboard */; };
 		C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444CA25582ABE002AF201 /* HistoryViewController.swift */; };
-		C27444CE25582DA6002AF201 /* HistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444CD25582DA6002AF201 /* HistoryTableCell.swift */; };
 		C27444D1255AB4D9002AF201 /* PreferenceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */; };
-		C27444F5255D6418002AF201 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444F4255D6418002AF201 /* HistoryData.swift */; };
+		C2939AE92624815E00CF9389 /* DefineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AE82624815E00CF9389 /* DefineQuery.swift */; };
+		C2939AED262487EC00CF9389 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2939AEC262487D200CF9389 /* libsqlite3.0.tbd */; };
+		C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AEF2624FFEC00CF9389 /* SQLite.swift */; };
+		C2939AF32628F84300CF9389 /* SQLiteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AF22628F84300CF9389 /* SQLiteService.swift */; };
+		C2939AF62629F0D800CF9389 /* PrefUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AF52629F0D800CF9389 /* PrefUtil.swift */; };
+		C2939AFB262BD36200CF9389 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AFA262BD36200CF9389 /* HistoryData.swift */; };
+		C2939AFF262CEF0400CF9389 /* DefineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AFE262CEF0400CF9389 /* DefineType.swift */; };
+		C2939B0626344F3700CF9389 /* ItemHistoryUrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2939B0526344F3700CF9389 /* ItemHistoryUrl.xib */; };
+		C2939B0926345DE700CF9389 /* ItemHistoryDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2939B0826345DE600CF9389 /* ItemHistoryDate.xib */; };
+		C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939B0B263513C600CF9389 /* ItemHistoryDate.swift */; };
+		C2939B15263DDACF00CF9389 /* ItemHistoryUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939B14263DDACE00CF9389 /* ItemHistoryUrl.swift */; };
 		C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */; };
 		C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */; };
 		C2A8DEA0253482B000A78EBB /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE9F253482B000A78EBB /* www */; };
@@ -80,9 +89,18 @@
 		C25487BF24F0F18D00F850AC /* JsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsData.swift; sourceTree = "<group>"; };
 		C27444C725582AA2002AF201 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		C27444CA25582ABE002AF201 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		C27444CD25582DA6002AF201 /* HistoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableCell.swift; sourceTree = "<group>"; };
 		C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceUtil.swift; sourceTree = "<group>"; };
-		C27444F4255D6418002AF201 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
+		C2939AE82624815E00CF9389 /* DefineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineQuery.swift; sourceTree = "<group>"; };
+		C2939AEC262487D200CF9389 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		C2939AEF2624FFEC00CF9389 /* SQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
+		C2939AF22628F84300CF9389 /* SQLiteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteService.swift; sourceTree = "<group>"; };
+		C2939AF52629F0D800CF9389 /* PrefUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUtil.swift; sourceTree = "<group>"; };
+		C2939AFA262BD36200CF9389 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
+		C2939AFE262CEF0400CF9389 /* DefineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineType.swift; sourceTree = "<group>"; };
+		C2939B0526344F3700CF9389 /* ItemHistoryUrl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemHistoryUrl.xib; sourceTree = "<group>"; };
+		C2939B0826345DE600CF9389 /* ItemHistoryDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemHistoryDate.xib; sourceTree = "<group>"; };
+		C2939B0B263513C600CF9389 /* ItemHistoryDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHistoryDate.swift; sourceTree = "<group>"; };
+		C2939B14263DDACE00CF9389 /* ItemHistoryUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHistoryUrl.swift; sourceTree = "<group>"; };
 		C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ErrorDialog.storyboard; sourceTree = "<group>"; };
 		C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialogController.swift; sourceTree = "<group>"; };
 		C2A8DE9F253482B000A78EBB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
@@ -107,6 +125,7 @@
 			files = (
 				C2443F0424B3689300E5778E /* libswiftCoreLocation.tbd in Frameworks */,
 				C2443F0524B3689300E5778E /* CoreLocation.framework in Frameworks */,
+				C2939AED262487EC00CF9389 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +160,9 @@
 		C21B8431242715CA00A1C057 /* Browser */ = {
 			isa = PBXGroup;
 			children = (
+				C2939AF8262BD2EE00CF9389 /* Controller */,
+				C2939AE72624813300CF9389 /* DB */,
 				C2DB7AB22569678D002A5897 /* Index */,
-				C27444F7255D651E002AF201 /* Data */,
-				C27444C5255828BB002AF201 /* History */,
 				C25487BB24E97D2400F850AC /* Resources */,
 				C2F43CE724E030C6001CAE44 /* Cookie */,
 				C2443EFE24B35AD300E5778E /* Browser.entitlements */,
@@ -183,6 +202,7 @@
 		C2443EFF24B35AD300E5778E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2939AEC262487D200CF9389 /* libsqlite3.0.tbd */,
 				C2443F0324B3689300E5778E /* CoreLocation.framework */,
 				C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */,
 				C2443F0024B35AD300E5778E /* HomeKit.framework */,
@@ -201,19 +221,40 @@
 		C27444C5255828BB002AF201 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				C2939AF9262BD34700CF9389 /* _data */,
 				C27444C725582AA2002AF201 /* History.storyboard */,
 				C27444CA25582ABE002AF201 /* HistoryViewController.swift */,
-				C27444CD25582DA6002AF201 /* HistoryTableCell.swift */,
+				C2939B0526344F3700CF9389 /* ItemHistoryUrl.xib */,
+				C2939B14263DDACE00CF9389 /* ItemHistoryUrl.swift */,
+				C2939B0826345DE600CF9389 /* ItemHistoryDate.xib */,
+				C2939B0B263513C600CF9389 /* ItemHistoryDate.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
 		};
-		C27444F7255D651E002AF201 /* Data */ = {
+		C2939AE72624813300CF9389 /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				C27444F4255D6418002AF201 /* HistoryData.swift */,
+				C2939AEF2624FFEC00CF9389 /* SQLite.swift */,
+				C2939AF22628F84300CF9389 /* SQLiteService.swift */,
 			);
-			path = Data;
+			path = DB;
+			sourceTree = "<group>";
+		};
+		C2939AF8262BD2EE00CF9389 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C27444C5255828BB002AF201 /* History */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C2939AF9262BD34700CF9389 /* _data */ = {
+			isa = PBXGroup;
+			children = (
+				C2939AFA262BD36200CF9389 /* HistoryData.swift */,
+			);
+			path = _data;
 			sourceTree = "<group>";
 		};
 		C2DB7AB22569678D002A5897 /* Index */ = {
@@ -242,6 +283,8 @@
 				C2FECC26242F09E100FD1878 /* Util */,
 				C2FECC30242F4D1500FD1878 /* AppConfig.swift */,
 				C2443EFC24B1CDF500E5778E /* DefineCode.swift */,
+				C2939AE82624815E00CF9389 /* DefineQuery.swift */,
+				C2939AFE262CEF0400CF9389 /* DefineType.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -253,6 +296,7 @@
 				C2FECC29242F0A6600FD1878 /* StringExt.swift */,
 				C2FECC2E242F4C2000FD1878 /* Util.swift */,
 				C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */,
+				C2939AF52629F0D800CF9389 /* PrefUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -354,7 +398,9 @@
 				C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */,
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
+				C2939B0626344F3700CF9389 /* ItemHistoryUrl.xib in Resources */,
 				C21B845624279F5100A1C057 /* Main.storyboard in Resources */,
+				C2939B0926345DE700CF9389 /* ItemHistoryDate.xib in Resources */,
 				C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,22 +420,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
+				C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */,
+				C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */,
 				C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
+				C2939AFF262CEF0400CF9389 /* DefineType.swift in Sources */,
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
+				C2939AF32628F84300CF9389 /* SQLiteService.swift in Sources */,
 				C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */,
 				C25487C024F0F18D00F850AC /* JsData.swift in Sources */,
 				C21B8433242715CA00A1C057 /* AppDelegate.swift in Sources */,
+				C2939AFB262BD36200CF9389 /* HistoryData.swift in Sources */,
 				C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */,
 				C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */,
-				C27444F5255D6418002AF201 /* HistoryData.swift in Sources */,
 				C2FECC28242F0A0800FD1878 /* Log.swift in Sources */,
+				C2939AF62629F0D800CF9389 /* PrefUtil.swift in Sources */,
 				C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */,
 				C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */,
-				C27444CE25582DA6002AF201 /* HistoryTableCell.swift in Sources */,
 				C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */,
 				C2FECC2F242F4C2000FD1878 /* Util.swift in Sources */,
+				C2939B15263DDACF00CF9389 /* ItemHistoryUrl.swift in Sources */,
 				C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */,
+				C2939AE92624815E00CF9389 /* DefineQuery.swift in Sources */,
 				C27444D1255AB4D9002AF201 /* PreferenceUtil.swift in Sources */,
 				C2FECC2D242F4B3900FD1878 /* CustomUI.swift in Sources */,
 			);
@@ -536,7 +588,7 @@
 				CODE_SIGN_ENTITLEMENTS = Browser/Browser.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
@@ -548,7 +600,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghj.Browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -564,7 +616,7 @@
 				CODE_SIGN_ENTITLEMENTS = Browser/Browser.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
@@ -576,7 +628,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghj.Browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Browser Distribution";

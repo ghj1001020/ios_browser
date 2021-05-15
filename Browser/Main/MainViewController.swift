@@ -576,6 +576,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         }
         
         controller.modalPresentationStyle = .fullScreen
+        controller.delegate = self
         
         self.present(controller, animated: true, completion: nil )
     }
@@ -699,8 +700,11 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
 
         // 방문한페이지 저장
         if let item = wv_main.backForwardList.currentItem {
-            let history : HistoryData = HistoryData(date: Util.dateToString(date: Date(), format: "yyyyMMdd "), title: item.title ?? "", url: item.url.absoluteString)
-            PreferenceUtil.saveWebPageHistory(item: history)
+//            let history : HistoryData = HistoryData(date: Util.dateToString(date: Date(), format: "yyyyMMdd "), title: item.title ?? "", url: item.url.absoluteString)
+//            PreferenceUtil.saveWebPageHistory(item: history)
+            let date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
+            let param : [String] = [date, item.title ?? "", item.url.absoluteString]
+            SQLiteService.insertHistoryData(param:param)
         }
     }
 
@@ -924,5 +928,12 @@ extension MainViewController : JsBridgeProtocol {
         }
 
         _ = Util.showAlertDialog(controller: self, title: dto.title, message: dto.message, action1: nil, action2: nil)
+    }
+}
+
+// 히스토리 -> 메인 프로토콜
+extension MainViewController : HistoryViewProtocol {
+    func onUrlClick(url: String) {
+        loadUrl(_url: url)
     }
 }

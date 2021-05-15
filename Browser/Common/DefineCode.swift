@@ -11,6 +11,7 @@ import Foundation
 class DefineCode {
     
     public static let DEFAULT_PAGE = "https://www.naver.com"
+
     
     // 다운로드 유형
     public static let URL_DOWNLOAD_NONE = 0

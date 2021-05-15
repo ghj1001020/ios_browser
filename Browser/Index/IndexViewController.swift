@@ -25,6 +25,18 @@ class IndexViewController: UIViewController, UITextFieldDelegate {
     func initLayout() {
         edit_search.delegate = self
         edit_search.returnKeyType = .search // 엔터키를 검색모양으로
+        
+        createTable()
+    }
+    
+    func createTable() {
+        let dbVersion: Int = PrefUtil.shared.getInt(key: PrefUtil.DB_VERSION)
+        if( dbVersion != SQLite.DB_VERSION ) {
+            let isCreated = SQLiteService.createTable()
+            if( isCreated ) {
+                PrefUtil.shared.setInt(key: PrefUtil.DB_VERSION, value: SQLite.DB_VERSION)
+            }
+        }
     }
     
     @IBAction func onSearchBtn(_ sender: UIButton) {
@@ -39,7 +51,11 @@ class IndexViewController: UIViewController, UITextFieldDelegate {
     }
     
     func indexPageSearch() {
-        let search : String = edit_search.text?.isEmpty ?? true ? DefineCode.DEFAULT_PAGE : edit_search.text!
+        var search : String = edit_search.text ?? ""
+        if search.isEmpty {
+            search = DefineCode.DEFAULT_PAGE
+            edit_search.text = search
+        }
             
         let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let controller = storyboard.instantiateViewController(withIdentifier: "Main") as? MainViewController else {

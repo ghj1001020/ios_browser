@@ -118,5 +118,30 @@ class Util
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
-}
+    
+    // date string을 from format -> to format 으로 변환
+    static func convertDateFormat( date: String, fromFormat: String, toFormat: String ) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = fromFormat
+        
+        guard let fromDate : Date = formatter.date(from: date) else {
+            return ""
+        }
+        
+        formatter.dateFormat = toFormat
+        return formatter.string(from: fromDate)
+    }
+    
+    // date string에서 요일 구하기 (일~토)
+    static func getDayOfWeekFromDateString(date: String, format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko")
+        formatter.dateFormat = format
 
+        guard let date : Date = formatter.date(from: date) else {
+            return ""
+        }
+        
+        return formatter.shortWeekdaySymbols[Calendar.current.component(.weekday, from: date)-1]
+    }
+}

@@ -37,7 +37,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98X-cY-CA6">
                                         <rect key="frame" x="16" y="129.33333333333334" width="382" height="60"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="www.naver.com" placeholder="웹사이트 입력" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="L15-cm-uFC">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="웹사이트 입력" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="L15-cm-uFC">
                                                 <rect key="frame" x="8" y="2" width="322" height="58"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.12156862745098039" green="0.12941176470588234" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>

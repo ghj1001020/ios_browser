@@ -15,12 +15,12 @@ class PreferenceUtil {
     private static let pref_key = "WEB_PAGE_HISTORY_"
     
     // 방문한페이지 저장
-    static func saveWebPageHistory( item : HistoryData ) {
-        var historyList : Array<String> = PreferenceUtil.getPrefStringArray(key: pref_key)
-        historyList.append( Util.dtoToJsonString(dto: item) )
-        
-        setPrefStringArray(key: pref_key, value: historyList)
-    }
+//    static func saveWebPageHistory( item : HistoryData ) {
+//        var historyList : Array<String> = PreferenceUtil.getPrefStringArray(key: pref_key)
+//        historyList.append( Util.dtoToJsonString(dto: item) )
+//        
+//        setPrefStringArray(key: pref_key, value: historyList)
+//    }
     
     // 방문한페이지 조회
     static func getWebPageHistory() -> Array<String> {

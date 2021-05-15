@@ -51,6 +51,7 @@ class CookieViewController : UIViewController , UITableViewDataSource , UITableV
                         Log.p(_tag: self.TAG, _message: "\(cookie.domain) .. \(name) .. \(value)")
                     }
                 }
+                self.cookieTable.reloadData()
             }
         }
         else {
