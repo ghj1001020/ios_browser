@@ -31,7 +31,7 @@ class SQLite {
     
     func open() {
         guard sqlite3_open(dbUrl?.path, &dbPointer) == SQLITE_OK else {
-            Log.p(_tag: "", _message: "SQLITE Open Failed")
+            Log.p("SQLITE Open Failed")
             close()
             return
         }
@@ -85,7 +85,7 @@ class SQLite {
     
     func select(sql: String, params: [Any]=[], listener: (_ stmt: OpaquePointer?)->Void) {
         if( dbUrl == nil || dbPointer == nil ) {
-            Log.p(_tag: "", _message: "dbUrl or dbPointer is nil")
+            Log.p("dbUrl or dbPointer is nil")
             return
         }
 
@@ -111,7 +111,7 @@ class SQLite {
             listener(stmt)
         }
         else {
-            Log.p(_tag: "", _message: String(cString: sqlite3_errmsg(dbPointer)))
+            Log.p(String(cString: sqlite3_errmsg(dbPointer)))
         }
     }
 }

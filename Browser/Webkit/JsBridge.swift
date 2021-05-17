@@ -45,7 +45,7 @@ class JsBridge : NSObject , WKScriptMessageHandler {
     // Js -> Native 호출
     @available(iOS 8.0, *)
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        Log.p(_tag: TAG, _message: "\(message.name) : \(message.body)")
+        Log.p("\(message.name) : \(message.body)")
         
         if !(message.body is String) {
             return
@@ -71,7 +71,7 @@ class JsBridge : NSObject , WKScriptMessageHandler {
         }
         
         js = js + parameter + ")"
-        Log.p(_tag: TAG, _message: "js=" + js)
+        Log.p("js=" + js)
 
         webView.evaluateJavaScript(js, completionHandler: callback)
     }

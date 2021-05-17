@@ -13,8 +13,6 @@ import WebKit
 
 class CookieViewController : UIViewController , UITableViewDataSource , UITableViewDelegate {
     
-    private let TAG = "CookieViewController"
-
     var cookieData : [(key:String , value:String)] = []
     
     @IBOutlet var cookieTable: UITableView!
@@ -22,15 +20,11 @@ class CookieViewController : UIViewController , UITableViewDataSource , UITableV
     
     
     override func viewDidLoad() {
-        Log.p(_tag: TAG, _message: "viewDidLoad")
-        
         getCookies()
         
         cookieTable.tableFooterView = UIView()  // 비어있는 셀의 divider 제거
         cookieTable.dataSource = self
         cookieTable.delegate = self
-        
-        Log.p(_tag: TAG, _message: "url=\(url ?? "")")
     }
     
     // 해당 URL의 쿠키 가져오기
@@ -48,7 +42,7 @@ class CookieViewController : UIViewController , UITableViewDataSource , UITableV
                         let value = cookie.value
                         
                         self.cookieData.append( (key: name, value: value) )
-                        Log.p(_tag: self.TAG, _message: "\(cookie.domain) .. \(name) .. \(value)")
+                        Log.p("\(cookie.domain) .. \(name) .. \(value)")
                     }
                 }
                 self.cookieTable.reloadData()
@@ -68,7 +62,7 @@ class CookieViewController : UIViewController , UITableViewDataSource , UITableV
                 let value = cookie.value
 
                 self.cookieData.append( (key: name, value: value) )
-                Log.p(_tag: self.TAG, _message: "\(cookie.domain) .. \(name) .. \(value)")
+                Log.p("\(cookie.domain) .. \(name) .. \(value)")
             }
         }
     }

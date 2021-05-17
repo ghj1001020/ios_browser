@@ -41,18 +41,18 @@ class ErrorDialogController: UIViewController , WKUIDelegate , WKNavigationDeleg
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        Log.p(_tag: TAG, _message: "didCommit")
+        Log.p("didCommit")
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        Log.p(_tag: TAG, _message: "didStartProvisionalNavigation")
+        Log.p("didStartProvisionalNavigation")
     }
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        Log.p(_tag: TAG, _message: "didReceiveServerRedirectForProvisionalNavigation")
+        Log.p("didReceiveServerRedirectForProvisionalNavigation")
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        Log.p(_tag: TAG, _message: "didFinish")
+        Log.p("didFinish")
     }
 }

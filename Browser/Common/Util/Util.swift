@@ -69,7 +69,7 @@ class Util
             return data
         }
         catch {
-            Log.p( _tag: TAG, _message: error.localizedDescription )
+            Log.p(error.localizedDescription )
             return nil
         }
     }
@@ -88,7 +88,7 @@ class Util
             return jsonString
         }
         catch {
-            Log.p(_tag: TAG, _message: error.localizedDescription )
+            Log.p(error.localizedDescription )
             return ""
         }
     }

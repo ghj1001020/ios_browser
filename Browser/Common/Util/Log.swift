@@ -10,15 +10,18 @@ import Foundation
 
 class Log {
     
-    static func p( _tag : String? , _message : String? )
+    static func p(_ _message : String? , _file: String=#file, _function: String=#function, _line: Int=#line, _column: Int=#column )
     {
         if( AppConfig.LOG_BLOCK ) {
             return
         }
         
-        let tag = _tag.nullToString(defaultValue: "")
+        var fileName = ""
+        if let index = _file.lastIndex(of: "/") {
+            fileName = String(_file[_file.index(index, offsetBy: 1)..<_file.endIndex])
+        }
         let message = _message.nullToString(defaultValue: "")
         
-        print( "[\(tag)] \(message)" )
+        print( "[\(fileName) , \(_function) , Line:\(_line)] >> \(message)" )
     }
 }

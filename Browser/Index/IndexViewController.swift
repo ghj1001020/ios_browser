@@ -18,7 +18,7 @@ class IndexViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.eventHideKeyboard()
-        
+                
         initLayout()
     }
     
