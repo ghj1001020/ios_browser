@@ -10,21 +10,17 @@ import Foundation
 import UIKit
 
 protocol MoreDialogProtocol {
-    func onMoreMenuClick( requestId : Int , selected : Int )
+    func onMoreMenuClick( selected : Int )
 }
 
 class MoreDialogController : UIViewController {
-    
-    private let TAG : String = "MoreDialogCont"
-    
-    
+        
     @IBOutlet var dim: UIView!
     @IBOutlet var viewDialog: UIView!
     @IBOutlet var btnPcMobileMode: UIButton!
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var listener : MoreDialogProtocol? = nil
-    var requestId : Int = -1
     
     
     override func viewDidLoad() {
@@ -55,23 +51,29 @@ class MoreDialogController : UIViewController {
 
     @IBAction func onMenuCookie(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-        listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_COOKIE)
+        listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_COOKIE)
     }
     
     @IBAction func onMenuPrint(_ sender: UIButton) {
-        listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_PRINT)
+        listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_PRINT)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onMenuPcM(_ sender: UIButton) {
-        listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_PC_MOBILE_MODE)
+        listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_PC_MOBILE_MODE)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onMenuHistory(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-        listener?.onMoreMenuClick(requestId: requestId, selected: DefineCode.MORE_MENU_HISTORY)
+        listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_HISTORY)
     }
+    
+    @IBAction func onMenuConsoleLog(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_CONSOLE_LOG)
+    }
+    
     
     
     // 딤클릭 > 다이얼로그 닫기

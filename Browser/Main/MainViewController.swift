@@ -300,7 +300,6 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         }
 
         controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
-        controller.requestId = 0
         controller.listener = self
         
         self.present(controller, animated: false, completion: nil)
@@ -477,7 +476,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     }
     
     // 더보기 메뉴 클릭 리스너
-    func onMoreMenuClick(requestId: Int, selected: Int) {
+    func onMoreMenuClick(selected: Int) {
         switch selected {
         // 쿠키
         case DefineCode.MORE_MENU_COOKIE:
@@ -494,6 +493,10 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         // 방문기록
         case DefineCode.MORE_MENU_HISTORY:
             moveHistory()
+            
+        // 콘솔로그
+        case DefineCode.MORE_MENU_CONSOLE_LOG:
+            moveConsoleLog()
         default: break
             
         }
@@ -575,6 +578,18 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         controller.delegate = self
         
         self.present(controller, animated: true, completion: nil )
+    }
+    
+    // 콘솔로그 페이지로 이동
+    func moveConsoleLog() {
+        let storyboard : UIStoryboard = UIStoryboard(name: "ConsoleLog", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "ConsoleLog") as? ConsoleLogViewController else {
+            return
+        }
+        
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.present(controller, animated: true, completion: nil)
     }
     
     
@@ -908,6 +923,9 @@ extension MainViewController : JsBridgeProtocol {
         switch requestId {
         case DefineCode.JS_ALERT_POPUP:
             onJsAlertPopup( params: params )
+            
+        case DefineCode.JS_CONSOLE_LOG:
+            onJsConsoleLog( params: params )
         default: break
             
         }
@@ -922,6 +940,16 @@ extension MainViewController : JsBridgeProtocol {
         }
 
         _ = Util.showAlertDialog(controller: self, title: dto.title, message: dto.message, action1: nil, action2: nil)
+    }
+    
+    // 콘솔로그
+    func onJsConsoleLog( params : String ) {
+        let date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
+        let url : String = wv_main?.url?.absoluteString ?? ""
+        let log : String = params
+        
+        Log.p("\(date) \(url) \(log)")
+        SQLiteService.insertConsoleLogData(params: [date, url, log])
     }
 }
 

@@ -11,16 +11,17 @@ import SQLite3
 
 class SQLiteService {
 
-    // 히스토리 테이블 생성
-    public static func createTable() -> Bool {
-        var result = false
-
+    // 테이블 생성
+    public static func createTable() {
         SQLite.shared.open()
+        // 히스토리 테이블
         _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_HISTORY_TABLE)
-        result = SQLite.shared.execSQL(sql: DefineQuery.CREATE_HISTORY_TABLE)
-        SQLite.shared.close()
+        _ = SQLite.shared.execSQL(sql: DefineQuery.CREATE_HISTORY_TABLE)
+        // 콘솔로그 테이블
+        _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_CONSOLE_LOG_TABLE)
+        _ = SQLite.shared.execSQL(sql: DefineQuery.CREATE_CONSOLE_LOG_TABLE)
         
-        return result
+        SQLite.shared.close()
     }
     
     // HISTORY_TBL에 데이터 입력
@@ -120,5 +121,39 @@ class SQLiteService {
         SQLite.shared.close()
         
         return historyList
+    }
+    
+    // CONSOLE_LOG_TBL
+    public static func insertConsoleLogData(params: [Any]) {
+        SQLite.shared.open()
+        _ = SQLite.shared.execSQL(sql: DefineQuery.INSERT_CONSOLE_LOG, params: params)
+        SQLite.shared.close()
+    }
+    
+    // 콘솔로그 목록 조회
+    public static func selectConsoleLogData() -> [ConsoleLogData] {
+        var consoleLogList : [ConsoleLogData] = []
+        
+        SQLite.shared.open()
+        SQLite.shared.select(sql: DefineQuery.SELECT_CONSOLE_LOG) { (stmt: OpaquePointer?) in
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let date : String = String(cString: sqlite3_column_text(stmt, 0))
+                let url : String = String(cString: sqlite3_column_text(stmt, 1))
+                let message : String = String(cString: sqlite3_column_text(stmt, 2))
+                
+                let data = ConsoleLogData(date: date, url: url, log: message)
+                consoleLogList.append(data)
+            }
+        }
+        SQLite.shared.close()
+        
+        return consoleLogList
+    }
+    
+    // 콘솔로그 데이터 모두 삭제
+    public static func deleteConsoleLogDataAll() {
+        SQLite.shared.open()
+        _ = SQLite.shared.execSQL(sql: DefineQuery.DELETE_CONSOLE_LOG_DATA_ALL)
+        SQLite.shared.close()
     }
 }

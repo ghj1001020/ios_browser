@@ -20,6 +20,10 @@
 		C27444C825582AA2002AF201 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27444C725582AA2002AF201 /* History.storyboard */; };
 		C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444CA25582ABE002AF201 /* HistoryViewController.swift */; };
 		C27444D1255AB4D9002AF201 /* PreferenceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */; };
+		C285D074265936D800E6A12B /* ConsoleLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C285D073265936D800E6A12B /* ConsoleLog.storyboard */; };
+		C285D0772659377900E6A12B /* ConsoleLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D0762659377900E6A12B /* ConsoleLogViewController.swift */; };
+		C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D07A2659402200E6A12B /* ConsoleLogData.swift */; };
+		C285D07E265AA7F500E6A12B /* ConsoleLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D07D265AA7F500E6A12B /* ConsoleLogTableCell.swift */; };
 		C2939AE92624815E00CF9389 /* DefineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AE82624815E00CF9389 /* DefineQuery.swift */; };
 		C2939AED262487EC00CF9389 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2939AEC262487D200CF9389 /* libsqlite3.0.tbd */; };
 		C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AEF2624FFEC00CF9389 /* SQLite.swift */; };
@@ -90,6 +94,10 @@
 		C27444C725582AA2002AF201 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		C27444CA25582ABE002AF201 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceUtil.swift; sourceTree = "<group>"; };
+		C285D073265936D800E6A12B /* ConsoleLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConsoleLog.storyboard; sourceTree = "<group>"; };
+		C285D0762659377900E6A12B /* ConsoleLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogViewController.swift; sourceTree = "<group>"; };
+		C285D07A2659402200E6A12B /* ConsoleLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogData.swift; sourceTree = "<group>"; };
+		C285D07D265AA7F500E6A12B /* ConsoleLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogTableCell.swift; sourceTree = "<group>"; };
 		C2939AE82624815E00CF9389 /* DefineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineQuery.swift; sourceTree = "<group>"; };
 		C2939AEC262487D200CF9389 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		C2939AEF2624FFEC00CF9389 /* SQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
@@ -232,6 +240,25 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		C285D0712658A66B00E6A12B /* ConsoleLog */ = {
+			isa = PBXGroup;
+			children = (
+				C285D07926593F7B00E6A12B /* _data */,
+				C285D073265936D800E6A12B /* ConsoleLog.storyboard */,
+				C285D0762659377900E6A12B /* ConsoleLogViewController.swift */,
+				C285D07D265AA7F500E6A12B /* ConsoleLogTableCell.swift */,
+			);
+			path = ConsoleLog;
+			sourceTree = "<group>";
+		};
+		C285D07926593F7B00E6A12B /* _data */ = {
+			isa = PBXGroup;
+			children = (
+				C285D07A2659402200E6A12B /* ConsoleLogData.swift */,
+			);
+			path = _data;
+			sourceTree = "<group>";
+		};
 		C2939AE72624813300CF9389 /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +271,7 @@
 		C2939AF8262BD2EE00CF9389 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C285D0712658A66B00E6A12B /* ConsoleLog */,
 				C27444C5255828BB002AF201 /* History */,
 			);
 			path = Controller;
@@ -396,6 +424,7 @@
 				C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */,
 				C27444C825582AA2002AF201 /* History.storyboard in Resources */,
 				C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */,
+				C285D074265936D800E6A12B /* ConsoleLog.storyboard in Resources */,
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
 				C2939B0626344F3700CF9389 /* ItemHistoryUrl.xib in Resources */,
@@ -422,7 +451,9 @@
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
 				C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */,
 				C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */,
+				C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */,
 				C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */,
+				C285D07E265AA7F500E6A12B /* ConsoleLogTableCell.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
 				C2939AFF262CEF0400CF9389 /* DefineType.swift in Sources */,
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
@@ -432,6 +463,7 @@
 				C21B8433242715CA00A1C057 /* AppDelegate.swift in Sources */,
 				C2939AFB262BD36200CF9389 /* HistoryData.swift in Sources */,
 				C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */,
+				C285D0772659377900E6A12B /* ConsoleLogViewController.swift in Sources */,
 				C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */,
 				C2FECC28242F0A0800FD1878 /* Log.swift in Sources */,
 				C2939AF62629F0D800CF9389 /* PrefUtil.swift in Sources */,

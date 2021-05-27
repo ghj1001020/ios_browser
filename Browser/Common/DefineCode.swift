@@ -23,7 +23,9 @@ class DefineCode {
     public static let MORE_MENU_PRINT = 1
     public static let MORE_MENU_PC_MOBILE_MODE = 2
     public static let MORE_MENU_HISTORY = 3
+    public static let MORE_MENU_CONSOLE_LOG = 4
     
     // JS 브릿지 코드
     public static let JS_ALERT_POPUP = 0
+    public static let JS_CONSOLE_LOG = 1
 }

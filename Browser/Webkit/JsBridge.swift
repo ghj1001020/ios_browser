@@ -26,11 +26,17 @@ class JsBridge : NSObject , WKScriptMessageHandler {
         let userContentController = WKUserContentController()
         // 브릿지 함수 정의
         userContentController.add(self, name: "appAlertPopup")
+        userContentController.add(self, name: "appConsoleLog")  // 자바스크립트의 로그를 앱에서 처리
         
         // 웹뷰 확대/축소 지원
         let zoom = "document.getElementsByName(\"viewport\")[0].setAttribute(\"content\", \"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes\");"
         let zoomScript = WKUserScript(source: zoom, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         userContentController.addUserScript(zoomScript)
+
+        // console.log 오버라이드
+        let consoleLog = "console.log = (function(orgConsole) { return function(msg) { window.webkit.messageHandlers.appConsoleLog.postMessage(msg); orgConsole.call(console, msg); } })(console.log);"
+        let consoleLogScript = WKUserScript(source: consoleLog, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        userContentController.addUserScript(consoleLogScript)
         
         let config = WKWebViewConfiguration()
         config.userContentController = userContentController
@@ -44,16 +50,17 @@ class JsBridge : NSObject , WKScriptMessageHandler {
     
     // Js -> Native 호출
     @available(iOS 8.0, *)
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        Log.p("\(message.name) : \(message.body)")
-        
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {        
         if !(message.body is String) {
             return
         }
         
         // 네이티브
         if( message.name == "appAlertPopup" ) {
-            listener?.jsBridgeCallback( requestId: DefineCode.JS_ALERT_POPUP , params: message.body as! String )
+            listener?.jsBridgeCallback(requestId: DefineCode.JS_ALERT_POPUP, params: message.body as! String)
+        }
+        else if( message.name == "appConsoleLog" ) {
+            listener?.jsBridgeCallback(requestId: DefineCode.JS_CONSOLE_LOG, params: message.body as! String)
         }
     }
     
