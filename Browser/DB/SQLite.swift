@@ -44,6 +44,7 @@ class SQLite {
     
     func execSQL( sql: String, params: [Any]=[] ) -> Bool {
         if( dbUrl == nil || dbPointer == nil ){
+            Log.p("dbUrl or dbPointer is nil")
             return false
         }
         
@@ -72,10 +73,14 @@ class SQLite {
             }
             else {
                 result = false
+                let errMsg = String(cString: sqlite3_errmsg(stmt))
+                Log.p("SQLITE_DONE failed. \(errMsg)")
             }
         }
         else {
             result = false
+            let errMsg = String(cString: sqlite3_errmsg(stmt))
+            Log.p("sqlite3_prepare_v2 failed. \(errMsg)")
         }
         
         sqlite3_finalize(stmt)

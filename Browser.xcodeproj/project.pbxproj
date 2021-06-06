@@ -24,6 +24,12 @@
 		C285D0772659377900E6A12B /* ConsoleLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D0762659377900E6A12B /* ConsoleLogViewController.swift */; };
 		C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D07A2659402200E6A12B /* ConsoleLogData.swift */; };
 		C285D07E265AA7F500E6A12B /* ConsoleLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D07D265AA7F500E6A12B /* ConsoleLogTableCell.swift */; };
+		C285D083265FDF2B00E6A12B /* WebkitLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D082265FDF2B00E6A12B /* WebkitLogData.swift */; };
+		C285D08726638D2700E6A12B /* WebkitLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C285D08626638D2700E6A12B /* WebkitLog.storyboard */; };
+		C285D08A26638DD300E6A12B /* WebkitLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D08926638DD300E6A12B /* WebkitLogViewController.swift */; };
+		C285D090266447E600E6A12B /* WebkitLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D08F266447E600E6A12B /* WebkitLogTableCell.swift */; };
+		C285D094266594EC00E6A12B /* HJView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D093266594EC00E6A12B /* HJView.swift */; };
+		C285D0A5266988B400E6A12B /* HJDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D0A4266988B400E6A12B /* HJDivider.swift */; };
 		C2939AE92624815E00CF9389 /* DefineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AE82624815E00CF9389 /* DefineQuery.swift */; };
 		C2939AED262487EC00CF9389 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2939AEC262487D200CF9389 /* libsqlite3.0.tbd */; };
 		C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AEF2624FFEC00CF9389 /* SQLite.swift */; };
@@ -98,6 +104,12 @@
 		C285D0762659377900E6A12B /* ConsoleLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogViewController.swift; sourceTree = "<group>"; };
 		C285D07A2659402200E6A12B /* ConsoleLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogData.swift; sourceTree = "<group>"; };
 		C285D07D265AA7F500E6A12B /* ConsoleLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogTableCell.swift; sourceTree = "<group>"; };
+		C285D082265FDF2B00E6A12B /* WebkitLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebkitLogData.swift; sourceTree = "<group>"; };
+		C285D08626638D2700E6A12B /* WebkitLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebkitLog.storyboard; sourceTree = "<group>"; };
+		C285D08926638DD300E6A12B /* WebkitLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebkitLogViewController.swift; sourceTree = "<group>"; };
+		C285D08F266447E600E6A12B /* WebkitLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebkitLogTableCell.swift; sourceTree = "<group>"; };
+		C285D093266594EC00E6A12B /* HJView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJView.swift; sourceTree = "<group>"; };
+		C285D0A4266988B400E6A12B /* HJDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJDivider.swift; sourceTree = "<group>"; };
 		C2939AE82624815E00CF9389 /* DefineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineQuery.swift; sourceTree = "<group>"; };
 		C2939AEC262487D200CF9389 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		C2939AEF2624FFEC00CF9389 /* SQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
@@ -259,6 +271,34 @@
 			path = _data;
 			sourceTree = "<group>";
 		};
+		C285D080265FD93000E6A12B /* WebkitLog */ = {
+			isa = PBXGroup;
+			children = (
+				C285D081265FDF0100E6A12B /* _data */,
+				C285D08626638D2700E6A12B /* WebkitLog.storyboard */,
+				C285D08926638DD300E6A12B /* WebkitLogViewController.swift */,
+				C285D08F266447E600E6A12B /* WebkitLogTableCell.swift */,
+			);
+			path = WebkitLog;
+			sourceTree = "<group>";
+		};
+		C285D081265FDF0100E6A12B /* _data */ = {
+			isa = PBXGroup;
+			children = (
+				C285D082265FDF2B00E6A12B /* WebkitLogData.swift */,
+			);
+			path = _data;
+			sourceTree = "<group>";
+		};
+		C285D0922665205200E6A12B /* _ui */ = {
+			isa = PBXGroup;
+			children = (
+				C285D093266594EC00E6A12B /* HJView.swift */,
+				C285D0A4266988B400E6A12B /* HJDivider.swift */,
+			);
+			path = _ui;
+			sourceTree = "<group>";
+		};
 		C2939AE72624813300CF9389 /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +311,7 @@
 		C2939AF8262BD2EE00CF9389 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C285D080265FD93000E6A12B /* WebkitLog */,
 				C285D0712658A66B00E6A12B /* ConsoleLog */,
 				C27444C5255828BB002AF201 /* History */,
 			);
@@ -307,6 +348,7 @@
 		C2FECC23242E39EF00FD1878 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C285D0922665205200E6A12B /* _ui */,
 				C2FECC2B242F4B2000FD1878 /* Widget */,
 				C2FECC26242F09E100FD1878 /* Util */,
 				C2FECC30242F4D1500FD1878 /* AppConfig.swift */,
@@ -428,6 +470,7 @@
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
 				C2939B0626344F3700CF9389 /* ItemHistoryUrl.xib in Resources */,
+				C285D08726638D2700E6A12B /* WebkitLog.storyboard in Resources */,
 				C21B845624279F5100A1C057 /* Main.storyboard in Resources */,
 				C2939B0926345DE700CF9389 /* ItemHistoryDate.xib in Resources */,
 				C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */,
@@ -451,10 +494,12 @@
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
 				C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */,
 				C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */,
+				C285D08A26638DD300E6A12B /* WebkitLogViewController.swift in Sources */,
 				C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */,
 				C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */,
 				C285D07E265AA7F500E6A12B /* ConsoleLogTableCell.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
+				C285D0A5266988B400E6A12B /* HJDivider.swift in Sources */,
 				C2939AFF262CEF0400CF9389 /* DefineType.swift in Sources */,
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
 				C2939AF32628F84300CF9389 /* SQLiteService.swift in Sources */,
@@ -464,10 +509,13 @@
 				C2939AFB262BD36200CF9389 /* HistoryData.swift in Sources */,
 				C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */,
 				C285D0772659377900E6A12B /* ConsoleLogViewController.swift in Sources */,
+				C285D090266447E600E6A12B /* WebkitLogTableCell.swift in Sources */,
 				C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */,
 				C2FECC28242F0A0800FD1878 /* Log.swift in Sources */,
+				C285D094266594EC00E6A12B /* HJView.swift in Sources */,
 				C2939AF62629F0D800CF9389 /* PrefUtil.swift in Sources */,
 				C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */,
+				C285D083265FDF2B00E6A12B /* WebkitLogData.swift in Sources */,
 				C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */,
 				C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */,
 				C2FECC2F242F4C2000FD1878 /* Util.swift in Sources */,
@@ -548,7 +596,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -603,7 +651,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -623,7 +671,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -651,7 +699,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

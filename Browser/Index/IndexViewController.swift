@@ -31,8 +31,10 @@ class IndexViewController: UIViewController, UITextFieldDelegate {
     func createTable() {
         let dbVersion: Int = PrefUtil.shared.getInt(key: PrefUtil.DB_VERSION)
         if( dbVersion != SQLite.DB_VERSION ) {
-            SQLiteService.createTable()
-            PrefUtil.shared.setInt(key: PrefUtil.DB_VERSION, value: SQLite.DB_VERSION)
+            let isSuccess = SQLiteService.createTable()
+            if isSuccess {
+                PrefUtil.shared.setInt(key: PrefUtil.DB_VERSION, value: SQLite.DB_VERSION)
+            }
         }
     }
     

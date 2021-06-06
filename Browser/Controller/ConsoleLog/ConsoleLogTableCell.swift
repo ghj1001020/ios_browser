@@ -13,7 +13,5 @@ class ConsoleLogTableCell: UITableViewCell {
     @IBOutlet var lbDate: UILabel!
     @IBOutlet var lbUrl: UILabel!
     @IBOutlet var lbLog: UILabel!
-    @IBOutlet var divider: UIView!
-    
-    
+
 }

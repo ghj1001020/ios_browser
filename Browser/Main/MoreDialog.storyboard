@@ -66,7 +66,7 @@
                                             <action selector="onMenuHistory:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="HOh-bw-Mv0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZV-tV-FAe">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZV-tV-FAe" userLabel="consoleLog">
                                         <rect key="frame" x="32" y="32" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="372-WF-FCL"/>
@@ -77,12 +77,25 @@
                                             <action selector="onMenuConsoleLog:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="wst-hB-kqp"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFX-tJ-TST" userLabel="webkitLog">
+                                        <rect key="frame" x="100" y="32" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="KYa-Ee-VpH"/>
+                                            <constraint firstAttribute="width" constant="36" id="mlH-nd-v3W"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="ic_toolbar_webkit_log"/>
+                                        <connections>
+                                            <action selector="onMenuWebkitLog:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="aiR-5z-FIv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="0bp-SK-g6c" firstAttribute="leading" secondItem="bm7-0l-WH4" secondAttribute="trailing" constant="32" id="3Hh-9h-g3t"/>
+                                    <constraint firstItem="bm7-0l-WH4" firstAttribute="top" secondItem="jFX-tJ-TST" secondAttribute="bottom" constant="24" id="7cG-JN-qbL"/>
                                     <constraint firstAttribute="bottom" secondItem="CAB-8I-UVk" secondAttribute="bottom" constant="24" id="8Mp-a4-cq2"/>
                                     <constraint firstAttribute="bottom" secondItem="iqa-xg-kjt" secondAttribute="bottom" constant="24" id="F89-z0-hM1"/>
+                                    <constraint firstItem="jFX-tJ-TST" firstAttribute="leading" secondItem="6ZV-tV-FAe" secondAttribute="trailing" constant="32" id="TMB-v6-MsW"/>
                                     <constraint firstAttribute="bottom" secondItem="bm7-0l-WH4" secondAttribute="bottom" constant="24" id="Ug3-9n-xDv"/>
                                     <constraint firstItem="6ZV-tV-FAe" firstAttribute="leading" secondItem="rTv-Fx-LOG" secondAttribute="leading" constant="32" id="XTr-if-WVh"/>
                                     <constraint firstItem="iqa-xg-kjt" firstAttribute="top" secondItem="6ZV-tV-FAe" secondAttribute="bottom" constant="24" id="hKx-gP-pBY"/>
@@ -123,5 +136,6 @@
         <image name="ic_toolbar_history" width="96" height="96"/>
         <image name="ic_toolbar_log" width="96" height="96"/>
         <image name="ic_toolbar_printer" width="120" height="120"/>
+        <image name="ic_toolbar_webkit_log" width="96" height="96"/>
     </resources>
 </document>

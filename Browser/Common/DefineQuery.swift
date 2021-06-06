@@ -66,7 +66,7 @@ class DefineQuery {
     // 콘솔로그 테이블 생성
     public static let CREATE_CONSOLE_LOG_TABLE = "CREATE TABLE IF NOT EXISTS CONSOLE_LOG_TBL ( " +
                                                  "      LOG_DATE VARCHAR(14)  NOT NULL , " +
-                                                 "      URL      VARCHAR(200)          , " +
+                                                 "      URL      VARCHAR(200) NOT NULL , " +
                                                  "      LOG      VARCHAR(5000)           " +
                                                  ");"
     
@@ -77,9 +77,32 @@ class DefineQuery {
     public static let INSERT_CONSOLE_LOG = "INSERT INTO CONSOLE_LOG_TBL(LOG_DATE, URL, LOG) VALUES(?, ?, ?)"
     
     // 콘솔로그 데이터 조회
-    public static let SELECT_CONSOLE_LOG = "SELECT LOG_DATE, URL, LOG " +
-                                           "FROM   CONSOLE_LOG_TBL"
+    public static let SELECT_CONSOLE_LOG = "SELECT   LOG_DATE, URL, LOG " +
+                                           "FROM     CONSOLE_LOG_TBL " +
+                                           "ORDER BY LOG_DATE DESC"
     
     // 콘솔로그 전체 데이터 삭제
     public static let DELETE_CONSOLE_LOG_DATA_ALL = "DELETE FROM CONSOLE_LOG_TBL"
+    
+    // 웹킷로그 테이블 생성
+    public static let CREATE_WEBKIT_LOG_TABLE = "CREATE TABLE IF NOT EXISTS WEBKIT_LOG_TBL ( " +
+                                                "       LOG_DATE    VARCHAR(14)   NOT NULL , " +
+                                                "       FUNCTION    VARCHAR(500)  , " +
+                                                "       PARAMS      VARCHAR(5000) , " +
+                                                "       DESCRIPTION VARCHAR(5000) " +
+                                                ");"
+    
+    // 웹킷로그 테이블 삭제
+    public static let DROP_WEBKIT_LOG_TABLE = "DROP TABLE IF EXISTS WEBKIT_LOG_TBL"
+    
+    // 웹킷로그 데이터 입력
+    public static let INSERT_WEBKIT_LOG = "INSERT INTO WEBKIT_LOG_TBL(LOG_DATE, FUNCTION, PARAMS, DESCRIPTION) VALUES(?, ?, ?, ?)"
+    
+    // 웹킷로그 데이터 조회
+    public static let SELECT_WEBKIT_LOG = "SELECT   LOG_DATE, FUNCTION, PARAMS, DESCRIPTION " +
+                                          "FROM     WEBKIT_LOG_TBL " +
+                                          "ORDER BY LOG_DATE DESC"
+    
+    // 웹킷로그 전체 데이터 삭제
+    public static let DELETE_WEBKIT_LOG_DATA_ALL = "DELETE FROM WEBKIT_LOG_TBL"
 }

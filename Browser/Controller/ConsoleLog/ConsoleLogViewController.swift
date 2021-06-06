@@ -37,18 +37,17 @@ class ConsoleLogViewController: UIViewController, UITableViewDelegate, UITableVi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "consoleLogCell") as? ConsoleLogTableCell else {
             return UITableViewCell()
         }
-        
-        cell.clipsToBounds = false
+                
         let date = Util.convertDateFormat(date: logData[indexPath.row].date, fromFormat: "yyyyMMddHHmmss", toFormat: "yyyy-MM-dd HH:mm:ss")
         cell.lbDate.text = date
         cell.lbUrl.text = logData[indexPath.row].url
         cell.lbLog.text = logData[indexPath.row].log
         
-        if( indexPath.row >= logData.count-1 ) {
-            cell.divider.isHidden = true
-        }
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 16
     }
     
     // 전체 콘솔로그 삭제

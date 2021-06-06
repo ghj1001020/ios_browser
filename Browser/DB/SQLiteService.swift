@@ -12,16 +12,21 @@ import SQLite3
 class SQLiteService {
 
     // 테이블 생성
-    public static func createTable() {
+    public static func createTable() -> Bool {
         SQLite.shared.open()
         // 히스토리 테이블
         _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_HISTORY_TABLE)
-        _ = SQLite.shared.execSQL(sql: DefineQuery.CREATE_HISTORY_TABLE)
+        let tbl1 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_HISTORY_TABLE)
         // 콘솔로그 테이블
         _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_CONSOLE_LOG_TABLE)
-        _ = SQLite.shared.execSQL(sql: DefineQuery.CREATE_CONSOLE_LOG_TABLE)
+        let tbl2 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_CONSOLE_LOG_TABLE)
+        // 웹킷로그 테이브
+        _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_WEBKIT_LOG_TABLE)
+        let tbl3 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_WEBKIT_LOG_TABLE)
         
         SQLite.shared.close()
+        
+        return tbl1 && tbl2 && tbl3
     }
     
     // HISTORY_TBL에 데이터 입력
@@ -154,6 +159,40 @@ class SQLiteService {
     public static func deleteConsoleLogDataAll() {
         SQLite.shared.open()
         _ = SQLite.shared.execSQL(sql: DefineQuery.DELETE_CONSOLE_LOG_DATA_ALL)
+        SQLite.shared.close()
+    }
+    
+    // 웹킷로그 테이블에 데이터 입력
+    public static func insertWebkitLogData(params: [Any]) {
+        SQLite.shared.open()
+        _ = SQLite.shared.execSQL(sql: DefineQuery.INSERT_WEBKIT_LOG, params: params)
+        SQLite.shared.close()
+    }
+    
+    // 웹킷로그 목록 조회
+    public static func selectWebkitLogData() -> [WebkitLogData] {
+        var webkitLogList : [WebkitLogData] = []
+        SQLite.shared.open()
+        SQLite.shared.select(sql: DefineQuery.SELECT_WEBKIT_LOG, params: []) { (stmt: OpaquePointer?) in
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let date : String = String(cString: sqlite3_column_text(stmt, 0))
+                let function : String = String(cString: sqlite3_column_text(stmt, 1))
+                let params : String = String(cString: sqlite3_column_text(stmt, 2))
+                let description : String = String(cString: sqlite3_column_text(stmt, 3))
+
+                let data : WebkitLogData = WebkitLogData(date: date, function: function, params: params, description: description)
+                webkitLogList.append(data)
+            }
+        }
+        SQLite.shared.close()
+        
+        return webkitLogList
+    }
+    
+    // 웹킷로그 데이터 모두 삭제
+    public static func deleteWebkitLogDataAll() {
+        SQLite.shared.open()
+        _ = SQLite.shared.execSQL(sql: DefineQuery.DELETE_WEBKIT_LOG_DATA_ALL)
         SQLite.shared.close()
     }
 }
