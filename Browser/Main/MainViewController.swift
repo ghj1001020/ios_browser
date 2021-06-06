@@ -849,13 +849,13 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
 
     // SSL 인증요청에 대한 응답
     func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-//        // start 웹킷로그
-//        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-//        let _function : String = "webView(_:didReceive:completionHandler:)"
-//        let _param = "\(webView.url?.absoluteString ?? "")"
-//        let _description : String = "인증에 응답하도록 요청합니다."
-//        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-//        // end 웹킷로그
+        // start 웹킷로그
+        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
+        let _function : String = "webView(_:didReceive:completionHandler:)"
+        let _param = "\(webView.url?.absoluteString ?? "")"
+        let _description : String = "인증에 응답하도록 요청합니다."
+        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        // end 웹킷로그
         
         if let serverTrust : SecTrust = challenge.protectionSpace.serverTrust {
             let credential = URLCredential(trust: serverTrust)
