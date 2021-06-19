@@ -79,6 +79,11 @@ class MoreDialogController : UIViewController {
         listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_WEBKIT_LOG)
     }
     
+    @IBAction func onMenuExe(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_EXE)
+    }
+    
     
     
     // 딤클릭 > 다이얼로그 닫기

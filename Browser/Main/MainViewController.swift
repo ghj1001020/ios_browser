@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 
-class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogProtocol {
+class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogProtocol, ScriptInputDialogProtocol {
     
     private let TAG : String = "MainViewController"
     
@@ -32,11 +32,15 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     var isEditMode : Bool = false
     var indexSearch : String = ""
     
+    var START_TIME : Double = 0 // 웹뷰로드 시간
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initLayout()
+        
+        
     }
     
     func initLayout() {
@@ -495,6 +499,10 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         case DefineCode.MORE_MENU_WEBKIT_LOG:
             moveWebkitLog()
             
+        // 자바스크립트 실행
+        case DefineCode.MORE_MENU_EXE:
+            onJavascriptExecute()
+            
         default: break
             
         }
@@ -601,6 +609,54 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         self.present(controller, animated: true, completion: nil)
     }
     
+    // 자바스크립트 실행
+    func onJavascriptExecute() {
+//        let script : String = "$('body').css('background', '#ff0000');"
+//        let script : String = "document.body.style.background = '#0000ff';"
+//        jsBridge.evaluateJavascript(controller: self, webView: wv_main, script: script)
+//
+//        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+//
+//        if action1 == nil && action2 == nil {
+//            alert.addAction( UIAlertAction(title: "확인", style: .cancel, handler: nil) )
+//        }
+//        else {
+//            if let action1 = action1 {
+//                alert.addAction(action1)
+//            }
+//            if let action2 = action2 {
+//                alert.addAction(action2)
+//            }
+//        }
+//
+//        controller.present(alert, animated: true, completion: nil )
+
+//        let alert = UIAlertController(title: "Great Title", message: "Please input something", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "aa", style: .default) { (action: UIAlertAction) in
+//
+//        }
+//        alert.addAction(action)
+//        alert.addTextField { (textField: UITextField) in
+//
+//        }
+//        present(alert, animated: true, completion: nil)
+        let storyboard : UIStoryboard = UIStoryboard(name: "ScriptInputDialog", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "ScriptInputDialog" ) as? ScriptInputDialogController else
+        {
+            return
+        }
+
+        controller.delegate = self
+        controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
+        controller.modalTransitionStyle = .crossDissolve
+        self.present(controller, animated: false, completion: nil)
+
+    }
+    
+    // 스크립트 실행
+    func onScriptInputExecute(script: String) {
+        jsBridge.evaluateJavascript(controller: self, webView: wv_main, script: script)
+    }
     
     // 앱 -> 웹에 메시지 전달
     func onWebMessage() {
@@ -704,6 +760,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     
     // 웹컨텐츠가 로드되기 시작
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        START_TIME = Date().timeIntervalSince1970
+        
         // start 웹킷로그
         let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
         let _function : String = "webView(_:didStartProvisionalNavigation:)"
@@ -754,10 +812,12 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     
     // 웹 로드 완료
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        let loadTime : Double = round((Date().timeIntervalSince1970-START_TIME)*1000)/1000
+        
         // start 웹킷로그
         let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
         let _function : String = "webView(_:didFinish:)"
-        let _param = "\(webView.url?.absoluteString ?? "")"
+        let _param = "\(loadTime)초\n\(webView.url?.absoluteString ?? "")"
         let _description : String = "탐색이 완료되었음을 알립니다."
         SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
         // end 웹킷로그

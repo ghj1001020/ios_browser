@@ -41,6 +41,11 @@
 		C2939B0926345DE700CF9389 /* ItemHistoryDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2939B0826345DE600CF9389 /* ItemHistoryDate.xib */; };
 		C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939B0B263513C600CF9389 /* ItemHistoryDate.swift */; };
 		C2939B15263DDACF00CF9389 /* ItemHistoryUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939B14263DDACE00CF9389 /* ItemHistoryUrl.swift */; };
+		C29E52C7267173B100909229 /* ScriptInputDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E52C6267173B100909229 /* ScriptInputDialogController.swift */; };
+		C29E52CB2676A59A00909229 /* ScriptInputDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29E52CA2676A59A00909229 /* ScriptInputDialog.storyboard */; };
+		C29E52D12678E82400909229 /* HJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E52D02678E82400909229 /* HJButton.swift */; };
+		C29E52D3267DA93100909229 /* HJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E52D2267DA93100909229 /* HJTextField.swift */; };
+		C29E52D5267DF8C600909229 /* HJTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E52D4267DF8C600909229 /* HJTextView.swift */; };
 		C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */; };
 		C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */; };
 		C2A8DEA0253482B000A78EBB /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE9F253482B000A78EBB /* www */; };
@@ -121,6 +126,11 @@
 		C2939B0826345DE600CF9389 /* ItemHistoryDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemHistoryDate.xib; sourceTree = "<group>"; };
 		C2939B0B263513C600CF9389 /* ItemHistoryDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHistoryDate.swift; sourceTree = "<group>"; };
 		C2939B14263DDACE00CF9389 /* ItemHistoryUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHistoryUrl.swift; sourceTree = "<group>"; };
+		C29E52C6267173B100909229 /* ScriptInputDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptInputDialogController.swift; sourceTree = "<group>"; };
+		C29E52CA2676A59A00909229 /* ScriptInputDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScriptInputDialog.storyboard; sourceTree = "<group>"; };
+		C29E52D02678E82400909229 /* HJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJButton.swift; sourceTree = "<group>"; };
+		C29E52D2267DA93100909229 /* HJTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJTextField.swift; sourceTree = "<group>"; };
+		C29E52D4267DF8C600909229 /* HJTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJTextView.swift; sourceTree = "<group>"; };
 		C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ErrorDialog.storyboard; sourceTree = "<group>"; };
 		C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialogController.swift; sourceTree = "<group>"; };
 		C2A8DE9F253482B000A78EBB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
@@ -200,6 +210,7 @@
 		C21B845424279F1C00A1C057 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C29E52C0267170C900909229 /* popup */,
 				C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */,
 				C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */,
 				C21B845524279F5100A1C057 /* Main.storyboard */,
@@ -295,6 +306,9 @@
 			children = (
 				C285D093266594EC00E6A12B /* HJView.swift */,
 				C285D0A4266988B400E6A12B /* HJDivider.swift */,
+				C29E52D02678E82400909229 /* HJButton.swift */,
+				C29E52D2267DA93100909229 /* HJTextField.swift */,
+				C29E52D4267DF8C600909229 /* HJTextView.swift */,
 			);
 			path = _ui;
 			sourceTree = "<group>";
@@ -324,6 +338,15 @@
 				C2939AFA262BD36200CF9389 /* HistoryData.swift */,
 			);
 			path = _data;
+			sourceTree = "<group>";
+		};
+		C29E52C0267170C900909229 /* popup */ = {
+			isa = PBXGroup;
+			children = (
+				C29E52C6267173B100909229 /* ScriptInputDialogController.swift */,
+				C29E52CA2676A59A00909229 /* ScriptInputDialog.storyboard */,
+			);
+			path = popup;
 			sourceTree = "<group>";
 		};
 		C2DB7AB22569678D002A5897 /* Index */ = {
@@ -463,6 +486,7 @@
 			files = (
 				C2A8DEA0253482B000A78EBB /* www in Resources */,
 				C21B843C242715D200A1C057 /* Assets.xcassets in Resources */,
+				C29E52CB2676A59A00909229 /* ScriptInputDialog.storyboard in Resources */,
 				C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */,
 				C27444C825582AA2002AF201 /* History.storyboard in Resources */,
 				C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */,
@@ -504,6 +528,7 @@
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
 				C2939AF32628F84300CF9389 /* SQLiteService.swift in Sources */,
 				C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */,
+				C29E52C7267173B100909229 /* ScriptInputDialogController.swift in Sources */,
 				C25487C024F0F18D00F850AC /* JsData.swift in Sources */,
 				C21B8433242715CA00A1C057 /* AppDelegate.swift in Sources */,
 				C2939AFB262BD36200CF9389 /* HistoryData.swift in Sources */,
@@ -519,11 +544,14 @@
 				C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */,
 				C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */,
 				C2FECC2F242F4C2000FD1878 /* Util.swift in Sources */,
+				C29E52D5267DF8C600909229 /* HJTextView.swift in Sources */,
 				C2939B15263DDACF00CF9389 /* ItemHistoryUrl.swift in Sources */,
+				C29E52D12678E82400909229 /* HJButton.swift in Sources */,
 				C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */,
 				C2939AE92624815E00CF9389 /* DefineQuery.swift in Sources */,
 				C27444D1255AB4D9002AF201 /* PreferenceUtil.swift in Sources */,
 				C2FECC2D242F4B3900FD1878 /* CustomUI.swift in Sources */,
+				C29E52D3267DA93100909229 /* HJTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -88,6 +89,17 @@
                                             <action selector="onMenuWebkitLog:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="aiR-5z-FIv"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-2u-9jq" userLabel="exe">
+                                        <rect key="frame" x="168" y="32" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Azf-Zj-QFM"/>
+                                            <constraint firstAttribute="width" constant="36" id="WoA-hw-BVz"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="ic_toolbar_exe"/>
+                                        <connections>
+                                            <action selector="onMenuExe:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="dSJ-sS-nPT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -98,6 +110,8 @@
                                     <constraint firstItem="jFX-tJ-TST" firstAttribute="leading" secondItem="6ZV-tV-FAe" secondAttribute="trailing" constant="32" id="TMB-v6-MsW"/>
                                     <constraint firstAttribute="bottom" secondItem="bm7-0l-WH4" secondAttribute="bottom" constant="24" id="Ug3-9n-xDv"/>
                                     <constraint firstItem="6ZV-tV-FAe" firstAttribute="leading" secondItem="rTv-Fx-LOG" secondAttribute="leading" constant="32" id="XTr-if-WVh"/>
+                                    <constraint firstItem="0bp-SK-g6c" firstAttribute="top" secondItem="4eh-2u-9jq" secondAttribute="bottom" constant="24" id="ceu-qA-EJL"/>
+                                    <constraint firstItem="4eh-2u-9jq" firstAttribute="leading" secondItem="jFX-tJ-TST" secondAttribute="trailing" constant="32" id="fGs-i2-bM9"/>
                                     <constraint firstItem="iqa-xg-kjt" firstAttribute="top" secondItem="6ZV-tV-FAe" secondAttribute="bottom" constant="24" id="hKx-gP-pBY"/>
                                     <constraint firstItem="bm7-0l-WH4" firstAttribute="leading" secondItem="iqa-xg-kjt" secondAttribute="trailing" constant="32" id="in3-Kv-FcW"/>
                                     <constraint firstItem="iqa-xg-kjt" firstAttribute="leading" secondItem="rTv-Fx-LOG" secondAttribute="leading" constant="32" id="kid-2k-Xp7"/>
@@ -133,6 +147,7 @@
     <resources>
         <image name="ic_toolbar_cookie" width="120" height="120"/>
         <image name="ic_toolbar_desktop" width="240" height="240"/>
+        <image name="ic_toolbar_exe" width="96" height="96"/>
         <image name="ic_toolbar_history" width="96" height="96"/>
         <image name="ic_toolbar_log" width="96" height="96"/>
         <image name="ic_toolbar_printer" width="120" height="120"/>

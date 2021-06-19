@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Script Input Dialog Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="ScriptInputDialog" modalPresentationStyle="overCurrentContext" id="Y6W-OH-hqX" customClass="ScriptInputDialogController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrS-jT-Ijh">
+                                <rect key="frame" x="16" y="298" width="382" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스크립트를 입력하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJ8-58-CHr">
+                                        <rect key="frame" x="15" y="15" width="143" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="document.body.style.background = '#0000ff';" translatesAutoresizingMaskIntoConstraints="NO" id="FmZ-9a-xEc" customClass="HJTextView" customModule="Browser" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="51.5" width="362" height="171.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Jm-Af-fwn">
+                                        <rect key="frame" x="10" y="244" width="362" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6J-zK-whU" customClass="HJButton" customModule="Browser" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="176" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" red="0.96862745098039216" green="0.38431372549019605" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.96862745100000003" green="0.38431372549999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9f6-VH-5lp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFz-8K-VxP">
+                                                <rect key="frame" x="186" y="0.0" width="176" height="40"/>
+                                                <color key="backgroundColor" red="0.96862745098039216" green="0.38431372549019605" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="확인"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onOk:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aIF-gl-MNC"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="r7a-Jf-LYc"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="1Jm-Af-fwn" firstAttribute="top" secondItem="FmZ-9a-xEc" secondAttribute="bottom" constant="21" id="B0B-SV-6eB"/>
+                                    <constraint firstItem="FmZ-9a-xEc" firstAttribute="leading" secondItem="MrS-jT-Ijh" secondAttribute="leading" constant="10" id="InR-VS-oSn"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Jm-Af-fwn" secondAttribute="bottom" constant="16" id="M96-2U-osm"/>
+                                    <constraint firstItem="1Jm-Af-fwn" firstAttribute="leading" secondItem="MrS-jT-Ijh" secondAttribute="leading" constant="10" id="QEj-UT-EgD"/>
+                                    <constraint firstAttribute="height" constant="300" id="SRI-he-wnl"/>
+                                    <constraint firstItem="UJ8-58-CHr" firstAttribute="leading" secondItem="MrS-jT-Ijh" secondAttribute="leading" constant="15" id="TcK-xL-Ypi"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Jm-Af-fwn" secondAttribute="trailing" constant="10" id="aFw-cb-tEV"/>
+                                    <constraint firstItem="FmZ-9a-xEc" firstAttribute="top" secondItem="UJ8-58-CHr" secondAttribute="bottom" constant="17" id="fTv-bb-gOt"/>
+                                    <constraint firstAttribute="trailing" secondItem="FmZ-9a-xEc" secondAttribute="trailing" constant="10" id="mB2-Le-TOK"/>
+                                    <constraint firstItem="UJ8-58-CHr" firstAttribute="top" secondItem="MrS-jT-Ijh" secondAttribute="top" constant="15" id="zqo-cf-K2k"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MrS-jT-Ijh" secondAttribute="trailing" constant="16" id="Ehr-tO-RKx"/>
+                            <constraint firstItem="MrS-jT-Ijh" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="fsk-eD-gVm"/>
+                            <constraint firstItem="MrS-jT-Ijh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="qT4-4h-YuT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tvScript" destination="FmZ-9a-xEc" id="PgW-7s-50h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="122" y="84"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

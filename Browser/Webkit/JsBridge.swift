@@ -102,4 +102,16 @@ class JsBridge : NSObject , WKScriptMessageHandler {
     func callJsFunction( webView : WKWebView , funcName : String , _ params : [String] ) {
         callJsFunction(webView: webView, funcName: funcName, params, callback: nil)
     }
+    
+    // 자바스크립트 실행
+    func evaluateJavascript( controller: UIViewController, webView: WKWebView, script: String ) {
+        
+        webView.evaluateJavaScript(script) { (any: Any?, error: Error?) in
+            if error != nil {
+                let msg = error?.localizedDescription ?? ""
+                // 실패
+                _ = Util.showAlertDialog(controller: controller, title: "", message: "[error] \(msg)", action1: nil, action2: nil)
+            }
+        }
+    }
 }
