@@ -503,6 +503,10 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         case DefineCode.MORE_MENU_EXE:
             onJavascriptExecute()
             
+        // 웹HTML 소스보기
+        case DefineCode.MORE_MENU_HTML_ELEMENT:
+            onHtmlElement()
+            
         default: break
             
         }
@@ -611,35 +615,6 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     
     // 자바스크립트 실행
     func onJavascriptExecute() {
-//        let script : String = "$('body').css('background', '#ff0000');"
-//        let script : String = "document.body.style.background = '#0000ff';"
-//        jsBridge.evaluateJavascript(controller: self, webView: wv_main, script: script)
-//
-//        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-//
-//        if action1 == nil && action2 == nil {
-//            alert.addAction( UIAlertAction(title: "확인", style: .cancel, handler: nil) )
-//        }
-//        else {
-//            if let action1 = action1 {
-//                alert.addAction(action1)
-//            }
-//            if let action2 = action2 {
-//                alert.addAction(action2)
-//            }
-//        }
-//
-//        controller.present(alert, animated: true, completion: nil )
-
-//        let alert = UIAlertController(title: "Great Title", message: "Please input something", preferredStyle: .alert)
-//        let action = UIAlertAction(title: "aa", style: .default) { (action: UIAlertAction) in
-//
-//        }
-//        alert.addAction(action)
-//        alert.addTextField { (textField: UITextField) in
-//
-//        }
-//        present(alert, animated: true, completion: nil)
         let storyboard : UIStoryboard = UIStoryboard(name: "ScriptInputDialog", bundle: nil)
         guard let controller = storyboard.instantiateViewController(withIdentifier: "ScriptInputDialog" ) as? ScriptInputDialogController else
         {
@@ -650,12 +625,35 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
         controller.modalTransitionStyle = .crossDissolve
         self.present(controller, animated: false, completion: nil)
-
     }
     
     // 스크립트 실행
     func onScriptInputExecute(script: String) {
-        jsBridge.evaluateJavascript(controller: self, webView: wv_main, script: script)
+        jsBridge.evaluateJavascript(controller: self, webView: wv_main, script: script) { (result: Any?) in
+            if( result != nil ) {
+                
+            }
+        }
+    }
+    
+    // 웹HTML 소스보기
+    func onHtmlElement() {
+        let script = "document.documentElement.outerHTML;"
+        jsBridge.evaluateJavascript(controller: self, webView: wv_main, script: script) { (result: Any?) in
+            var source : String = ""
+            if let result = result {
+                source = String(describing: result)
+            }
+            
+            let storyboard : UIStoryboard = UIStoryboard(name: "HtmlElement", bundle: nil)
+            guard let controller = storyboard.instantiateViewController(identifier: "htmlElement") as? HtmlElementViewController else {
+                return
+            }
+            
+            controller.element = source
+            controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
     // 앱 -> 웹에 메시지 전달

@@ -100,10 +100,22 @@
                                             <action selector="onMenuExe:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="dSJ-sS-nPT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fj6-CC-Dhl" userLabel="element">
+                                        <rect key="frame" x="236" y="32" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="CCd-it-g8Y"/>
+                                            <constraint firstAttribute="width" constant="36" id="Oho-9s-e8w"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="ic_toolbar_source"/>
+                                        <connections>
+                                            <action selector="onMenuHtmlElement:" destination="8OK-HQ-CZb" eventType="touchUpInside" id="q9r-8x-wZs"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="0bp-SK-g6c" firstAttribute="leading" secondItem="bm7-0l-WH4" secondAttribute="trailing" constant="32" id="3Hh-9h-g3t"/>
+                                    <constraint firstItem="Fj6-CC-Dhl" firstAttribute="leading" secondItem="4eh-2u-9jq" secondAttribute="trailing" constant="32" id="6pa-cl-kCj"/>
                                     <constraint firstItem="bm7-0l-WH4" firstAttribute="top" secondItem="jFX-tJ-TST" secondAttribute="bottom" constant="24" id="7cG-JN-qbL"/>
                                     <constraint firstAttribute="bottom" secondItem="CAB-8I-UVk" secondAttribute="bottom" constant="24" id="8Mp-a4-cq2"/>
                                     <constraint firstAttribute="bottom" secondItem="iqa-xg-kjt" secondAttribute="bottom" constant="24" id="F89-z0-hM1"/>
@@ -117,6 +129,7 @@
                                     <constraint firstItem="iqa-xg-kjt" firstAttribute="leading" secondItem="rTv-Fx-LOG" secondAttribute="leading" constant="32" id="kid-2k-Xp7"/>
                                     <constraint firstAttribute="bottom" secondItem="0bp-SK-g6c" secondAttribute="bottom" constant="24" id="rWs-lb-iQB"/>
                                     <constraint firstItem="CAB-8I-UVk" firstAttribute="leading" secondItem="0bp-SK-g6c" secondAttribute="trailing" constant="32" id="swv-Pj-tZD"/>
+                                    <constraint firstItem="CAB-8I-UVk" firstAttribute="top" secondItem="Fj6-CC-Dhl" secondAttribute="bottom" constant="24" id="tT6-jc-Tiu"/>
                                     <constraint firstAttribute="height" constant="152" id="tsF-cW-zyy"/>
                                 </constraints>
                             </view>
@@ -151,6 +164,7 @@
         <image name="ic_toolbar_history" width="96" height="96"/>
         <image name="ic_toolbar_log" width="96" height="96"/>
         <image name="ic_toolbar_printer" width="120" height="120"/>
+        <image name="ic_toolbar_source" width="96" height="96"/>
         <image name="ic_toolbar_webkit_log" width="96" height="96"/>
     </resources>
 </document>

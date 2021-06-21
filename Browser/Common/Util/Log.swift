@@ -26,13 +26,13 @@ class Log {
         }
         let head : String = "[\(fileName) > \(_function)() Line:\(_line)] >> "
 
-        let message = _message.nullToString(defaultValue: "")
+        let message : String = _message.nullToString(defaultValue: "")
         // 글자수 제한
         let length : Int = message.count/MAX_MSG + 1
         for idx in 0..<length {
             // 바디
             let lastIdx = (idx+1)*MAX_MSG > message.count ? message.count : (idx+1)*MAX_MSG
-            let body = message.substring(from: idx*MAX_MSG, to: lastIdx)
+            let body : String = message.substring(from: idx*MAX_MSG, to: lastIdx)
             print( "\(head)\(body)" )
         }
     }

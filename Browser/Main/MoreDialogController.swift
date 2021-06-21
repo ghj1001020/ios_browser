@@ -84,7 +84,10 @@ class MoreDialogController : UIViewController {
         listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_EXE)
     }
     
-    
+    @IBAction func onMenuHtmlElement(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        listener?.onMoreMenuClick(selected: DefineCode.MORE_MENU_HTML_ELEMENT)
+    }
     
     // 딤클릭 > 다이얼로그 닫기
     @objc func tapDim( geusture : UITapGestureRecognizer ) {

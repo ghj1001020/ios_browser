@@ -10,7 +10,7 @@ import UIKit
 
 class HJTextView: UITextView {
 
-    @IBInspectable public var borderColor : UIColor = UIColor.lightGray
+    @IBInspectable public var borderColor : UIColor = UIColor.white
     @IBInspectable public var paddingTop : CGFloat = 0
     @IBInspectable public var paddingLeft : CGFloat = 0
     @IBInspectable public var paddingBottom : CGFloat = 0

@@ -26,6 +26,7 @@ class DefineCode {
     public static let MORE_MENU_CONSOLE_LOG = 4
     public static let MORE_MENU_WEBKIT_LOG = 5
     public static let MORE_MENU_EXE = 6
+    public static let MORE_MENU_HTML_ELEMENT = 7
     
     // JS 브릿지 코드
     public static let JS_ALERT_POPUP = 0
