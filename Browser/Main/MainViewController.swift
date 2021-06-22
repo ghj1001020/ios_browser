@@ -630,8 +630,9 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     // 스크립트 실행
     func onScriptInputExecute(script: String) {
         jsBridge.evaluateJavascript(controller: self, webView: wv_main, script: script) { (result: Any?) in
-            if( result != nil ) {
-                
+            if let result = result {
+                let message = String(describing: result)
+                _ = Util.showAlertDialog(controller: self, title: "자바스크립트 실행 결과", message: message, action1: nil, action2: nil)
             }
         }
     }
