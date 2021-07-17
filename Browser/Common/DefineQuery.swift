@@ -14,7 +14,7 @@ class DefineQuery {
     // 히스토리 테이블 생성
     public static let CREATE_HISTORY_TABLE = "CREATE TABLE IF NOT EXISTS HISTORY_TBL ( " +
                                              "    VISIT_DATE  VARCHAR(14)  NOT NULL ,  " +
-                                             "    TITLE       VARCHAR(400)          ,  " +
+                                             "    TITLE       VARCHAR(500)          ,  " +
                                              "    URL         VARCHAR(200) NOT NULL    " +
                                              ");"
     
@@ -87,7 +87,7 @@ class DefineQuery {
     // 웹킷로그 테이블 생성
     public static let CREATE_WEBKIT_LOG_TABLE = "CREATE TABLE IF NOT EXISTS WEBKIT_LOG_TBL ( " +
                                                 "       LOG_DATE    VARCHAR(14)   NOT NULL , " +
-                                                "       FUNCTION    VARCHAR(500)  , " +
+                                                "       _FUNCTION    VARCHAR(500)  , " +
                                                 "       PARAMS      VARCHAR(5000) , " +
                                                 "       DESCRIPTION VARCHAR(5000) " +
                                                 ");"
@@ -96,13 +96,43 @@ class DefineQuery {
     public static let DROP_WEBKIT_LOG_TABLE = "DROP TABLE IF EXISTS WEBKIT_LOG_TBL"
     
     // 웹킷로그 데이터 입력
-    public static let INSERT_WEBKIT_LOG = "INSERT INTO WEBKIT_LOG_TBL(LOG_DATE, FUNCTION, PARAMS, DESCRIPTION) VALUES(?, ?, ?, ?)"
+    public static let INSERT_WEBKIT_LOG = "INSERT INTO WEBKIT_LOG_TBL(LOG_DATE, _FUNCTION, PARAMS, DESCRIPTION) VALUES(?, ?, ?, ?)"
     
     // 웹킷로그 데이터 조회
-    public static let SELECT_WEBKIT_LOG = "SELECT   LOG_DATE, FUNCTION, PARAMS, DESCRIPTION " +
+    public static let SELECT_WEBKIT_LOG = "SELECT   LOG_DATE, _FUNCTION, PARAMS, DESCRIPTION " +
                                           "FROM     WEBKIT_LOG_TBL " +
                                           "ORDER BY LOG_DATE DESC"
     
     // 웹킷로그 전체 데이터 삭제
     public static let DELETE_WEBKIT_LOG_DATA_ALL = "DELETE FROM WEBKIT_LOG_TBL"
+    
+    // 즐겨찾기 테이블 생성
+    public static let CREATE_BOOKMARK_TABLE = "CREATE TABLE IF NOT EXISTS BOOKMARK_TBL ( " +
+                                              "       URL   VARCHAR(200) NOT NULL , " +
+                                              "       TITLE VARCHAR(500)               " +
+                                              ");"
+    
+    // 즐겨찾기 테이블 삭제
+    public static let DROP_BOOKMARK_TABLE = "DROP TABLE IF EXISTS BOOKMARK_TBL"
+    
+    // 즐겨찾기 데이터 입력
+    public static let INSERT_BOOKMARK = "INSERT INTO BOOKMARK_TBL(URL, TITLE) VALUES ( ?, ? )"
+    
+    // 즐겨찾기 데이터 삭제
+    public static let DELETE_BOOKMARK_DATA = "DELETE FROM BOOKMARK_TBL " +
+                                             "WHERE       URL=?"
+    
+    // 즐겨찾기 데이터 모두 삭제
+    public static let DELETE_BOOKMARK_DATA_ALL = "DELETE FROM BOOKMARK_TBL"
+    
+    // 해당URL의 즐겨찾기 여부
+    public static let SELECT_BOOKMARK_CNT_BY_URL = "SELECT COUNT(URL) AS CNT " +
+                                                   "FROM   BOOKMARK_TBL      " +
+                                                   "WHERE  URL=?"
+    
+    // 즐겨찾기 데이터 조회
+    public static let SELECT_BOOKMARK = "SELECT URL , " +
+                                        "       TITLE " +
+                                        "FROM   BOOKMARK_TBL"
+    
 }

@@ -9,9 +9,6 @@
 import Foundation
 import UIKit
 
-protocol HistoryViewProtocol {
-    func onUrlClick(url: String)
-}
 
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, HistoryProtocol, UISearchBarDelegate {
     
@@ -20,7 +17,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     private var historyList : [HistoryData] = {
         return SQLiteService.selectHistoryDatesAndUrls()
     }()
-    var delegate : HistoryViewProtocol?
+    var delegate : URLItemProtocol?
     
     @IBOutlet var tableHistory: UITableView!
     @IBOutlet var btnMore: UIButton!

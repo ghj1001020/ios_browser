@@ -12,6 +12,11 @@
 		C21B845624279F5100A1C057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C21B845524279F5100A1C057 /* Main.storyboard */; };
 		C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21B845724279F6A00A1C057 /* MainViewController.swift */; };
 		C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21B845A242A414C00A1C057 /* JsBridge.swift */; };
+		C22D0EC8269F29E900C9C748 /* HJCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */; };
+		C22D0ECA26A05FEC00C9C748 /* Bookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */; };
+		C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */; };
+		C22D0ECE26A23EDF00C9C748 /* BookmarkTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ECD26A23EDF00C9C748 /* BookmarkTableCell.swift */; };
+		C22D0ED326A267C800C9C748 /* BookmarkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ED226A267C800C9C748 /* BookmarkData.swift */; };
 		C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23D460D256D2F9300EF835C /* Launch.storyboard */; };
 		C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2443EFC24B1CDF500E5778E /* DefineCode.swift */; };
 		C2443F0424B3689300E5778E /* libswiftCoreLocation.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */; };
@@ -97,6 +102,11 @@
 		C21B845524279F5100A1C057 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C21B845724279F6A00A1C057 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C21B845A242A414C00A1C057 /* JsBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsBridge.swift; sourceTree = "<group>"; };
+		C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJCheckBox.swift; sourceTree = "<group>"; };
+		C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bookmark.storyboard; sourceTree = "<group>"; };
+		C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		C22D0ECD26A23EDF00C9C748 /* BookmarkTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableCell.swift; sourceTree = "<group>"; };
+		C22D0ED226A267C800C9C748 /* BookmarkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkData.swift; sourceTree = "<group>"; };
 		C23D460D256D2F9300EF835C /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		C2443EFC24B1CDF500E5778E /* DefineCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineCode.swift; sourceTree = "<group>"; };
 		C2443EFE24B35AD300E5778E /* Browser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Browser.entitlements; sourceTree = "<group>"; };
@@ -234,6 +244,25 @@
 			path = Webkit;
 			sourceTree = "<group>";
 		};
+		C22D0EC4269E935600C9C748 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				C22D0ED126A2679400C9C748 /* _data */,
+				C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */,
+				C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */,
+				C22D0ECD26A23EDF00C9C748 /* BookmarkTableCell.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		C22D0ED126A2679400C9C748 /* _data */ = {
+			isa = PBXGroup;
+			children = (
+				C22D0ED226A267C800C9C748 /* BookmarkData.swift */,
+			);
+			path = _data;
+			sourceTree = "<group>";
+		};
 		C2443EFF24B35AD300E5778E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +342,7 @@
 				C29E52D02678E82400909229 /* HJButton.swift */,
 				C29E52D2267DA93100909229 /* HJTextField.swift */,
 				C29E52D4267DF8C600909229 /* HJTextView.swift */,
+				C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */,
 			);
 			path = _ui;
 			sourceTree = "<group>";
@@ -329,6 +359,7 @@
 		C2939AF8262BD2EE00CF9389 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C22D0EC4269E935600C9C748 /* Bookmark */,
 				C29E52D6267EE02500909229 /* HtmlElement */,
 				C285D080265FD93000E6A12B /* WebkitLog */,
 				C285D0712658A66B00E6A12B /* ConsoleLog */,
@@ -498,6 +529,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C22D0ECA26A05FEC00C9C748 /* Bookmark.storyboard in Resources */,
 				C2A8DEA0253482B000A78EBB /* www in Resources */,
 				C21B843C242715D200A1C057 /* Assets.xcassets in Resources */,
 				C29E52CB2676A59A00909229 /* ScriptInputDialog.storyboard in Resources */,
@@ -530,14 +562,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C22D0ECE26A23EDF00C9C748 /* BookmarkTableCell.swift in Sources */,
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
 				C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */,
 				C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */,
 				C285D08A26638DD300E6A12B /* WebkitLogViewController.swift in Sources */,
+				C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */,
 				C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */,
 				C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */,
 				C285D07E265AA7F500E6A12B /* ConsoleLogTableCell.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
+				C22D0EC8269F29E900C9C748 /* HJCheckBox.swift in Sources */,
 				C285D0A5266988B400E6A12B /* HJDivider.swift in Sources */,
 				C2939AFF262CEF0400CF9389 /* DefineType.swift in Sources */,
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
@@ -556,6 +591,7 @@
 				C285D094266594EC00E6A12B /* HJView.swift in Sources */,
 				C2939AF62629F0D800CF9389 /* PrefUtil.swift in Sources */,
 				C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */,
+				C22D0ED326A267C800C9C748 /* BookmarkData.swift in Sources */,
 				C285D083265FDF2B00E6A12B /* WebkitLogData.swift in Sources */,
 				C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */,
 				C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */,
@@ -738,8 +774,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Browser/Browser.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
@@ -755,7 +791,7 @@
 				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghj.Browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Browser Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -27,13 +27,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmE-kQ-LZh" userLabel="top_txt_mode">
                                 <rect key="frame" x="0.0" y="44" width="414" height="57"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faf-pX-l5n" userLabel="bookmark">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faf-pX-l5n" userLabel="bookmark" customClass="HJCheckBox" customModule="Browser" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="57" id="cc3-oe-mZh"/>
                                             <constraint firstAttribute="height" constant="57" id="jWa-dx-aZC"/>
                                         </constraints>
-                                        <state key="normal" image="ic_bookmark"/>
+                                        <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
+                                        <state key="normal" image="ic_bookmark_line"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="imgCheck" value="ic_bookmark_fill"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="imgUncheck" value="ic_bookmark_line"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onBookmarkSelect:" destination="30f-QB-7BH" eventType="touchUpInside" id="qA4-22-wMR"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vff-e5-6x1">
                                         <rect key="frame" x="57" y="0.0" width="300" height="57"/>
@@ -308,6 +317,7 @@
                     <connections>
                         <outlet property="btnBack" destination="jAD-g7-N2g" id="6xy-ai-P9w"/>
                         <outlet property="btnNext" destination="rwQ-Pj-hCb" id="LVL-1J-rRr"/>
+                        <outlet property="chkBookmark" destination="faf-pX-l5n" id="spr-9S-9D9"/>
                         <outlet property="dim" destination="8Vc-1E-EF8" id="z4z-eL-Z1C"/>
                         <outlet property="editUrl" destination="h5p-da-Ef9" id="oBF-mk-ueN"/>
                         <outlet property="lbWebTitle" destination="vff-e5-6x1" id="QOT-vc-xwm"/>
@@ -319,12 +329,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pH-Xj-fQd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="110"/>
+            <point key="canvasLocation" x="124.6376811594203" y="109.82142857142857"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_back" width="72" height="72"/>
-        <image name="ic_bookmark" width="28.5" height="28.5"/>
+        <image name="ic_bookmark_fill" width="72" height="72"/>
+        <image name="ic_bookmark_line" width="72" height="72"/>
         <image name="ic_delete" width="28.5" height="28.5"/>
         <image name="ic_home" width="72" height="72"/>
         <image name="ic_more" width="72" height="72"/>

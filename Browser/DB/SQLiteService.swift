@@ -20,13 +20,16 @@ class SQLiteService {
         // 콘솔로그 테이블
         _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_CONSOLE_LOG_TABLE)
         let tbl2 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_CONSOLE_LOG_TABLE)
-        // 웹킷로그 테이브
+        // 웹킷로그 테이블
         _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_WEBKIT_LOG_TABLE)
         let tbl3 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_WEBKIT_LOG_TABLE)
+        // 즐겨찾기 테이블
+        _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_BOOKMARK_TABLE)
+        let tbl4 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_BOOKMARK_TABLE)
         
         SQLite.shared.close()
         
-        return tbl1 && tbl2 && tbl3
+        return tbl1 && tbl2 && tbl3 && tbl4
     }
     
     // HISTORY_TBL에 데이터 입력
@@ -164,9 +167,9 @@ class SQLiteService {
     
     // 웹킷로그 테이블에 데이터 입력
     public static func insertWebkitLogData(params: [Any]) {
-        SQLite.shared.open()
-        _ = SQLite.shared.execSQL(sql: DefineQuery.INSERT_WEBKIT_LOG, params: params)
-        SQLite.shared.close()
+//        SQLite.shared.open()
+//        _ = SQLite.shared.execSQL(sql: DefineQuery.INSERT_WEBKIT_LOG, params: params)
+//        SQLite.shared.close()
     }
     
     // 웹킷로그 목록 조회
@@ -194,5 +197,63 @@ class SQLiteService {
         SQLite.shared.open()
         _ = SQLite.shared.execSQL(sql: DefineQuery.DELETE_WEBKIT_LOG_DATA_ALL)
         SQLite.shared.close()
+    }
+    
+    // 즐겨찾기 테이블에 데이터 입력
+    public static func insertBookmarkData(params: [Any]) {
+        SQLite.shared.open()
+        _ = SQLite.shared.execSQL(sql: DefineQuery.INSERT_BOOKMARK, params: params)
+        SQLite.shared.close()
+    }
+    
+    // 즐겨찾기 데이터 삭제
+    public static func deleteBookmarkData(url: String) -> Bool {
+        var isDeleted = false
+
+        SQLite.shared.open()
+        isDeleted = SQLite.shared.execSQL(sql: DefineQuery.DELETE_BOOKMARK_DATA, params: [url])
+        SQLite.shared.close()
+        
+        return isDeleted
+    }
+    
+    // 즐겨찾기 데이터 모두 삭제
+    public static func deleteBookmarkDataAll() {
+        SQLite.shared.open()
+        _ = SQLite.shared.execSQL(sql: DefineQuery.DELETE_BOOKMARK_DATA_ALL)
+        SQLite.shared.close()
+    }
+    
+    // 해당 URL의 즐겨찾기 여부
+    public static func selectBookmarkCntByURL(url: String) -> Bool {
+        var isExist = false
+        
+        SQLite.shared.open()
+        SQLite.shared.select(sql: DefineQuery.SELECT_BOOKMARK_CNT_BY_URL, params: [url]) { (stmt: OpaquePointer?) in
+            if( sqlite3_step(stmt) == SQLITE_ROW ) {
+                let cnt : Int = Int(sqlite3_column_int(stmt, 0))
+                isExist = cnt > 0
+            }
+        }
+        SQLite.shared.close()
+        
+        return isExist
+    }
+    
+    // 즐겨찾기 목록 조회
+    public static func selectBookmarkData() -> [BookmarkData] {
+        var bookmarkList : [BookmarkData] = []
+        
+        SQLite.shared.open()
+        SQLite.shared.select(sql: DefineQuery.SELECT_BOOKMARK) { (stmt: OpaquePointer?) in
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let url: String = String(cString: sqlite3_column_text(stmt, 0))
+                let title: String = String(cString: sqlite3_column_text(stmt, 1))
+                bookmarkList.append(BookmarkData(url: url, title: title))
+            }
+        }
+        SQLite.shared.close()
+        
+        return bookmarkList
     }
 }

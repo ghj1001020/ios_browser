@@ -26,6 +26,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     @IBOutlet var dim: UIView!
     @IBOutlet var btnBack: UIButton!
     @IBOutlet var btnNext: UIButton!
+    @IBOutlet var chkBookmark: HJCheckBox!
     
     
     var jsBridge : JsBridge!
@@ -158,6 +159,23 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         }
     }
     
+    // 즐겨찾기 선택/해제
+    @IBAction func onBookmarkSelect(_ sender: HJCheckBox) {
+        if let item = wv_main.backForwardList.currentItem {
+            let url = item.url.absoluteString
+            let title = item.title ?? ""
+
+            sender.isChecked = !sender.isChecked
+            if( sender.isChecked ) {
+                SQLiteService.insertBookmarkData(params: [url, title])
+            }
+            else {
+                _ = SQLiteService.deleteBookmarkData(url: url)
+            }
+        }
+    }
+    
+    
     // 웹뷰 새로고침
     @IBAction func onWebViewRefresh(_ sender: UIButton) {
         sender.addClickAnimation( color: UIColor.init(red: 146/255.0, green: 204/255.0, blue: 243/255.0, alpha: 1.0).cgColor )
@@ -286,6 +304,13 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     
     // 북마크로 이동
     @IBAction func onToolbarBookmark(_ sender: UIButton) {
+        let storyboard : UIStoryboard = UIStoryboard(name: "Bookmark", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(identifier: "bookmarkViewController") as? BookmarkViewController else {
+            return
+        }
+        controller.modalPresentationStyle = .fullScreen
+        controller.delegate = self
+        self.present(controller, animated: true, completion: nil)
     }
     
     // 설정으로 이동
@@ -832,14 +857,15 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         editUrl.text = url
         
         changePageMoveButton()
-
-        // 방문한페이지 저장
+        
         if let item = wv_main.backForwardList.currentItem {
-//            let history : HistoryData = HistoryData(date: Util.dateToString(date: Date(), format: "yyyyMMdd "), title: item.title ?? "", url: item.url.absoluteString)
-//            PreferenceUtil.saveWebPageHistory(item: history)
+            // 방문한페이지 저장
             let date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
             let param : [String] = [date, item.title ?? "", item.url.absoluteString]
             SQLiteService.insertHistoryData(param:param)
+
+            // 즐겨찾기 여부
+            chkBookmark.isChecked = SQLiteService.selectBookmarkCntByURL(url: item.url.absoluteString)
         }
     }
 
@@ -1121,8 +1147,17 @@ extension MainViewController : JsBridgeProtocol {
     }
 }
 
-// 히스토리 -> 메인 프로토콜
-extension MainViewController : HistoryViewProtocol {
+// 히스토리, 즐겨찾기 -> 메인 프로토콜
+extension MainViewController : URLItemProtocol {
+    func onDismissViewController(controller: UIViewController) {
+        // 즐겨찾기 여부 확인
+        if( controller is BookmarkViewController ) {
+            if let item = wv_main.backForwardList.currentItem {
+                chkBookmark.isChecked = SQLiteService.selectBookmarkCntByURL(url: item.url.absoluteString)
+            }
+        }
+    }
+    
     func onUrlClick(url: String) {
         loadUrl(_url: url)
     }

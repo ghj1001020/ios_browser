@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // 웹사이트 목록 구분 타입
 enum WebSiteType : Int {
@@ -14,6 +15,7 @@ enum WebSiteType : Int {
     case URL = 1    // 방문사이트
 }
 
-class DefineType {
-    
+protocol URLItemProtocol {
+    func onDismissViewController(controller: UIViewController)   // 컨트롤러 종료시
+    func onUrlClick(url: String)    // URL클릭시
 }

@@ -13,7 +13,7 @@ class SQLite {
     
     static let shared = SQLite()    // 싱글톤
     
-    public static let DB_VERSION = 4
+    public static let DB_VERSION = 12
     private let DB_FILE_NAME = "browser.db"
 
     private let dbUrl : URL?
@@ -54,13 +54,13 @@ class SQLite {
             let SQLITE_STATIC = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
             for (index, item) in params.enumerated() {
                 if( item is Int32 ) {
-                    sqlite3_bind_int(dbPointer, Int32(index+1), item as! Int32)
+                    sqlite3_bind_int(stmt, Int32(index+1), item as! Int32)
                 }
                 else if( item is Int64 ) {
-                    sqlite3_bind_int64(dbPointer, Int32(index+1), item as! Int64)
+                    sqlite3_bind_int64(stmt, Int32(index+1), item as! Int64)
                 }
                 else if( item is Double ) {
-                    sqlite3_bind_double(dbPointer, Int32(index+1), item as! Double)
+                    sqlite3_bind_double(stmt, Int32(index+1), item as! Double)
                 }
                 else {
                     let str = item as! String
@@ -74,7 +74,8 @@ class SQLite {
             else {
                 result = false
                 let errMsg = String(cString: sqlite3_errmsg(stmt))
-                Log.p("SQLITE_DONE failed. \(errMsg)")
+                let errCode = Int(sqlite3_errcode(stmt))
+                Log.p("SQLITE_DONE failed. \(errMsg) \(errCode)")
             }
         }
         else {
@@ -114,6 +115,7 @@ class SQLite {
             }
 
             listener(stmt)
+            sqlite3_finalize(stmt)
         }
         else {
             Log.p(String(cString: sqlite3_errmsg(dbPointer)))
