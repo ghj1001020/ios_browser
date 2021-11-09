@@ -24,7 +24,7 @@ class Log {
         if let index = _file.lastIndex(of: "/") {
             fileName = String(_file[_file.index(index, offsetBy: 1)..<_file.endIndex])
         }
-        let head : String = "[\(fileName) > \(_function)() Line:\(_line)] >> "
+        let head : String = "[\(fileName) > \(_function) Line:\(_line)] >> "
 
         let message : String = _message.nullToString(defaultValue: "")
         // 글자수 제한

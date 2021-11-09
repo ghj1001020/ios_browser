@@ -9,9 +9,7 @@
 import Foundation
 
 class PreferenceUtil {
-    
-    private static let TAG = "PreferenceUtil"
-    
+        
     private static let pref_key = "WEB_PAGE_HISTORY_"
     
     // 방문한페이지 저장

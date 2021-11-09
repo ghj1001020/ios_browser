@@ -131,8 +131,9 @@ class DefineQuery {
                                                    "WHERE  URL=?"
     
     // 즐겨찾기 데이터 조회
-    public static let SELECT_BOOKMARK = "SELECT URL , " +
-                                        "       TITLE " +
-                                        "FROM   BOOKMARK_TBL"
+    public static let SELECT_BOOKMARK = "SELECT   URL , " +
+                                        "         TITLE " +
+                                        "FROM     BOOKMARK_TBL " +
+                                        "ORDER BY ROWID DESC"
     
 }
