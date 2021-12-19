@@ -91,7 +91,7 @@ class SQLite {
     
     func select(sql: String, params: [Any]=[], listener: (_ stmt: OpaquePointer?)->Void) {
         if( dbUrl == nil || dbPointer == nil ) {
-            LogUtil.p("dbUrl or dbPointer is nil")
+            Log.p("dbUrl or dbPointer is nil")
             return
         }
 
@@ -121,7 +121,7 @@ class SQLite {
             sqlite3_finalize(stmt)
         }
         else {
-            LogUtil.p(String(cString: sqlite3_errmsg(dbPointer)))
+            Log.p(String(cString: sqlite3_errmsg(dbPointer)))
         }
     }
 }
