@@ -91,7 +91,7 @@ class SQLite {
     
     func select(sql: String, params: [Any]=[], listener: (_ stmt: OpaquePointer?)->Void) {
         if( dbUrl == nil || dbPointer == nil ) {
-            Log.p("dbUrl or dbPointer is nil")
+            LogUtil.p("dbUrl or dbPointer is nil")
             return
         }
 
@@ -99,14 +99,17 @@ class SQLite {
         if sqlite3_prepare_v2(dbPointer, sql, -1, &stmt, nil) == SQLITE_OK {
             let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
             for (index, item) in params.enumerated() {
-                if( item is Int32 ) {
-                    sqlite3_bind_int(dbPointer, Int32(index+1), item as! Int32)
+                if( item is Int ) {
+                    sqlite3_bind_int(stmt, Int32(index+1), Int32(item as! Int) )
+                }
+                else if( item is Int32 ) {
+                    sqlite3_bind_int(stmt, Int32(index+1), item as! Int32)
                 }
                 else if( item is Int64 ) {
-                    sqlite3_bind_int64(dbPointer, Int32(index+1), item as! Int64)
+                    sqlite3_bind_int64(stmt, Int32(index+1), item as! Int64)
                 }
                 else if( item is Double ) {
-                    sqlite3_bind_double(dbPointer, Int32(index+1), item as! Double)
+                    sqlite3_bind_double(stmt, Int32(index+1), item as! Double)
                 }
                 else {
                     let str = item as! String
@@ -118,7 +121,7 @@ class SQLite {
             sqlite3_finalize(stmt)
         }
         else {
-            Log.p(String(cString: sqlite3_errmsg(dbPointer)))
+            LogUtil.p(String(cString: sqlite3_errmsg(dbPointer)))
         }
     }
 }

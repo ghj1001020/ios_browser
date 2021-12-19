@@ -56,6 +56,7 @@
 		C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */; };
 		C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */; };
 		C2A8DEA0253482B000A78EBB /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE9F253482B000A78EBB /* www */; };
+		C2AA46532756D62600F213EB /* DefaultsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA46522756D62600F213EB /* DefaultsUtil.swift */; };
 		C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2DB7AB3256967D8002A5897 /* Index.storyboard */; };
 		C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB7AB6256967F6002A5897 /* IndexViewController.swift */; };
 		C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */; };
@@ -148,6 +149,7 @@
 		C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ErrorDialog.storyboard; sourceTree = "<group>"; };
 		C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialogController.swift; sourceTree = "<group>"; };
 		C2A8DE9F253482B000A78EBB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		C2AA46522756D62600F213EB /* DefaultsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsUtil.swift; sourceTree = "<group>"; };
 		C2DB7AB3256967D8002A5897 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		C2DB7AB6256967F6002A5897 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreDialog.storyboard; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				C2FECC2E242F4C2000FD1878 /* Util.swift */,
 				C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */,
 				C2939AF52629F0D800CF9389 /* PrefUtil.swift */,
+				C2AA46522756D62600F213EB /* DefaultsUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				C285D094266594EC00E6A12B /* HJView.swift in Sources */,
 				C2939AF62629F0D800CF9389 /* PrefUtil.swift in Sources */,
 				C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */,
+				C2AA46532756D62600F213EB /* DefaultsUtil.swift in Sources */,
 				C22D0ED326A267C800C9C748 /* BookmarkData.swift in Sources */,
 				C285D083265FDF2B00E6A12B /* WebkitLogData.swift in Sources */,
 				C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */,
