@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VXj-Pz-gxN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VXj-Pz-gxN">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,13 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uI4-je-TO6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <color key="backgroundColor" red="0.18823529410000001" green="0.66274509800000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Dc0-vo-vya"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkL-CY-lTg">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
@@ -34,7 +28,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98X-cY-CA6">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98X-cY-CA6" userLabel="searchView">
                                         <rect key="frame" x="16" y="129.33333333333334" width="382" height="60"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="웹사이트 입력" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="L15-cm-uFC">
@@ -91,13 +85,10 @@
                         <viewLayoutGuide key="safeArea" id="tfX-E7-LKc"/>
                         <color key="backgroundColor" red="0.062745098039215685" green="0.45490196078431372" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="uI4-je-TO6" firstAttribute="top" secondItem="EzH-FQ-HJV" secondAttribute="top" id="6a1-Jv-xDF"/>
                             <constraint firstItem="bkL-CY-lTg" firstAttribute="leading" secondItem="tfX-E7-LKc" secondAttribute="leading" id="C36-jH-9Se"/>
                             <constraint firstItem="tfX-E7-LKc" firstAttribute="bottom" secondItem="bkL-CY-lTg" secondAttribute="bottom" id="MTD-w4-hxT"/>
-                            <constraint firstItem="uI4-je-TO6" firstAttribute="leading" secondItem="tfX-E7-LKc" secondAttribute="leading" id="TsG-Hk-RCo"/>
                             <constraint firstItem="bkL-CY-lTg" firstAttribute="top" secondItem="tfX-E7-LKc" secondAttribute="top" id="W5j-uM-YsE"/>
                             <constraint firstItem="tfX-E7-LKc" firstAttribute="trailing" secondItem="bkL-CY-lTg" secondAttribute="trailing" id="dDz-KS-8dh"/>
-                            <constraint firstItem="uI4-je-TO6" firstAttribute="trailing" secondItem="tfX-E7-LKc" secondAttribute="trailing" id="enI-3i-tG9"/>
                         </constraints>
                     </view>
                     <connections>

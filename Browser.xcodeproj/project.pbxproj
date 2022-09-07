@@ -12,6 +12,16 @@
 		C21B845624279F5100A1C057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C21B845524279F5100A1C057 /* Main.storyboard */; };
 		C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21B845724279F6A00A1C057 /* MainViewController.swift */; };
 		C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21B845A242A414C00A1C057 /* JsBridge.swift */; };
+		C224AC9128B271E30004B11F /* SiteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AC9028B271E30004B11F /* SiteTableCell.swift */; };
+		C224AD3D28C3C9930004B11F /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD3C28C3C9930004B11F /* BottomSheetController.swift */; };
+		C224AD3F28C3CFD00004B11F /* MenuBottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD3E28C3CFD00004B11F /* MenuBottomSheetController.swift */; };
+		C224AD4128C3CFFF0004B11F /* MenuBottomSheetController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C224AD4028C3CFFF0004B11F /* MenuBottomSheetController.storyboard */; };
+		C224AD4328C3D6290004B11F /* MenuBottomSheetTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD4228C3D6290004B11F /* MenuBottomSheetTableCell.swift */; };
+		C224AD4528C43F7D0004B11F /* HJTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD4428C43F7D0004B11F /* HJTableView.swift */; };
+		C224AD4B28C551DF0004B11F /* BRAppBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = C224AD4A28C551DF0004B11F /* BRAppBar.xib */; };
+		C224AD4D28C552C50004B11F /* BRAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD4C28C552C50004B11F /* BRAppBar.swift */; };
+		C224AD5028C554390004B11F /* BRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD4F28C554390004B11F /* BRColor.swift */; };
+		C224AD5228C816580004B11F /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD5128C816580004B11F /* AlertUtil.swift */; };
 		C22D0EC8269F29E900C9C748 /* HJCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */; };
 		C22D0ECA26A05FEC00C9C748 /* Bookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */; };
 		C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */; };
@@ -21,6 +31,7 @@
 		C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2443EFC24B1CDF500E5778E /* DefineCode.swift */; };
 		C2443F0424B3689300E5778E /* libswiftCoreLocation.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */; };
 		C2443F0524B3689300E5778E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2443F0324B3689300E5778E /* CoreLocation.framework */; };
+		C24E5ADB28A7FB52001FCDCC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E5ADA28A7FB52001FCDCC /* BaseViewController.swift */; };
 		C25487C024F0F18D00F850AC /* JsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25487BF24F0F18D00F850AC /* JsData.swift */; };
 		C27444C825582AA2002AF201 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27444C725582AA2002AF201 /* History.storyboard */; };
 		C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27444CA25582ABE002AF201 /* HistoryViewController.swift */; };
@@ -103,6 +114,16 @@
 		C21B845524279F5100A1C057 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C21B845724279F6A00A1C057 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C21B845A242A414C00A1C057 /* JsBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsBridge.swift; sourceTree = "<group>"; };
+		C224AC9028B271E30004B11F /* SiteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteTableCell.swift; sourceTree = "<group>"; };
+		C224AD3C28C3C9930004B11F /* BottomSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
+		C224AD3E28C3CFD00004B11F /* MenuBottomSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBottomSheetController.swift; sourceTree = "<group>"; };
+		C224AD4028C3CFFF0004B11F /* MenuBottomSheetController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuBottomSheetController.storyboard; sourceTree = "<group>"; };
+		C224AD4228C3D6290004B11F /* MenuBottomSheetTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBottomSheetTableCell.swift; sourceTree = "<group>"; };
+		C224AD4428C43F7D0004B11F /* HJTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJTableView.swift; sourceTree = "<group>"; };
+		C224AD4A28C551DF0004B11F /* BRAppBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRAppBar.xib; sourceTree = "<group>"; };
+		C224AD4C28C552C50004B11F /* BRAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAppBar.swift; sourceTree = "<group>"; };
+		C224AD4F28C554390004B11F /* BRColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRColor.swift; sourceTree = "<group>"; };
+		C224AD5128C816580004B11F /* AlertUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJCheckBox.swift; sourceTree = "<group>"; };
 		C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bookmark.storyboard; sourceTree = "<group>"; };
 		C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +135,7 @@
 		C2443F0024B35AD300E5778E /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		C2443F0224B3689300E5778E /* libswiftCoreLocation.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreLocation.tbd; path = usr/lib/swift/libswiftCoreLocation.tbd; sourceTree = SDKROOT; };
 		C2443F0324B3689300E5778E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C24E5ADA28A7FB52001FCDCC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C25487BF24F0F18D00F850AC /* JsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsData.swift; sourceTree = "<group>"; };
 		C27444C725582AA2002AF201 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		C27444CA25582ABE002AF201 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -208,13 +230,12 @@
 			children = (
 				C2939AF8262BD2EE00CF9389 /* Controller */,
 				C2939AE72624813300CF9389 /* DB */,
-				C2DB7AB22569678D002A5897 /* Index */,
-				C25487BB24E97D2400F850AC /* Resources */,
-				C2F43CE724E030C6001CAE44 /* Cookie */,
-				C2443EFE24B35AD300E5778E /* Browser.entitlements */,
+				C285D0922665205200E6A12B /* UI */,
+				C224AD4E28C5541F0004B11F /* Util */,
 				C2FECC23242E39EF00FD1878 /* Common */,
 				C21B8459242A413800A1C057 /* Webkit */,
-				C21B845424279F1C00A1C057 /* Main */,
+				C25487BB24E97D2400F850AC /* Resources */,
+				C2443EFE24B35AD300E5778E /* Browser.entitlements */,
 				C21B8432242715CA00A1C057 /* AppDelegate.swift */,
 				C21B843B242715D200A1C057 /* Assets.xcassets */,
 				C21B8440242715D200A1C057 /* Info.plist */,
@@ -231,6 +252,7 @@
 				C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */,
 				C21B845524279F5100A1C057 /* Main.storyboard */,
 				C21B845724279F6A00A1C057 /* MainViewController.swift */,
+				C224AC9028B271E30004B11F /* SiteTableCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -244,6 +266,40 @@
 				C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */,
 			);
 			path = Webkit;
+			sourceTree = "<group>";
+		};
+		C224AD3B28C3C97E0004B11F /* _bottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C224AD3C28C3C9930004B11F /* BottomSheetController.swift */,
+				C224AD3E28C3CFD00004B11F /* MenuBottomSheetController.swift */,
+				C224AD4028C3CFFF0004B11F /* MenuBottomSheetController.storyboard */,
+				C224AD4228C3D6290004B11F /* MenuBottomSheetTableCell.swift */,
+			);
+			path = _bottomSheet;
+			sourceTree = "<group>";
+		};
+		C224AD4628C550F40004B11F /* _appBar */ = {
+			isa = PBXGroup;
+			children = (
+				C224AD4A28C551DF0004B11F /* BRAppBar.xib */,
+				C224AD4C28C552C50004B11F /* BRAppBar.swift */,
+			);
+			path = _appBar;
+			sourceTree = "<group>";
+		};
+		C224AD4E28C5541F0004B11F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C2FECC27242F0A0800FD1878 /* LogUtil.swift */,
+				C2FECC29242F0A6600FD1878 /* StringExt.swift */,
+				C2FECC2E242F4C2000FD1878 /* Util.swift */,
+				C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */,
+				C2939AF52629F0D800CF9389 /* PrefUtil.swift */,
+				C2AA46522756D62600F213EB /* DefaultsUtil.swift */,
+				C224AD5128C816580004B11F /* AlertUtil.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		C22D0EC4269E935600C9C748 /* Bookmark */ = {
@@ -336,17 +392,20 @@
 			path = _data;
 			sourceTree = "<group>";
 		};
-		C285D0922665205200E6A12B /* _ui */ = {
+		C285D0922665205200E6A12B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C224AD3B28C3C97E0004B11F /* _bottomSheet */,
+				C224AD4628C550F40004B11F /* _appBar */,
 				C285D093266594EC00E6A12B /* HJView.swift */,
 				C285D0A4266988B400E6A12B /* HJDivider.swift */,
 				C29E52D02678E82400909229 /* HJButton.swift */,
 				C29E52D2267DA93100909229 /* HJTextField.swift */,
 				C29E52D4267DF8C600909229 /* HJTextView.swift */,
 				C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */,
+				C224AD4428C43F7D0004B11F /* HJTableView.swift */,
 			);
-			path = _ui;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		C2939AE72624813300CF9389 /* DB */ = {
@@ -361,11 +420,15 @@
 		C2939AF8262BD2EE00CF9389 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C2DB7AB22569678D002A5897 /* Index */,
+				C2F43CE724E030C6001CAE44 /* Cookie */,
+				C21B845424279F1C00A1C057 /* Main */,
 				C22D0EC4269E935600C9C748 /* Bookmark */,
 				C29E52D6267EE02500909229 /* HtmlElement */,
 				C285D080265FD93000E6A12B /* WebkitLog */,
 				C285D0712658A66B00E6A12B /* ConsoleLog */,
 				C27444C5255828BB002AF201 /* History */,
+				C24E5ADA28A7FB52001FCDCC /* BaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -418,28 +481,14 @@
 		C2FECC23242E39EF00FD1878 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C285D0922665205200E6A12B /* _ui */,
 				C2FECC2B242F4B2000FD1878 /* Widget */,
-				C2FECC26242F09E100FD1878 /* Util */,
-				C2FECC30242F4D1500FD1878 /* AppConfig.swift */,
 				C2443EFC24B1CDF500E5778E /* DefineCode.swift */,
 				C2939AE82624815E00CF9389 /* DefineQuery.swift */,
 				C2939AFE262CEF0400CF9389 /* DefineType.swift */,
+				C224AD4F28C554390004B11F /* BRColor.swift */,
+				C2FECC30242F4D1500FD1878 /* AppConfig.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		C2FECC26242F09E100FD1878 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				C2FECC27242F0A0800FD1878 /* LogUtil.swift */,
-				C2FECC29242F0A6600FD1878 /* StringExt.swift */,
-				C2FECC2E242F4C2000FD1878 /* Util.swift */,
-				C27444D0255AB4D9002AF201 /* PreferenceUtil.swift */,
-				C2939AF52629F0D800CF9389 /* PrefUtil.swift */,
-				C2AA46522756D62600F213EB /* DefaultsUtil.swift */,
-			);
-			path = Util;
 			sourceTree = "<group>";
 		};
 		C2FECC2B242F4B2000FD1878 /* Widget */ = {
@@ -539,6 +588,8 @@
 				C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */,
 				C27444C825582AA2002AF201 /* History.storyboard in Resources */,
 				C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */,
+				C224AD4B28C551DF0004B11F /* BRAppBar.xib in Resources */,
+				C224AD4128C3CFFF0004B11F /* MenuBottomSheetController.storyboard in Resources */,
 				C285D074265936D800E6A12B /* ConsoleLog.storyboard in Resources */,
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
@@ -567,21 +618,26 @@
 			files = (
 				C22D0ECE26A23EDF00C9C748 /* BookmarkTableCell.swift in Sources */,
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
+				C224AD3D28C3C9930004B11F /* BottomSheetController.swift in Sources */,
 				C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */,
 				C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */,
 				C285D08A26638DD300E6A12B /* WebkitLogViewController.swift in Sources */,
+				C224AD3F28C3CFD00004B11F /* MenuBottomSheetController.swift in Sources */,
 				C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */,
 				C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */,
 				C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */,
 				C285D07E265AA7F500E6A12B /* ConsoleLogTableCell.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
+				C224AD4528C43F7D0004B11F /* HJTableView.swift in Sources */,
 				C22D0EC8269F29E900C9C748 /* HJCheckBox.swift in Sources */,
 				C285D0A5266988B400E6A12B /* HJDivider.swift in Sources */,
 				C2939AFF262CEF0400CF9389 /* DefineType.swift in Sources */,
+				C24E5ADB28A7FB52001FCDCC /* BaseViewController.swift in Sources */,
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
 				C2939AF32628F84300CF9389 /* SQLiteService.swift in Sources */,
 				C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */,
 				C29E52C7267173B100909229 /* ScriptInputDialogController.swift in Sources */,
+				C224AD4328C3D6290004B11F /* MenuBottomSheetTableCell.swift in Sources */,
 				C29E52DA267EE17D00909229 /* HtmlElementViewController.swift in Sources */,
 				C25487C024F0F18D00F850AC /* JsData.swift in Sources */,
 				C21B8433242715CA00A1C057 /* AppDelegate.swift in Sources */,
@@ -592,18 +648,22 @@
 				C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */,
 				C2FECC28242F0A0800FD1878 /* LogUtil.swift in Sources */,
 				C285D094266594EC00E6A12B /* HJView.swift in Sources */,
+				C224AD5228C816580004B11F /* AlertUtil.swift in Sources */,
 				C2939AF62629F0D800CF9389 /* PrefUtil.swift in Sources */,
+				C224AD5028C554390004B11F /* BRColor.swift in Sources */,
 				C21B845824279F6A00A1C057 /* MainViewController.swift in Sources */,
 				C2AA46532756D62600F213EB /* DefaultsUtil.swift in Sources */,
 				C22D0ED326A267C800C9C748 /* BookmarkData.swift in Sources */,
 				C285D083265FDF2B00E6A12B /* WebkitLogData.swift in Sources */,
 				C21B845B242A414C00A1C057 /* JsBridge.swift in Sources */,
 				C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */,
+				C224AC9128B271E30004B11F /* SiteTableCell.swift in Sources */,
 				C2FECC2F242F4C2000FD1878 /* Util.swift in Sources */,
 				C29E52D5267DF8C600909229 /* HJTextView.swift in Sources */,
 				C2939B15263DDACF00CF9389 /* ItemHistoryUrl.swift in Sources */,
 				C29E52D12678E82400909229 /* HJButton.swift in Sources */,
 				C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */,
+				C224AD4D28C552C50004B11F /* BRAppBar.swift in Sources */,
 				C2939AE92624815E00CF9389 /* DefineQuery.swift in Sources */,
 				C27444D1255AB4D9002AF201 /* PreferenceUtil.swift in Sources */,
 				C2FECC2D242F4B3900FD1878 /* CustomUI.swift in Sources */,
@@ -680,7 +740,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -735,7 +795,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -755,7 +815,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.5;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -783,7 +843,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.5;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -809,7 +869,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = BrowserTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -831,7 +891,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = BrowserTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

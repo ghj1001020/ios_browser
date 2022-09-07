@@ -33,10 +33,25 @@ class SQLiteService {
     }
     
     // HISTORY_TBL에 데이터 입력
-    public static func insertHistoryData(param: [Any]) {
+    public static func insertHistoryData(param: [Any]) -> [WebSiteData] {
+        var urlList : [WebSiteData] = []
+        
         SQLite.shared.open()
-        _ = SQLite.shared.execSQL(sql: DefineQuery.INSERT_HISTORY_URL, params: param)
+        
+        SQLite.shared.execSQL(sql: DefineQuery.INSERT_HISTORY_URL, params: param)
+        SQLite.shared.select(sql: DefineQuery.SELECT_HISTORY_URL) { (stmt: OpaquePointer?) in
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let title : String = String(cString: sqlite3_column_text(stmt, 0))
+                let url : String = String(cString: sqlite3_column_text(stmt, 1))
+                
+                let site = WebSiteData(date: "", title: title, url: url)
+                urlList.append(site)
+            }
+        }
+        
         SQLite.shared.close()
+        
+        return urlList
     }
     
     // HISTORY_TBL의 날짜그룹, 오늘날짜 히스토리 목록 조회
@@ -129,6 +144,50 @@ class SQLiteService {
         SQLite.shared.close()
         
         return historyList
+    }
+    
+    // HISTORY_TBL의 검색
+    public static func selectHistorySearchUrl(search: String) -> [WebSiteData] {
+        var siteList : [WebSiteData] = []
+        
+        SQLite.shared.open()
+
+        let params = [search]
+        SQLite.shared.select(sql: DefineQuery.SELECT_HISTORY_SEARCH, params: params) { (stmt: OpaquePointer?) in
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let date : String = String(cString: sqlite3_column_text(stmt, 0))
+                let title : String = String(cString: sqlite3_column_text(stmt, 1))
+                let url : String = String(cString: sqlite3_column_text(stmt, 2))
+                
+                let site = WebSiteData(date: date, title: title, url: url)
+                siteList.append(site)
+            }
+        }
+
+        SQLite.shared.close()
+        
+        return siteList
+    }
+    
+    // HISTORY_TBL의 URL그룹 목록
+    public static func selectHistoryUrl() -> [WebSiteData] {
+        var urlList : [WebSiteData] = []
+        
+        SQLite.shared.open()
+        
+        SQLite.shared.select(sql: DefineQuery.SELECT_HISTORY_URL) { (stmt: OpaquePointer?) in
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let title : String = String(cString: sqlite3_column_text(stmt, 0))
+                let url : String = String(cString: sqlite3_column_text(stmt, 1))
+                
+                let site = WebSiteData(date: "", title: title, url: url.lowercased())
+                urlList.append(site)
+            }
+        }
+        
+        SQLite.shared.close()
+        
+        return urlList
     }
     
     // CONSOLE_LOG_TBL

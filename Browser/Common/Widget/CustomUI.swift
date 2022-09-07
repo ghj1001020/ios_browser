@@ -73,7 +73,8 @@ extension UILabel
         // 아이콘 추가
         let _icon = UIImage(named: _icon)
         if let icon = _icon {
-            let attachIcon = NSTextAttachment(image: icon)
+            let attachIcon = NSTextAttachment()
+            attachIcon.image = icon
             attachIcon.bounds = CGRect(x: 0, y: (font.capHeight-icon.size.height)/2, width: icon.size.width, height: icon.size.height)
             attributedString.append(NSAttributedString(attachment: attachIcon))
         }

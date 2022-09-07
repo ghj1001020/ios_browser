@@ -13,11 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // 모바일/데스크탑 모드 여부
     public var isMobile = true
-
+    
     var window: UIWindow?
 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
         return true
     }
 

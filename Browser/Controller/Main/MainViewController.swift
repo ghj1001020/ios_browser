@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 
-class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogProtocol, ScriptInputDialogProtocol {
+class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialogProtocol, ScriptInputDialogProtocol {
     
     private let TAG : String = "MainViewController"
     
@@ -27,6 +27,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     @IBOutlet var btnBack: UIButton!
     @IBOutlet var btnNext: UIButton!
     @IBOutlet var chkBookmark: HJCheckBox!
+    @IBOutlet var tblSite: UITableView!
     
     
     var jsBridge : JsBridge!
@@ -35,13 +36,35 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     
     var START_TIME : Double = 0 // 웹뷰로드 시간
     
+    var yPosition : CGFloat = 0.0
+        
+    // URL 타이틀바 높이
+    @IBOutlet var conUrlBarHeight: NSLayoutConstraint!
+    // 바텀바 높이
+    @IBOutlet var conBottomMenuHeight: NSLayoutConstraint!
+    // URL검색박스 뷰
+    @IBOutlet var siteView: UIView!
+    // 북마크 목록
+    public var bookmarkList : [BookmarkData] = []
+    // 히스토리 목록
+    public var historyList : [WebSiteData] = {
+        return SQLiteService.selectHistoryUrl()
+    }()
+    // 히스토리 검색 목록
+    public var historySearchList : [WebSiteData] = []
+    // 에디트모드 > 즐겨찾기 or 히스토리
+    public var isBookmarkMode : Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initData()
         initLayout()
-        
-        
+    }
+    
+    func initData() {
+        setBookmarkList()
     }
     
     func initLayout() {
@@ -52,6 +75,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         
         // url textfield
         editUrl?.delegate = self
+        editUrl?.addTarget(self, action: #selector(textFieldChanged(_:)), for: .editingChanged)
         
         // dim 클릭 설정
         let tapDim = UITapGestureRecognizer(target: self, action: #selector(onTapDim(gesture:)) )
@@ -68,6 +92,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         wv_main?.autoresizingMask = [.flexibleWidth, .flexibleHeight]   // 뷰의 크기가 변경되면 서브뷰의 크기를 자동으로 조정
         wv_main?.backgroundColor = UIColor.white    // 웹뷰 여백또는 배경을 흰색으로
         wv_main?.isOpaque = true    // 웹뷰 배경 불투명하게
+        wv_main?.scrollView.delegate = self
         // 웹뷰 프로그레스
         wv_main?.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)    // .new - 값이 변경될때마다 이벤트를 받음
         
@@ -77,11 +102,12 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     
     // 웹뷰 url 로딩
     func loadUrl( _url : String? ) {
-        guard var strUrl = _url else {
+        if( _url.isEmpty()) {
             return
         }
-        
-        if !strUrl.contains("://") {
+
+        var strUrl : String = _url!
+        if !(strUrl.starts(with: "http://") || strUrl.starts(with: "https://")) {
             strUrl = "https://" + strUrl
         }
         
@@ -122,13 +148,6 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
             let _progress = wv_main?.estimatedProgress  // 진행정도
             guard let progress = _progress else {
                 return
-            }
-            
-            if( progress >= 1.0 ) {
-                showEditMode(isEdit: false)
-            }
-            else {
-                showEditMode(isEdit: true)
             }
             
             showWebViewLoadingBar(isShow: true, _progress: progress)
@@ -172,6 +191,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
             else {
                 _ = SQLiteService.deleteBookmarkData(url: url)
             }
+            setBookmarkList()
         }
     }
     
@@ -200,6 +220,8 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         if( isEdit ) {
             viewTxtMode.isHidden = true
             viewEditMode.isHidden = false
+            siteView.isHidden = false
+            dim.isHidden = false
             
             showKeyboard(isShow: true)
             editUrl.selectAll(nil)
@@ -207,6 +229,8 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         else {
             viewTxtMode.isHidden = false
             viewEditMode.isHidden = true
+            siteView.isHidden = true
+            dim.isHidden = true
             
             showKeyboard(isShow: false)
             editUrl.text = wv_main.url?.absoluteString
@@ -215,9 +239,15 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         isEditMode = isEdit
     }
     
+    // edit cancel
+    @IBAction func onCancelEdit(_ sender: UIButton) {
+        changeToEditMode(isEdit: false)
+    }
+    
     // edit url delete
     @IBAction func onDeleteEditUrl(_ sender: UIButton) {
         editUrl?.text = ""
+        tblSite.reloadData()
     }
     
     // edit url enter
@@ -230,29 +260,13 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
         return true
     }
     
-    // edit mode show/hide
-    func showEditMode( isEdit : Bool ) {
-        if( isEdit ) {
-            viewTxtMode.isHidden = true
-            viewEditMode.isHidden = false
-        }
-        else {
-            viewTxtMode.isHidden = false
-            viewEditMode.isHidden = true
-        }
-        
-        isEditMode = isEdit
-    }
-    
     // show/hide keyboard
     func showKeyboard( isShow : Bool ) {
         if( isShow ) {
-            dim.isHidden = false
             editUrl.becomeFirstResponder()
         }
         else {
-            dim.isHidden = true
-//            editUrl?.resignFirstResponder() // 키보드 숨김
+            editUrl?.resignFirstResponder() // 키보드 숨김
             self.view.endEditing(true)
         }
     }
@@ -263,13 +277,45 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        dim.isHidden = false
+        isBookmarkMode = true
+        tblSite.reloadData()
+    }
+    
+    // 텍스트필드 변경시마다 호출
+    @objc func textFieldChanged(_ sender: UITextField) {
+        DispatchQueue.global().sync {
+            let text = sender.text ?? ""
+            if(text.isEmpty) {
+                isBookmarkMode = true
+                self.tblSite.reloadData()
+            }
+            else {
+                isBookmarkMode = false
+                self.searchHistoryList(text)
+                self.tblSite.reloadData()
+            }
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        dim.isHidden = true
+
     }
     
+    // 북마크 목록
+    func setBookmarkList() {
+        bookmarkList = SQLiteService.selectBookmarkData()
+    }
+    
+    // 히스토리 목록 검색
+    func searchHistoryList(_ search: String) {
+        let _search = search.lowercased()
+        historySearchList.removeAll()
+        for data in historyList {
+            if(data.url.contains(_search) || data.title.contains(_search)) {
+                historySearchList.append(data)
+            }
+        }
+    }
     
     // 이전페이지로 이동
     @IBAction func onToolbarPrevPage(_ sender: UIButton) {
@@ -304,27 +350,16 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     
     // 북마크로 이동
     @IBAction func onToolbarBookmark(_ sender: UIButton) {
-        let storyboard : UIStoryboard = UIStoryboard(name: "Bookmark", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(identifier: "bookmarkViewController") as? BookmarkViewController else {
-            return
-        }
-        controller.modalPresentationStyle = .fullScreen
-        controller.delegate = self
-        self.present(controller, animated: true, completion: nil)
+        let controller: BookmarkViewController? = controller(type: BookmarkViewController.self, name: "Bookmark", id: "bookmarkViewController", bundle: nil)
+        controller?.delegate = self
+        present(controller)
     }
     
     // 설정으로 이동
     @IBAction func onToolbarMore(_ sender: UIButton) {
-        let storyboard : UIStoryboard = UIStoryboard(name: "MoreDialog", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: "MoreDialog" ) as? MoreDialogController else
-        {
-            return
-        }
-
-        controller.modalPresentationStyle = .overCurrentContext // 컨텐츠가 다른 뷰 컨트롤러의 컨텐츠 위에 표시
-        controller.listener = self
-        
-        self.present(controller, animated: false, completion: nil)
+        let bottomSheet : MenuBottomSheetController? = controller(type: MenuBottomSheetController.self, name: "MenuBottomSheetController", id: "menuBottomSheet", bundle: nil)
+        bottomSheet?.listener = self
+        self.presentDialog(bottomSheet)
     }
     
     
@@ -486,7 +521,11 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
                 let contents  = try FileManager.default.contentsOfDirectory(at: dirUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
                 for content in contents {
                     let downloadView = UIActivityViewController(activityItems: [content], applicationActivities: nil)
-                    downloadView.excludedActivityTypes = [.addToReadingList, .airDrop, .assignToContact, .copyToPasteboard, .mail, .markupAsPDF, .message, .openInIBooks, .postToFacebook, .postToFlickr, .postToTencentWeibo, .postToTwitter, .postToVimeo, .postToWeibo, .print , .saveToCameraRoll]
+                    downloadView.excludedActivityTypes = [.addToReadingList, .airDrop, .assignToContact, .copyToPasteboard, .mail, .message, .openInIBooks, .postToFacebook, .postToFlickr, .postToTencentWeibo, .postToTwitter, .postToVimeo, .postToWeibo, .print , .saveToCameraRoll]
+                    
+                    if #available(iOS 11.0, *) {
+                        downloadView.excludedActivityTypes?.append(.markupAsPDF)
+                    }
 
                     self.present( downloadView, animated: true, completion: nil )
                 }
@@ -498,7 +537,7 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     }
     
     // 더보기 메뉴 클릭 리스너
-    func onMoreMenuClick(selected: Int) {
+    func onMenuBottomSheetClick(_ selected: String) {
         switch selected {
         // 쿠키
         case DefineCode.MORE_MENU_COOKIE:
@@ -604,15 +643,9 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     
     // 방문기록 페이지로 이동
     func moveHistory() {
-        let storyboard : UIStoryboard = UIStoryboard(name: "History", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: "History") as? HistoryViewController else {
-            return
-        }
-        
-        controller.modalPresentationStyle = .fullScreen
-        controller.delegate = self
-        
-        self.present(controller, animated: true, completion: nil )
+        let controller = self.controller(type: HistoryViewController.self, name: "History", id: "history", bundle: nil)
+        controller?.delegate = self
+        self.present(controller)
     }
     
     // 콘솔로그 페이지로 이동
@@ -629,13 +662,8 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
     
     // 웹킷로그 페이지로 이동
     func moveWebkitLog() {
-        let storyboard : UIStoryboard = UIStoryboard(name: "WebkitLog", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(identifier: "WebkitLog") as? WebkitLogViewController else {
-            return
-        }
-        controller.modalPresentationStyle = .fullScreen
-        
-        self.present(controller, animated: true, completion: nil)
+        let controller : WebkitLogViewController? = controller(type: WebkitLogViewController.self, name: "WebkitLog", id: "WebkitLog", bundle: nil)
+        present(controller)
     }
     
     // 자바스크립트 실행
@@ -671,14 +699,9 @@ class MainViewController : UIViewController , UITextFieldDelegate , MoreDialogPr
                 source = String(describing: result)
             }
             
-            let storyboard : UIStoryboard = UIStoryboard(name: "HtmlElement", bundle: nil)
-            guard let controller = storyboard.instantiateViewController(identifier: "htmlElement") as? HtmlElementViewController else {
-                return
-            }
-            
-            controller.element = source
-            controller.modalPresentationStyle = .fullScreen
-            self.present(controller, animated: true, completion: nil)
+            let controller : HtmlElementViewController? = self.controller(type: HtmlElementViewController.self, name: "HtmlElement", id: "htmlElement", bundle: nil)
+            controller?.element = source
+            self.present(controller)
         }
     }
     
@@ -793,9 +816,7 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         let _description : String = "웹뷰에서 탐색이 시작되었음을 알립니다."
         SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
         // end 웹킷로그
-    
-        showEditMode(isEdit: true)
-        
+            
         // 프로그레스바 표시
         showWebViewLoadingBar( isShow: true, _progress: 0 )
         
@@ -845,9 +866,7 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         let _description : String = "탐색이 완료되었음을 알립니다."
         SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
         // end 웹킷로그
-        
-        showEditMode(isEdit: false)
-        
+                
         // 프로그레스바 숨김
         showWebViewLoadingBar( isShow: false, _progress: 0 )
         
@@ -862,7 +881,7 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
             // 방문한페이지 저장
             let date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
             let param : [String] = [date, item.title ?? "", item.url.absoluteString]
-            SQLiteService.insertHistoryData(param:param)
+            historyList = SQLiteService.insertHistoryData(param:param)
 
             // 즐겨찾기 여부
             chkBookmark.isChecked = SQLiteService.selectBookmarkCntByURL(url: item.url.absoluteString)
@@ -1160,5 +1179,87 @@ extension MainViewController : URLItemProtocol {
     
     func onUrlClick(url: String) {
         loadUrl(_url: url)
+    }
+}
+
+// 웹킷 스크롤시 타이틀바 바텀바 show/hide
+extension MainViewController : UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(!isEditMode) {
+            let y = scrollView.panGestureRecognizer.translation(in: scrollView.superview).y
+            if(y > 0) {
+                // Up
+                if(y != yPosition) {
+                    self.conUrlBarHeight.constant = 56
+                    self.conBottomMenuHeight.constant = 48
+                }
+            }
+            else {
+                // Down
+                if(y != yPosition) {
+                    self.conUrlBarHeight.constant = 0
+                    self.conBottomMenuHeight.constant = 0
+                }
+            }
+            yPosition = y;
+        }
+    }
+}
+
+// URL 타이틀바 즐겨찾기/최근 목록
+extension MainViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        sectionView.backgroundColor = BRColor.colorByString(rgb: "#F2F2F2")
+        let titleLabel = UILabel()
+        titleLabel.frame = CGRect.init(x: 8, y: 0, width: sectionView.frame.width-16, height: 40)
+        titleLabel.text = isBookmarkMode ? "즐겨찾기" : "히스토리"
+        titleLabel.sizeToFit()
+        titleLabel.font = .boldSystemFont(ofSize: 15)
+        sectionView.addSubview(titleLabel)
+        titleLabel.center.y = sectionView.center.y
+        
+        return sectionView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return isBookmarkMode ? bookmarkList.count : historySearchList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "siteCell") as? SiteTableCell else {
+            return UITableViewCell()
+        }
+        
+        if isBookmarkMode {
+            cell.lbTitle.text = bookmarkList[indexPath.row].title
+            cell.lbUrl.text = bookmarkList[indexPath.row].url
+            cell.divider.isHidden = (bookmarkList.count-1 == indexPath.row) ? true : false
+        }
+        else {
+            cell.lbTitle.text = historySearchList[indexPath.row].title
+            cell.lbUrl.text = historySearchList[indexPath.row].url
+            cell.divider.isHidden = (historySearchList.count-1 == indexPath.row) ? true : false
+        }
+        
+        return cell
+    }
+    
+    // 테이블셀 클릭
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let url = isBookmarkMode ? bookmarkList[indexPath.row].url : historySearchList[indexPath.row].url
+        
+        loadUrl(_url: url)
+        changeToEditMode(isEdit: false)
     }
 }

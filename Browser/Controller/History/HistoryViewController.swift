@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, HistoryProtocol, UISearchBarDelegate {
+class HistoryViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, HistoryProtocol, UISearchBarDelegate {
     
     private let TAG = "HistoryViewController"
         
@@ -20,7 +20,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var delegate : URLItemProtocol?
     
     @IBOutlet var tableHistory: UITableView!
-    @IBOutlet var btnMore: UIButton!
+//    @IBOutlet var btnMore: UIButton!
     
     // 검색바
     let searchController = UISearchController()
@@ -28,6 +28,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setAppBar()
+        setAppBarTitle("방문한 페이지")
         
         // 섹션 nib
         let nibSection = UINib(nibName: "ItemHistoryDate", bundle: nil)
@@ -63,15 +65,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableHistory.dataSource = self
         tableHistory.delegate = self
         
-
-        self.navigationItem.hidesSearchBarWhenScrolling = true
+        if #available(iOS 11.0, *) {
+            self.navigationItem.hidesSearchBarWhenScrolling = true
+        }
 
         // 이미지를 작게 보여주기 위해 버튼에 패딩추가
-        btnMore.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-    }
-    
-    @IBAction func onBack(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+//        btnMore.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -169,27 +168,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         delegate?.onUrlClick(url: url)
         dismiss(animated: true, completion: nil)
     }
-
-    // 삭제, 전체삭제, 검색팝업
-    @IBAction func onMore(_ sender: UIButton) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "검색", style: .default, handler: { _ in
-            
-        }))
-        // 전체삭제
-        alert.addAction(UIAlertAction(title: "전체 삭제", style: .default, handler: { _ in
-            let action1 = UIAlertAction(title: "취소", style: .cancel)
-            let action2 = UIAlertAction(title: "확인", style: .default) { (action: UIAlertAction) in
-                SQLiteService.deleteHistoryDataAll()
-                self.historyList.removeAll()
-                self.tableHistory.reloadData()
-            }
-            _ = Util.showAlertDialog(controller: self, title: "", message: "전체 삭제 하시겠습니까?", action1: action1, action2: action2)
-        }))
-        // 취소
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        
-        present(alert, animated: true)
+    
+    // 전체삭제
+    override func onMoreButtonClick() {
+        let alert = AlertUtil.ActionSheet(self)
+        alert.addAction("전체 삭제") {
+            SQLiteService.deleteHistoryDataAll()
+            self.historyList.removeAll()
+            self.tableHistory.reloadData()
+        }
+        alert.show()
     }
     
     // 검색어 입력시 콜백
@@ -207,5 +195,4 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             tableHistory.reloadData()
         }
     }
-    
 }

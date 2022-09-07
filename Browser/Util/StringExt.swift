@@ -23,6 +23,14 @@ extension Optional where Wrapped == String {
         
         return value
     }
+    
+    // nil or "" - true
+    public func isEmpty() -> Bool {
+        if(self == nil || self!.isEmpty) {
+            return true
+        }
+        return false
+    }
 }
 
 extension String {

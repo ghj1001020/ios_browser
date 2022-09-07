@@ -25,7 +25,7 @@ class ErrorDialogController: UIViewController , WKUIDelegate , WKNavigationDeleg
         wv_error.navigationDelegate = self
         
         wv_error?.autoresizingMask = [.flexibleWidth, .flexibleHeight]   // 뷰의 크기가 변경되면 서브뷰의 크기를 자동으로 조정
-        wv_error?.backgroundColor = Util.uiColorByHex(hex: 0xeaeaea)    // 웹뷰 여백또는 배경을 흰색으로
+        wv_error?.backgroundColor = BRColor.colorByHex(hex: 0xeaeaea)    // 웹뷰 여백또는 배경을 흰색으로
         wv_error?.isOpaque = true    // 웹뷰 배경 불투명하게
         
         let htmlUrl = Bundle.main.url(forResource: "ErrorPage", withExtension: "html", subdirectory: "www")

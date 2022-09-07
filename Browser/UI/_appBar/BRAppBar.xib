@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="yJp-nt-ohZ" customClass="BRAppBar" customModule="Browser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBm-ju-G8j">
+                    <rect key="frame" x="8" y="1" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="n93-Z6-A6h"/>
+                        <constraint firstAttribute="height" constant="48" id="tZj-iD-cY7"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="btn_back"/>
+                    <connections>
+                        <action selector="onBackButtonClick:" destination="yJp-nt-ohZ" eventType="touchUpInside" id="6ND-kM-dr3"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이틀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgM-Gz-2QF">
+                    <rect key="frame" x="68" y="13.5" width="49.5" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J46-av-Bbm">
+                    <rect key="frame" x="366" y="5" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="W2c-eP-NCj"/>
+                        <constraint firstAttribute="width" constant="40" id="xQc-xc-laJ"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="ic_more2"/>
+                    <connections>
+                        <action selector="onMoreButtonClick:" destination="yJp-nt-ohZ" eventType="touchUpInside" id="0Yl-Th-xbZ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="dgM-Gz-2QF" firstAttribute="centerY" secondItem="yJp-nt-ohZ" secondAttribute="centerY" id="gFp-Pl-x7A"/>
+                <constraint firstAttribute="trailing" secondItem="J46-av-Bbm" secondAttribute="trailing" constant="8" id="gFw-fi-aHv"/>
+                <constraint firstItem="lBm-ju-G8j" firstAttribute="leading" secondItem="yJp-nt-ohZ" secondAttribute="leading" constant="8" id="lKr-hp-xuz"/>
+                <constraint firstItem="lBm-ju-G8j" firstAttribute="centerY" secondItem="yJp-nt-ohZ" secondAttribute="centerY" id="npB-2p-j1X"/>
+                <constraint firstItem="dgM-Gz-2QF" firstAttribute="leading" secondItem="lBm-ju-G8j" secondAttribute="trailing" constant="12" id="qqM-Om-7pf"/>
+                <constraint firstItem="J46-av-Bbm" firstAttribute="centerY" secondItem="yJp-nt-ohZ" secondAttribute="centerY" id="uDA-yT-Q7v"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="lbTitle" destination="dgM-Gz-2QF" id="vaF-GN-J8C"/>
+            </connections>
+            <point key="canvasLocation" x="328" y="102"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_back" width="49" height="49"/>
+        <image name="ic_more2" width="36" height="36"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

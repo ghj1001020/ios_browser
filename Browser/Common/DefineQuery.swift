@@ -63,6 +63,14 @@ class DefineQuery {
                                               "     AND SUBSTR(VISIT_DATE, 1, 8)==? " +
                                               "ORDER BY VISIT_DATE DESC"
     
+    // 히스토리 테이블의 URL 데이터
+    public static let SELECT_HISTORY_URL = "SELECT   TITLE          , " +
+                                           "         URL            , " +
+                                           "         MAX(VISIT_DATE)  " +
+                                           "FROM     HISTORY_TBL      " +
+                                           "GROUP BY URL              " +
+                                           "ORDER BY VISIT_DATE DESC  "
+    
     // 콘솔로그 테이블 생성
     public static let CREATE_CONSOLE_LOG_TABLE = "CREATE TABLE IF NOT EXISTS CONSOLE_LOG_TBL ( " +
                                                  "      LOG_DATE VARCHAR(14)  NOT NULL , " +

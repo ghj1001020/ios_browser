@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol MoreDialogProtocol {
-    func onMoreMenuClick( selected : Int )
+    func onMoreMenuClick( selected : String )
 }
 
 class MoreDialogController : UIViewController {
