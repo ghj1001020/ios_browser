@@ -11,6 +11,16 @@ import UIKit
 
 class BRColor {
     
+    // 배경색
+    static func background() -> UIColor {
+        return colorByString(rgb: "#EEEEEE")
+    }
+    
+    // 상태바 배경색
+    static func status() -> UIColor {
+        return colorByString(rgb: "#30A9DE")
+    }
+    
     // 타이틀바 배경색
     static func bgAppBar() -> UIColor {
         return colorByString(rgb: "#A3DAFF")

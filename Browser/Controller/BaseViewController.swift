@@ -17,7 +17,14 @@ class BaseViewController: UIViewController, BRAppBarProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = BRColor.background()
+    }
+    
+    // 상태바 설정
+    func setStatusBar() {
+        let status = StatusBar(parentView: self.view)
+        self.view.addSubview(status)
+        self.view.addConstraints(status.getConstrains())
     }
     
     // 앱바 설정

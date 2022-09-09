@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WebkitLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WebkitLogViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     // 웹킷로그 목록 데이터
     private var webkitLogList : [WebkitLogData] = {
@@ -19,10 +19,10 @@ class WebkitLogViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    @IBAction func onBack(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        
+        setAppBar()
+        setAppBarTitle("WebKit Log")
+        setStatusBar()
     }
     
 

@@ -58,7 +58,7 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setStatusBar()
         initData()
         initLayout()
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,65 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUn-Yp-3uq" userLabel="Status">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <color key="backgroundColor" red="0.18823529410000001" green="0.66274509800000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOP-Dw-lz9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="x3H-mr-Hco"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjb-Q3-ERq" userLabel="Titlebar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtB-th-yCc" userLabel="back">
-                                        <rect key="frame" x="14" y="1.5" width="41" height="41"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="41" id="2kP-0e-JVr"/>
-                                            <constraint firstAttribute="width" constant="41" id="UWb-hj-3zm"/>
-                                        </constraints>
-                                        <state key="normal" backgroundImage="btn_back"/>
-                                        <connections>
-                                            <action selector="onBack:" destination="bbL-1i-K4x" eventType="touchUpInside" id="nOH-UT-J6K"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WebKit Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klZ-10-1p1">
-                                        <rect key="frame" x="63" y="10.5" width="97.5" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWe-rr-NYE">
-                                        <rect key="frame" x="366" y="2" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="YJj-0s-KD0"/>
-                                            <constraint firstAttribute="width" constant="40" id="gJh-ZD-5li"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="ic_trash"/>
-                                        <connections>
-                                            <action selector="onWebkitLogDeleteAll:" destination="bbL-1i-K4x" eventType="touchUpInside" id="UnK-pr-TMg"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.63921568630000003" green="0.85490196080000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="40y-UQ-vMY"/>
-                                    <constraint firstItem="WtB-th-yCc" firstAttribute="centerY" secondItem="jjb-Q3-ERq" secondAttribute="centerY" id="5Up-mL-83k"/>
-                                    <constraint firstItem="klZ-10-1p1" firstAttribute="centerY" secondItem="jjb-Q3-ERq" secondAttribute="centerY" id="Auo-k3-Tik"/>
-                                    <constraint firstItem="klZ-10-1p1" firstAttribute="leading" secondItem="WtB-th-yCc" secondAttribute="trailing" constant="8" id="ICK-uT-m7b"/>
-                                    <constraint firstItem="wWe-rr-NYE" firstAttribute="centerY" secondItem="jjb-Q3-ERq" secondAttribute="centerY" id="Uwe-7m-uAG"/>
-                                    <constraint firstAttribute="trailing" secondItem="wWe-rr-NYE" secondAttribute="trailing" constant="8" id="VmC-7c-ZYl"/>
-                                    <constraint firstItem="WtB-th-yCc" firstAttribute="leading" secondItem="jjb-Q3-ERq" secondAttribute="leading" constant="14" id="rY5-ZX-imI"/>
+                                    <constraint firstAttribute="height" constant="50" id="K55-x2-EOf"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="45K-Tf-9qj">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="webkitLogCell" id="AB4-sa-wTP" customClass="WebkitLogTableCell" customModule="Browser">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="226.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="226.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AB4-sa-wTP" id="RBp-g7-Mjq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="226.5"/>
@@ -229,18 +185,16 @@ message.body : aaaaaa</string>
                         <constraints>
                             <constraint firstItem="45K-Tf-9qj" firstAttribute="leading" secondItem="OuB-ei-ACm" secondAttribute="leading" id="6sE-9b-0Ve"/>
                             <constraint firstItem="OuB-ei-ACm" firstAttribute="bottom" secondItem="45K-Tf-9qj" secondAttribute="bottom" id="6zb-9a-HdC"/>
-                            <constraint firstItem="45K-Tf-9qj" firstAttribute="top" secondItem="jjb-Q3-ERq" secondAttribute="bottom" id="8pq-uQ-3w6"/>
-                            <constraint firstItem="jjb-Q3-ERq" firstAttribute="trailing" secondItem="OuB-ei-ACm" secondAttribute="trailing" id="ADt-ad-IAj"/>
-                            <constraint firstItem="AUn-Yp-3uq" firstAttribute="trailing" secondItem="OuB-ei-ACm" secondAttribute="trailing" id="DcG-zi-lnl"/>
-                            <constraint firstItem="AUn-Yp-3uq" firstAttribute="leading" secondItem="OuB-ei-ACm" secondAttribute="leading" id="LoF-In-Ef3"/>
-                            <constraint firstItem="AUn-Yp-3uq" firstAttribute="top" secondItem="fDu-Bo-JZe" secondAttribute="top" id="M6G-vx-fwl"/>
-                            <constraint firstItem="jjb-Q3-ERq" firstAttribute="top" secondItem="OuB-ei-ACm" secondAttribute="top" id="gDG-sd-CRk"/>
-                            <constraint firstItem="jjb-Q3-ERq" firstAttribute="leading" secondItem="OuB-ei-ACm" secondAttribute="leading" id="nWa-3N-4dE"/>
+                            <constraint firstItem="WOP-Dw-lz9" firstAttribute="leading" secondItem="OuB-ei-ACm" secondAttribute="leading" id="7fz-lr-h7k"/>
+                            <constraint firstItem="45K-Tf-9qj" firstAttribute="top" secondItem="WOP-Dw-lz9" secondAttribute="bottom" id="D3j-RH-R2l"/>
+                            <constraint firstItem="WOP-Dw-lz9" firstAttribute="top" secondItem="OuB-ei-ACm" secondAttribute="top" id="rmm-5x-CD8"/>
                             <constraint firstItem="OuB-ei-ACm" firstAttribute="trailing" secondItem="45K-Tf-9qj" secondAttribute="trailing" id="v7k-aR-0QJ"/>
+                            <constraint firstItem="WOP-Dw-lz9" firstAttribute="trailing" secondItem="OuB-ei-ACm" secondAttribute="trailing" id="vkc-dz-hA0"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tblWebkitLog" destination="45K-Tf-9qj" id="s03-zn-0xg"/>
+                        <outlet property="titleBarView" destination="WOP-Dw-lz9" id="qOc-6s-92O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7wo-dx-L85" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -249,8 +203,6 @@ message.body : aaaaaa</string>
         </scene>
     </scenes>
     <resources>
-        <image name="btn_back" width="98" height="98"/>
-        <image name="ic_trash" width="36" height="36"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -29,6 +29,7 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         setAppBar()
         setAppBarTitle("방문한 페이지")
+        setStatusBar()
 
         // 헤더뷰 - 검색바
         searchController.searchResultsUpdater = self

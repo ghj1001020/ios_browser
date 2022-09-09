@@ -17,10 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mis-rY-LaL" userLabel="Status">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <color key="backgroundColor" red="0.18823529410000001" green="0.66274509800000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJ8-tN-5UB">
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -38,13 +34,9 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O5c-bq-HRt"/>
-                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Mis-rY-LaL" firstAttribute="leading" secondItem="O5c-bq-HRt" secondAttribute="leading" id="33T-cx-qfU"/>
-                            <constraint firstItem="O5c-bq-HRt" firstAttribute="top" secondItem="Mis-rY-LaL" secondAttribute="bottom" id="6Jl-sr-rjs"/>
-                            <constraint firstItem="Mis-rY-LaL" firstAttribute="trailing" secondItem="O5c-bq-HRt" secondAttribute="trailing" id="Aea-G9-ByK"/>
                             <constraint firstItem="Hui-38-6sO" firstAttribute="leading" secondItem="O5c-bq-HRt" secondAttribute="leading" id="Cx8-4o-xoC"/>
-                            <constraint firstItem="Mis-rY-LaL" firstAttribute="top" secondItem="vod-WY-UdU" secondAttribute="top" id="FBP-5e-n8q"/>
                             <constraint firstItem="CJ8-tN-5UB" firstAttribute="leading" secondItem="O5c-bq-HRt" secondAttribute="leading" id="JBz-ze-Hdd"/>
                             <constraint firstItem="CJ8-tN-5UB" firstAttribute="top" secondItem="O5c-bq-HRt" secondAttribute="top" id="OkM-Mq-QyG"/>
                             <constraint firstItem="O5c-bq-HRt" firstAttribute="trailing" secondItem="Hui-38-6sO" secondAttribute="trailing" id="cei-KY-qXa"/>
