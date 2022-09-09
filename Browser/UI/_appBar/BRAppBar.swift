@@ -10,7 +10,7 @@ import UIKit
 
 protocol BRAppBarProtocol {
     func onBackButtonClick()
-    func onMoreButtonClick()
+    func onDeleteButtonClick()
 }
 
 class BRAppBar: UIView {
@@ -50,8 +50,8 @@ class BRAppBar: UIView {
         delegate?.onBackButtonClick()
     }
     
-    @IBAction func onMoreButtonClick(_ sender: UIButton) {
-        delegate?.onMoreButtonClick()
+    @IBAction func onDeleteButtonClick(_ sender: UIButton) {
+        delegate?.onDeleteButtonClick()
     }
     
 }

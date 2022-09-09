@@ -16,10 +16,29 @@ class BRColor {
         return colorByString(rgb: "#A3DAFF")
     }
     
+    // 테이블 로그섹션 배경색
+    static func bgTableSection() -> UIColor {
+        return colorByString(rgb: "#EEEEEE")
+    }
+    
+    // 디바이더
+    static func divider() -> UIColor {
+        return colorByString(rgb: "#DDDDDD")
+    }
+    
     // 글자색
+    static func text() -> UIColor {
+        return colorByString(rgb: "#101010")
+    }
+    
+    static func date() -> UIColor {
+        return colorByString(rgb: "#888888")
+    }
+
     static func black() -> UIColor {
         return colorByString(rgb: "#000000")
     }
+    
     
     // hex int -> UIColor 로 변환
     static func colorByHex(hex:Int , alpha:Float = 1.0) -> UIColor {

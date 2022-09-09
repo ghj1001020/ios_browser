@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class HistoryViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, HistoryProtocol, UISearchBarDelegate {
+class HistoryViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, LogTableSectionDelegate, UISearchBarDelegate {
     
     private let TAG = "HistoryViewController"
         
@@ -20,7 +20,6 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
     var delegate : URLItemProtocol?
     
     @IBOutlet var tableHistory: UITableView!
-//    @IBOutlet var btnMore: UIButton!
     
     // 검색바
     let searchController = UISearchController()
@@ -30,25 +29,7 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         setAppBar()
         setAppBarTitle("방문한 페이지")
-        
-        // 섹션 nib
-        let nibSection = UINib(nibName: "ItemHistoryDate", bundle: nil)
-        tableHistory.register(nibSection, forHeaderFooterViewReuseIdentifier: "historyDate")
-        // 셀 nib
-        let nibCell = UINib(nibName: "ItemHistoryUrl", bundle: nil)
-        tableHistory.register(nibCell, forCellReuseIdentifier: "historyUrl")
-        
-        // 셀높이 auto resize
-        tableHistory.rowHeight = UITableView.automaticDimension
-        tableHistory.estimatedRowHeight = 88
-        // 섹션높이 auto resize
-        tableHistory.sectionHeaderHeight = UITableView.automaticDimension
-        tableHistory.estimatedSectionHeaderHeight = 48
-        // 푸터높이 0
-        tableHistory.sectionFooterHeight = 0
-        tableHistory.estimatedSectionFooterHeight = 0
-        // 비어있는 셀의 divider 제거
-        tableHistory.tableFooterView = UIView()
+
         // 헤더뷰 - 검색바
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -61,16 +42,10 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
         
         // 검색바 > 최초진입시 검색바 안보이게 위로 올림
         tableHistory.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.height)
-
-        tableHistory.dataSource = self
-        tableHistory.delegate = self
         
         if #available(iOS 11.0, *) {
             self.navigationItem.hidesSearchBarWhenScrolling = true
         }
-
-        // 이미지를 작게 보여주기 위해 버튼에 패딩추가
-//        btnMore.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -87,16 +62,17 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "historyDate") as? ItemHistoryDate else {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "logSection") as? LogTableViewSection else {
             return UITableViewHeaderFooterView()
         }
         
         let historyDate = historyList[section].date
         let date = Util.convertDateFormat(date: historyDate, fromFormat: "yyyyMMdd", toFormat: "yyyy-MM-dd")
         let dayOfWeek = "(\(Util.getDayOfWeekFromDateString(date: historyDate, format: "yyyyMMdd")))"
+        
         header.section = section
         header.delegate = self
-        header.lbDate.text = "\(date) \(dayOfWeek)"
+        header.lbSection.text = "\(date) \(dayOfWeek)"
         header.imgArrow.image = historyList[section].isOpen ? UIImage(named: "ic_arrow_u") : UIImage(named: "ic_arrow_d")
         
         return header
@@ -107,22 +83,18 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "historyUrl") as? ItemHistoryUrl else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "logCell") as? LogTableViewCell else {
             return UITableViewCell()
         }
-        
         cell.section = indexPath.section
         cell.row = indexPath.row
-        cell.delegate = self
-  
+        cell.initUI()
+        
         let date = historyList[indexPath.section].dataList[indexPath.row].date
         cell.lbDate.text = Util.convertDateFormat(date: date, fromFormat: "yyyyMMddHHmmss", toFormat: "yyyy-MM-dd HH:mm:ss")
-        cell.lbUrl.text = historyList[indexPath.section].dataList[indexPath.row].url
         cell.lbTitle.text = historyList[indexPath.section].dataList[indexPath.row].title
-        
-        if( indexPath.row >= historyList[indexPath.section].dataList.count-1 ) {
-            cell.divider.isHidden = true
-        }
+        cell.lbContent.text = historyList[indexPath.section].dataList[indexPath.row].url
+        cell.divider.isHidden = (indexPath.row == historyList[indexPath.section].dataList.count - 1) ? true : false
         
         return cell
     }
@@ -156,21 +128,32 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
         return UITableView.automaticDimension
     }
     
+    // 테이블뷰 하단 여백제거
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let url : String = historyList[indexPath.section].dataList[indexPath.row].url
+        delegate?.onUrlClick(url: url)
+        dismiss(animated: true, completion: nil)
+    }
+    
     // 테이블뷰 헤더섹션 > 날짜클릭
-    func onHistoryDateClick(section: Int) {
+    func onSectionClick(section: Int) {
         historyList[section].isOpen = !historyList[section].isOpen
         tableHistory.reloadSections(IndexSet(integer: section), with: .automatic)
     }
-    
+
     // 테이블뷰 셀 > URL클릭
-    func onHistoryUrlClick(section: Int, row: Int) {
+    func onRawClick(section: Int, row: Int) {
         let url : String = historyList[section].dataList[row].url
         delegate?.onUrlClick(url: url)
         dismiss(animated: true, completion: nil)
     }
     
     // 전체삭제
-    override func onMoreButtonClick() {
+    override func onDeleteButtonClick() {
         let alert = AlertUtil.ActionSheet(self)
         alert.addAction("전체 삭제") {
             SQLiteService.deleteHistoryDataAll()

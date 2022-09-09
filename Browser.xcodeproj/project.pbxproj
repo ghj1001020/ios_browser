@@ -22,6 +22,11 @@
 		C224AD4D28C552C50004B11F /* BRAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD4C28C552C50004B11F /* BRAppBar.swift */; };
 		C224AD5028C554390004B11F /* BRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD4F28C554390004B11F /* BRColor.swift */; };
 		C224AD5228C816580004B11F /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD5128C816580004B11F /* AlertUtil.swift */; };
+		C224AD5628C870820004B11F /* LogTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD5528C870820004B11F /* LogTableView.swift */; };
+		C224AD5828C872170004B11F /* LogTableViewSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = C224AD5728C872170004B11F /* LogTableViewSection.xib */; };
+		C224AD5A28C8722F0004B11F /* LogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C224AD5928C8722F0004B11F /* LogTableViewCell.xib */; };
+		C224AD5C28C873BA0004B11F /* LogTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD5B28C873BA0004B11F /* LogTableViewSection.swift */; };
+		C224AD5E28C88E900004B11F /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD5D28C88E900004B11F /* LogTableViewCell.swift */; };
 		C22D0EC8269F29E900C9C748 /* HJCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */; };
 		C22D0ECA26A05FEC00C9C748 /* Bookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */; };
 		C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */; };
@@ -53,10 +58,6 @@
 		C2939AF62629F0D800CF9389 /* PrefUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AF52629F0D800CF9389 /* PrefUtil.swift */; };
 		C2939AFB262BD36200CF9389 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AFA262BD36200CF9389 /* HistoryData.swift */; };
 		C2939AFF262CEF0400CF9389 /* DefineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939AFE262CEF0400CF9389 /* DefineType.swift */; };
-		C2939B0626344F3700CF9389 /* ItemHistoryUrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2939B0526344F3700CF9389 /* ItemHistoryUrl.xib */; };
-		C2939B0926345DE700CF9389 /* ItemHistoryDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2939B0826345DE600CF9389 /* ItemHistoryDate.xib */; };
-		C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939B0B263513C600CF9389 /* ItemHistoryDate.swift */; };
-		C2939B15263DDACF00CF9389 /* ItemHistoryUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2939B14263DDACE00CF9389 /* ItemHistoryUrl.swift */; };
 		C29E52C7267173B100909229 /* ScriptInputDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E52C6267173B100909229 /* ScriptInputDialogController.swift */; };
 		C29E52CB2676A59A00909229 /* ScriptInputDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29E52CA2676A59A00909229 /* ScriptInputDialog.storyboard */; };
 		C29E52D12678E82400909229 /* HJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E52D02678E82400909229 /* HJButton.swift */; };
@@ -70,8 +71,6 @@
 		C2AA46532756D62600F213EB /* DefaultsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA46522756D62600F213EB /* DefaultsUtil.swift */; };
 		C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2DB7AB3256967D8002A5897 /* Index.storyboard */; };
 		C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB7AB6256967F6002A5897 /* IndexViewController.swift */; };
-		C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */; };
-		C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */; };
 		C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CE824E030E3001CAE44 /* Cookie.storyboard */; };
 		C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CEA24E03102001CAE44 /* CookieViewController.swift */; };
 		C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CEC24E6F4DE001CAE44 /* CookieTableCell.swift */; };
@@ -124,6 +123,11 @@
 		C224AD4C28C552C50004B11F /* BRAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAppBar.swift; sourceTree = "<group>"; };
 		C224AD4F28C554390004B11F /* BRColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRColor.swift; sourceTree = "<group>"; };
 		C224AD5128C816580004B11F /* AlertUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
+		C224AD5528C870820004B11F /* LogTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableView.swift; sourceTree = "<group>"; };
+		C224AD5728C872170004B11F /* LogTableViewSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogTableViewSection.xib; sourceTree = "<group>"; };
+		C224AD5928C8722F0004B11F /* LogTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogTableViewCell.xib; sourceTree = "<group>"; };
+		C224AD5B28C873BA0004B11F /* LogTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewSection.swift; sourceTree = "<group>"; };
+		C224AD5D28C88E900004B11F /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJCheckBox.swift; sourceTree = "<group>"; };
 		C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bookmark.storyboard; sourceTree = "<group>"; };
 		C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -157,10 +161,6 @@
 		C2939AF52629F0D800CF9389 /* PrefUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefUtil.swift; sourceTree = "<group>"; };
 		C2939AFA262BD36200CF9389 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		C2939AFE262CEF0400CF9389 /* DefineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineType.swift; sourceTree = "<group>"; };
-		C2939B0526344F3700CF9389 /* ItemHistoryUrl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemHistoryUrl.xib; sourceTree = "<group>"; };
-		C2939B0826345DE600CF9389 /* ItemHistoryDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemHistoryDate.xib; sourceTree = "<group>"; };
-		C2939B0B263513C600CF9389 /* ItemHistoryDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHistoryDate.swift; sourceTree = "<group>"; };
-		C2939B14263DDACE00CF9389 /* ItemHistoryUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHistoryUrl.swift; sourceTree = "<group>"; };
 		C29E52C6267173B100909229 /* ScriptInputDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptInputDialogController.swift; sourceTree = "<group>"; };
 		C29E52CA2676A59A00909229 /* ScriptInputDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScriptInputDialog.storyboard; sourceTree = "<group>"; };
 		C29E52D02678E82400909229 /* HJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJButton.swift; sourceTree = "<group>"; };
@@ -174,8 +174,6 @@
 		C2AA46522756D62600F213EB /* DefaultsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsUtil.swift; sourceTree = "<group>"; };
 		C2DB7AB3256967D8002A5897 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		C2DB7AB6256967F6002A5897 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
-		C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreDialog.storyboard; sourceTree = "<group>"; };
-		C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDialogController.swift; sourceTree = "<group>"; };
 		C2F43CE824E030E3001CAE44 /* Cookie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cookie.storyboard; sourceTree = "<group>"; };
 		C2F43CEA24E03102001CAE44 /* CookieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieViewController.swift; sourceTree = "<group>"; };
 		C2F43CEC24E6F4DE001CAE44 /* CookieTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieTableCell.swift; sourceTree = "<group>"; };
@@ -248,8 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				C29E52C0267170C900909229 /* popup */,
-				C2F43CDF24D6F5B9001CAE44 /* MoreDialog.storyboard */,
-				C2F43CE124D6F5CB001CAE44 /* MoreDialogController.swift */,
 				C21B845524279F5100A1C057 /* Main.storyboard */,
 				C21B845724279F6A00A1C057 /* MainViewController.swift */,
 				C224AC9028B271E30004B11F /* SiteTableCell.swift */,
@@ -302,6 +298,18 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		C224AD5428C86F980004B11F /* _logTableView */ = {
+			isa = PBXGroup;
+			children = (
+				C224AD5528C870820004B11F /* LogTableView.swift */,
+				C224AD5728C872170004B11F /* LogTableViewSection.xib */,
+				C224AD5B28C873BA0004B11F /* LogTableViewSection.swift */,
+				C224AD5928C8722F0004B11F /* LogTableViewCell.xib */,
+				C224AD5D28C88E900004B11F /* LogTableViewCell.swift */,
+			);
+			path = _logTableView;
+			sourceTree = "<group>";
+		};
 		C22D0EC4269E935600C9C748 /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,10 +354,6 @@
 				C2939AF9262BD34700CF9389 /* _data */,
 				C27444C725582AA2002AF201 /* History.storyboard */,
 				C27444CA25582ABE002AF201 /* HistoryViewController.swift */,
-				C2939B0526344F3700CF9389 /* ItemHistoryUrl.xib */,
-				C2939B14263DDACE00CF9389 /* ItemHistoryUrl.swift */,
-				C2939B0826345DE600CF9389 /* ItemHistoryDate.xib */,
-				C2939B0B263513C600CF9389 /* ItemHistoryDate.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -395,6 +399,7 @@
 		C285D0922665205200E6A12B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C224AD5428C86F980004B11F /* _logTableView */,
 				C224AD3B28C3C97E0004B11F /* _bottomSheet */,
 				C224AD4628C550F40004B11F /* _appBar */,
 				C285D093266594EC00E6A12B /* HJView.swift */,
@@ -582,22 +587,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				C22D0ECA26A05FEC00C9C748 /* Bookmark.storyboard in Resources */,
+				C224AD5828C872170004B11F /* LogTableViewSection.xib in Resources */,
 				C2A8DEA0253482B000A78EBB /* www in Resources */,
 				C21B843C242715D200A1C057 /* Assets.xcassets in Resources */,
 				C29E52CB2676A59A00909229 /* ScriptInputDialog.storyboard in Resources */,
 				C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */,
+				C224AD5A28C8722F0004B11F /* LogTableViewCell.xib in Resources */,
 				C27444C825582AA2002AF201 /* History.storyboard in Resources */,
-				C2F43CE024D6F5B9001CAE44 /* MoreDialog.storyboard in Resources */,
 				C224AD4B28C551DF0004B11F /* BRAppBar.xib in Resources */,
 				C224AD4128C3CFFF0004B11F /* MenuBottomSheetController.storyboard in Resources */,
 				C285D074265936D800E6A12B /* ConsoleLog.storyboard in Resources */,
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
-				C2939B0626344F3700CF9389 /* ItemHistoryUrl.xib in Resources */,
 				C285D08726638D2700E6A12B /* WebkitLog.storyboard in Resources */,
 				C29E52D8267EE15B00909229 /* HtmlElement.storyboard in Resources */,
 				C21B845624279F5100A1C057 /* Main.storyboard in Resources */,
-				C2939B0926345DE700CF9389 /* ItemHistoryDate.xib in Resources */,
 				C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,7 +623,6 @@
 				C22D0ECE26A23EDF00C9C748 /* BookmarkTableCell.swift in Sources */,
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
 				C224AD3D28C3C9930004B11F /* BottomSheetController.swift in Sources */,
-				C2939B0C263513C600CF9389 /* ItemHistoryDate.swift in Sources */,
 				C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */,
 				C285D08A26638DD300E6A12B /* WebkitLogViewController.swift in Sources */,
 				C224AD3F28C3CFD00004B11F /* MenuBottomSheetController.swift in Sources */,
@@ -635,8 +638,11 @@
 				C24E5ADB28A7FB52001FCDCC /* BaseViewController.swift in Sources */,
 				C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */,
 				C2939AF32628F84300CF9389 /* SQLiteService.swift in Sources */,
+				C224AD5628C870820004B11F /* LogTableView.swift in Sources */,
+				C224AD5C28C873BA0004B11F /* LogTableViewSection.swift in Sources */,
 				C27444CB25582ABE002AF201 /* HistoryViewController.swift in Sources */,
 				C29E52C7267173B100909229 /* ScriptInputDialogController.swift in Sources */,
+				C224AD5E28C88E900004B11F /* LogTableViewCell.swift in Sources */,
 				C224AD4328C3D6290004B11F /* MenuBottomSheetTableCell.swift in Sources */,
 				C29E52DA267EE17D00909229 /* HtmlElementViewController.swift in Sources */,
 				C25487C024F0F18D00F850AC /* JsData.swift in Sources */,
@@ -645,7 +651,6 @@
 				C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */,
 				C285D0772659377900E6A12B /* ConsoleLogViewController.swift in Sources */,
 				C285D090266447E600E6A12B /* WebkitLogTableCell.swift in Sources */,
-				C2F43CE224D6F5CB001CAE44 /* MoreDialogController.swift in Sources */,
 				C2FECC28242F0A0800FD1878 /* LogUtil.swift in Sources */,
 				C285D094266594EC00E6A12B /* HJView.swift in Sources */,
 				C224AD5228C816580004B11F /* AlertUtil.swift in Sources */,
@@ -660,7 +665,6 @@
 				C224AC9128B271E30004B11F /* SiteTableCell.swift in Sources */,
 				C2FECC2F242F4C2000FD1878 /* Util.swift in Sources */,
 				C29E52D5267DF8C600909229 /* HJTextView.swift in Sources */,
-				C2939B15263DDACF00CF9389 /* ItemHistoryUrl.swift in Sources */,
 				C29E52D12678E82400909229 /* HJButton.swift in Sources */,
 				C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */,
 				C224AD4D28C552C50004B11F /* BRAppBar.swift in Sources */,

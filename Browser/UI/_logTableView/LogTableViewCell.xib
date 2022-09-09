@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LogTableViewCell" customModule="Browser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="2022-09-07 15:33:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hlj-UW-4BI">
+                    <rect key="frame" x="15" y="12" width="132.5" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAVER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pra-xS-mGt">
+                    <rect key="frame" x="15" y="35.5" width="384" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://www.naver.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BM-9b-Pld">
+                    <rect key="frame" x="15" y="59" width="384" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tN6-jn-G1s" customClass="HJDivider" customModule="Browser" customModuleProvider="target">
+                    <rect key="frame" x="8" y="87" width="398" height="1"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Z9J-g8-vvo"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="5BM-9b-Pld" firstAttribute="top" secondItem="pra-xS-mGt" secondAttribute="bottom" constant="4" id="5Ez-eg-zVJ"/>
+                <constraint firstItem="pra-xS-mGt" firstAttribute="top" secondItem="Hlj-UW-4BI" secondAttribute="bottom" constant="2" id="AI9-Zu-dCW"/>
+                <constraint firstAttribute="trailing" secondItem="pra-xS-mGt" secondAttribute="trailing" constant="15" id="HX2-el-LRX"/>
+                <constraint firstAttribute="bottom" secondItem="tN6-jn-G1s" secondAttribute="bottom" id="PF1-Cw-tNj"/>
+                <constraint firstItem="Hlj-UW-4BI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Ydh-7T-zBn"/>
+                <constraint firstItem="Hlj-UW-4BI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="cVI-yi-ZbB"/>
+                <constraint firstAttribute="trailing" secondItem="tN6-jn-G1s" secondAttribute="trailing" constant="8" id="ePY-tK-js5"/>
+                <constraint firstAttribute="trailing" secondItem="5BM-9b-Pld" secondAttribute="trailing" constant="15" id="nWs-50-FQR"/>
+                <constraint firstItem="tN6-jn-G1s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="scU-nO-iat"/>
+                <constraint firstAttribute="bottom" secondItem="5BM-9b-Pld" secondAttribute="bottom" constant="11" id="sf4-37-bpU"/>
+                <constraint firstItem="5BM-9b-Pld" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="we3-x8-ACA"/>
+                <constraint firstItem="pra-xS-mGt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="zLt-7Z-Z58"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="divider" destination="tN6-jn-G1s" id="hAg-ke-enB"/>
+                <outlet property="lbContent" destination="5BM-9b-Pld" id="IpB-Ze-8AS"/>
+                <outlet property="lbDate" destination="Hlj-UW-4BI" id="1zY-ns-zPN"/>
+                <outlet property="lbTitle" destination="pra-xS-mGt" id="hdK-FH-BQi"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="96"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

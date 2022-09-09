@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, BRAppBarProtocol {
     
     @IBOutlet var titleBarView: UIView!
     
@@ -72,17 +72,12 @@ class BaseViewController: UIViewController {
             self.present(controller, animated: false, completion: nil)
         }
     }
-}
-
-// 타이틀바 프로토콜
-extension BaseViewController : BRAppBarProtocol {
+    
     // 뒤로가기
     func onBackButtonClick() {
         dismiss(animated: true, completion: nil)
     }
 
     // 더보기
-    @objc func onMoreButtonClick() {
-        
-    }
+    func onDeleteButtonClick() {}
 }
