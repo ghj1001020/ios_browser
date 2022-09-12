@@ -18,7 +18,7 @@
                     <rect key="frame" x="12" y="8" width="390" height="194"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJe-HT-j0C" userLabel="Card View2" customClass="CardView" customModule="Browser" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="72.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="71.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021-06-02 23:13:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beD-7O-4vd">
                                     <rect key="frame" x="15" y="15" width="131.5" height="16"/>
@@ -27,8 +27,8 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userContentController" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bun-EM-6pV">
-                                    <rect key="frame" x="15" y="37" width="360" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="15" y="37" width="360" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -49,29 +49,23 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="변수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxI-58-IzY">
-                            <rect key="frame" x="15" y="84.5" width="22.5" height="16"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q68-Qm-qTe">
-                            <rect key="frame" x="15" y="102.5" width="360" height="41"/>
+                            <rect key="frame" x="15" y="83.5" width="360" height="36"/>
                             <string key="text">message.body : aaa
 message.body : aaaaaa</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUv-Jg-ZcS" customClass="HJDivider" customModule="Browser" customModuleProvider="target">
-                            <rect key="frame" x="15" y="155.5" width="360" height="1"/>
+                            <rect key="frame" x="15" y="131.5" width="360" height="1"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="0jU-aV-O4b"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="웹 페이지에서 스크립트 메시지를 보냈다는 것을 핸들러에 알립니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eT-Y4-1YZ">
-                            <rect key="frame" x="15" y="162.5" width="360" height="16.5"/>
+                            <rect key="frame" x="15" y="138.5" width="360" height="40.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -89,11 +83,9 @@ message.body : aaaaaa</string>
                         <constraint firstAttribute="trailing" secondItem="sJe-HT-j0C" secondAttribute="trailing" id="T80-X2-UBx"/>
                         <constraint firstAttribute="trailing" secondItem="TUv-Jg-ZcS" secondAttribute="trailing" constant="15" id="ULe-4w-V6C"/>
                         <constraint firstItem="TUv-Jg-ZcS" firstAttribute="top" secondItem="q68-Qm-qTe" secondAttribute="bottom" constant="12" id="Wvi-eY-TcO"/>
-                        <constraint firstItem="JxI-58-IzY" firstAttribute="top" secondItem="sJe-HT-j0C" secondAttribute="bottom" constant="12" id="YL6-aw-T2X"/>
-                        <constraint firstItem="JxI-58-IzY" firstAttribute="leading" secondItem="oFC-QX-bk1" secondAttribute="leading" constant="15" id="dGD-F8-GTf"/>
+                        <constraint firstItem="q68-Qm-qTe" firstAttribute="top" secondItem="sJe-HT-j0C" secondAttribute="bottom" constant="12" id="YAD-bD-aoX"/>
                         <constraint firstItem="TUv-Jg-ZcS" firstAttribute="leading" secondItem="oFC-QX-bk1" secondAttribute="leading" constant="15" id="neC-Yq-PaC"/>
                         <constraint firstAttribute="trailing" secondItem="0eT-Y4-1YZ" secondAttribute="trailing" constant="15" id="sg8-7A-Aia"/>
-                        <constraint firstItem="q68-Qm-qTe" firstAttribute="top" secondItem="JxI-58-IzY" secondAttribute="bottom" constant="2" id="ztf-6t-oWS"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="YES"/>

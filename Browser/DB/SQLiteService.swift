@@ -258,11 +258,6 @@ class SQLiteService {
             data.append(params)
             data.append("웹뷰가 서버 리다이렉션을 수신했음을 알립니다.")
             break
-        case .WEBVIEW_CONTENT_START:
-            data.append("webView(_:didCommit:)")
-            data.append(params)
-            data.append("웹뷰가 콘텐츠 수신을 시작했음을 알립니다.")
-            break
         case .WEBVIEW_FINISH:
             data.append("webView(_:didFinish:)")
             data.append(params)
@@ -304,7 +299,9 @@ class SQLiteService {
                 let time : String = String(cString: sqlite3_column_text(stmt, 0))
                 let url : String = String(cString: sqlite3_column_text(stmt, 1))
                 let data : WebkitLogData = WebkitLogData(time: time, url: url)
-                webkitLogList.append(data)
+                if(!url.isEmpty && !time.isEmpty) {
+                    webkitLogList.append(data)
+                }
             }
         }
         

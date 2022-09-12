@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConsoleLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConsoleLogViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
         
     @IBOutlet var logTable: UITableView! 
     
@@ -19,13 +19,10 @@ class ConsoleLogViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // 비어있는 셀의 divider 제거
-        logTable.tableFooterView = UIView()
-    }
-    
-    @IBAction func onBack(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        
+        setAppBar()
+        setAppBarTitle("콘솔로그")
+        setStatusBar()
     }
     
     
@@ -46,20 +43,11 @@ class ConsoleLogViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 16
-    }
     
     // 전체 콘솔로그 삭제
-    @IBAction func onConsoleLogDeleteAll(_ sender: UIButton) {
-        let ok = UIAlertAction(title: "확인", style: .default) { (action: UIAlertAction) in
-            SQLiteService.deleteConsoleLogDataAll()
-            self.logData = SQLiteService.selectConsoleLogData()
-            self.logTable.reloadData()
-        }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        
-        _ = Util.showAlertDialog(controller: self, title: "", message: "전체 삭제 하시겠습니까?", action1: cancel, action2: ok)
+    override func onDeleteButtonClick() {
+        SQLiteService.deleteConsoleLogDataAll()
+        self.logData = SQLiteService.selectConsoleLogData()
+        self.logTable.reloadData()
     }
-    
 }

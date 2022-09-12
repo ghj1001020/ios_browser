@@ -71,6 +71,7 @@ class DefineQuery {
                                            "GROUP BY URL              " +
                                            "ORDER BY VISIT_DATE DESC  "
     
+    
     // 콘솔로그 테이블 생성
     public static let CREATE_CONSOLE_LOG_TABLE = "CREATE TABLE IF NOT EXISTS CONSOLE_LOG_TBL ( " +
                                                  "      LOG_DATE VARCHAR(14)  NOT NULL , " +

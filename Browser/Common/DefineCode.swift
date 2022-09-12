@@ -87,10 +87,9 @@ enum WebkitLogType : Int {
     case NATIVE_TO_JS_RETURN = 2
     case WEBVIEW_START = 3
     case WEBVIEW_REDIRECT = 4
-    case WEBVIEW_CONTENT_START = 5
-    case WEBVIEW_FINISH = 6
-    case WEBVIEW_ERROR = 7
-    case WEBVIEW_SSL = 8
-    case WEBVIEW_DECIDE_ACTION1 = 9
-    case WEBVIEW_DECIDE_ACTION2 = 10
+    case WEBVIEW_FINISH = 5
+    case WEBVIEW_ERROR = 6
+    case WEBVIEW_SSL = 7
+    case WEBVIEW_DECIDE_ACTION1 = 8
+    case WEBVIEW_DECIDE_ACTION2 = 9
 }

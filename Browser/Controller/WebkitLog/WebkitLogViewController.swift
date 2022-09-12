@@ -22,7 +22,7 @@ class WebkitLogViewController: BaseViewController, LogTableSectionDelegate, UITa
         super.viewDidLoad()
         
         setAppBar()
-        setAppBarTitle("WebKit Log")
+        setAppBarTitle("웹킷로그")
         setStatusBar()
     }
 
