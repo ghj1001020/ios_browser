@@ -27,8 +27,10 @@ class LogTableViewSection : UITableViewHeaderFooterView {
         super.init(coder: coder)
         initLayout()
     }
-    
+        
     func initLayout() {
+        self.contentView.backgroundColor = BRColor.bgTableSection()
+        
         // 클릭이벤트 설정
         let gesture = UITapGestureRecognizer(target: self, action: #selector(onSectionClick))
         addGestureRecognizer(gesture)

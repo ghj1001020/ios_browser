@@ -52,11 +52,8 @@ class JsBridge : NSObject , WKScriptMessageHandler {
     @available(iOS 8.0, *)
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "userContentController"
         let _param : String = "message.body : \(String(describing: message.body))"
-        let _description : String = "웹 페이지에서 스크립트 메시지를 보냈다는 것을 핸들러에 알립니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        SQLiteService.insertWebkitLogData(.JS_TO_NATIVE, _param)
         // end 웹킷로그
 
         if !(message.body is String) {
@@ -75,11 +72,8 @@ class JsBridge : NSObject , WKScriptMessageHandler {
     // Native -> Js 호출
     func callJsFunction( webView : WKWebView , funcName : String , _ params : [String], callback : ((Any?,Error?)->Void)? ) {
         // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "웹 스크립트 함수 호출"
         let _param : String = "\(funcName)\n\(params.joined(separator: ","))"
-        let _description : String = "앱에서 웹 스크립트 함수를 호출합니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        SQLiteService.insertWebkitLogData(.NATIVE_TO_JS, _param)
         // end 웹킷로그
         
         var js = funcName + "("

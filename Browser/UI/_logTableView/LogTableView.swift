@@ -14,7 +14,13 @@ protocol LogTableSectionDelegate {
 }
 
 class LogTableView: UITableView {
-
+    
+    public var tableType : Int = 0 {
+        didSet {
+            
+        }
+    }
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         initLayout()
@@ -26,12 +32,18 @@ class LogTableView: UITableView {
     }
     
     func initLayout() {
+        
         // 섹션 nib
         let nibSection = UINib(nibName: "LogTableViewSection", bundle: nil)
         self.register(nibSection, forHeaderFooterViewReuseIdentifier: "logSection")
+        
         // 셀 nib
         let nibCell = UINib(nibName: "LogTableViewCell", bundle: nil)
         self.register(nibCell, forCellReuseIdentifier: "logCell")
+        
+        let webkitCell = UINib(nibName: "WebkitLogTableViewCell", bundle: nil)
+        self.register(webkitCell, forCellReuseIdentifier: "webkitCell")
+
         
         // divider 제거
         self.separatorStyle = .none
@@ -47,7 +59,7 @@ class LogTableView: UITableView {
         self.sectionFooterHeight = .zero
         self.estimatedSectionFooterHeight = .zero
         // 테이블뷰 하단 여백제거
-//        self.tableFooterView = UIView(frame: .zero)
-//        self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -18, right: 0)
+        self.tableFooterView = UIView(frame: .zero)
+        self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -18, right: 0)
     }
 }

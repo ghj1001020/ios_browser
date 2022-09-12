@@ -8,13 +8,14 @@
 
 import UIKit
 
-class WebkitLogViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class WebkitLogViewController: BaseViewController, LogTableSectionDelegate, UITableViewDelegate, UITableViewDataSource {
     
     // 웹킷로그 목록 데이터
     private var webkitLogList : [WebkitLogData] = {
         return SQLiteService.selectWebkitLogData()
     }()
-    @IBOutlet var tblWebkitLog: UITableView!
+    
+    @IBOutlet var tblWebkitLog: LogTableView!
     
 
     override func viewDidLoad() {
@@ -24,42 +25,54 @@ class WebkitLogViewController: BaseViewController, UITableViewDelegate, UITableV
         setAppBarTitle("WebKit Log")
         setStatusBar()
     }
-    
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 16
-    }
     
-    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        view.tintColor = UIColor.clear
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return webkitLogList.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return webkitLogList[section].isOpen ? webkitLogList[section].dataList.count : 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "logSection") as? LogTableViewSection else {
+            return UITableViewHeaderFooterView()
+        }
+        
+        header.section = section
+        header.delegate = self
+        header.lbSection.text = webkitLogList[section].url
+        header.imgArrow.image = webkitLogList[section].isOpen ? UIImage(named: "ic_arrow_u") : UIImage(named: "ic_arrow_d")
+        
+        return header
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "webkitLogCell") as? WebkitLogTableCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "webkitCell") as? WebkitLogTableViewCell else {
             return UITableViewCell()
         }
         
-        let date = Util.convertDateFormat(date: webkitLogList[indexPath.row].date, fromFormat: "yyyyMMddHHmmss", toFormat: "yyyy-MM-dd HH:mm:ss")
-        cell.lbDate.text = date
-        cell.lbFunction.text = webkitLogList[indexPath.row].function
-        cell.lbParams.text = webkitLogList[indexPath.row].params
-        cell.lbDescription.text = webkitLogList[indexPath.row].description
+        cell.initUI()
+        
+        let data = webkitLogList[indexPath.section].dataList[indexPath.row]
+        let date = Util.convertDateFormat(date: data.date, fromFormat: "yyyyMMddHHmmss", toFormat: "yyyy-MM-dd HH:mm:ss")
+        cell.lbTime.text = date
+        cell.lbFunction.text = data.function
+        cell.lbParam.text = data.params
+        cell.lbDesc.text = data.description
         
         return cell
     }
     
-    @IBAction func onWebkitLogDeleteAll(_ sender: UIButton) {
-        let ok = UIAlertAction(title: "확인", style: .default) { (action: UIAlertAction) in
-            SQLiteService.deleteWebkitLogDataAll()
-            self.webkitLogList = SQLiteService.selectWebkitLogData()
-            self.tblWebkitLog.reloadData()
-        }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        
-        _ = Util.showAlertDialog(controller: self, title: "", message: "전체 삭제 하시겠습니까?", action1: cancel, action2: ok)
+    func onSectionClick(section: Int) {
+        webkitLogList[section].isOpen = !webkitLogList[section].isOpen
+        tblWebkitLog.reloadSections(IndexSet(integer: section), with: .automatic)
+    }
+    
+    override func onDeleteButtonClick() {
+        SQLiteService.deleteWebkitLogDataAll()
+        self.webkitLogList = SQLiteService.selectWebkitLogData()
+        self.tblWebkitLog.reloadData()
     }
 }

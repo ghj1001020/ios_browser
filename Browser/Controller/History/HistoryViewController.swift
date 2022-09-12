@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class HistoryViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, LogTableSectionDelegate, UISearchBarDelegate {
+class HistoryViewController: BaseViewController, UISearchResultsUpdating, LogTableSectionDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
     private let TAG = "HistoryViewController"
         
@@ -58,6 +58,7 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
         searchController.dismiss(animated: false, completion: nil)
     }
     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return historyList.count
     }
@@ -85,10 +86,9 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "logCell") as? LogTableViewCell else {
-            return UITableViewCell()
+            return LogTableViewCell()
         }
-        cell.section = indexPath.section
-        cell.row = indexPath.row
+        
         cell.initUI()
         
         let date = historyList[indexPath.section].dataList[indexPath.row].date
@@ -125,15 +125,6 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    // 테이블뷰 하단 여백제거
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return .leastNonzeroMagnitude
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let url : String = historyList[indexPath.section].dataList[indexPath.row].url
         delegate?.onUrlClick(url: url)
@@ -144,13 +135,6 @@ class HistoryViewController: BaseViewController, UITableViewDataSource, UITableV
     func onSectionClick(section: Int) {
         historyList[section].isOpen = !historyList[section].isOpen
         tableHistory.reloadSections(IndexSet(integer: section), with: .automatic)
-    }
-
-    // 테이블뷰 셀 > URL클릭
-    func onRawClick(section: Int, row: Int) {
-        let url : String = historyList[section].dataList[row].url
-        delegate?.onUrlClick(url: url)
-        dismiss(animated: true, completion: nil)
     }
     
     // 전체삭제

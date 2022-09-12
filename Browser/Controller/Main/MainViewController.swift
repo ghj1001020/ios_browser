@@ -29,6 +29,9 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     @IBOutlet var chkBookmark: HJCheckBox!
     @IBOutlet var tblSite: UITableView!
     
+    // 시작페이지
+    public static var WEBVIEW_LOAD_URL = ""
+    public static var WEBVIEW_LOAD_TIME = ""
     
     var jsBridge : JsBridge!
     var isEditMode : Bool = false
@@ -721,11 +724,8 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
         jsBridge.callJsFunction(webView: wv_main, funcName: "appGetMessageReturn", [jsonString] ) {
             (result, error) in
             // start 웹킷로그
-            let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-            let _function : String = "callJsFunction callback"
             let _param = "\(String(describing: result ?? ""))\n\(error?.localizedDescription ?? "")"
-            let _description : String = "웹 스크립트에서 반환한 값입니다."
-            SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+            SQLiteService.insertWebkitLogData(.NATIVE_TO_JS_RETURN, _param)
             // end 웹킷로그
             
             if result is String {
@@ -740,27 +740,11 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     
     // window open
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:createWebViewWith:for:windowFeatures:)"
-        let _param = "\(webView.url?.absoluteString ?? "")"
-        let _description : String = "새 웹뷰를 만듭니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
-        
         return nil
     }
 
     // alert()
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:runJavaScriptAlertPanelWithMessage:initiatedByFrame:completionHandler:)"
-        let _param = "\(message)"
-        let _description : String = "JavaScript alert을 표시합니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
-        
         let alert = UIAlertController(title: "" , message: message , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인" , style: .default , handler: { _ in
             completionHandler()
@@ -773,14 +757,6 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     
     // confirm()
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:completionHandler:)"
-        let _param = "\(message)"
-        let _description : String = "JavaScript confirm을 표시합니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
-        
         let alert = UIAlertController(title: "" , message: message , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인" , style: .default , handler: { _ in
             completionHandler(true)
@@ -796,13 +772,6 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     
     // textInput()
     func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:completionHandler:)"
-        let _param = "\(prompt)\n\(defaultText ?? "")"
-        let _description : String = "JavaScript text input을 표시합니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
     }
     
     // 웹컨텐츠가 로드되기 시작
@@ -810,18 +779,16 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         START_TIME = Date().timeIntervalSince1970
         
         // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:didStartProvisionalNavigation:)"
-        let _param = "\(webView.url?.absoluteString ?? "")"
-        let _description : String = "웹뷰에서 탐색이 시작되었음을 알립니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        let url = "\(webView.url?.absoluteString ?? "")"
+        MainViewController.WEBVIEW_LOAD_URL = url
+        MainViewController.WEBVIEW_LOAD_TIME = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
+        SQLiteService.insertWebkitLogData(.WEBVIEW_START, url, MainViewController.WEBVIEW_LOAD_TIME)
         // end 웹킷로그
             
         // 프로그레스바 표시
         showWebViewLoadingBar( isShow: true, _progress: 0 )
         
         // 타이틀에 url 표시
-        let url : String? = webView.url?.absoluteString
         lbWebTitle.text = url
         editUrl.text = url
     }
@@ -829,11 +796,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     // 웹 리다이렉션
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:didReceiveServerRedirectForProvisionalNavigation:)"
         let _param = "\(webView.url?.absoluteString ?? "")"
-        let _description : String = "웹뷰가 서버 리다이렉션을 수신했음을 알립니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        SQLiteService.insertWebkitLogData(.WEBVIEW_REDIRECT, _param)
         // end 웹킷로그
         
         // 타이틀에 url 표시
@@ -847,11 +811,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     // 웹뷰에서 컨텐츠를 받기 시작
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:didCommit:)"
         let _param = "\(webView.url?.absoluteString ?? "")"
-        let _description : String = "웹뷰가 콘텐츠 수신을 시작했음을 알립니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        SQLiteService.insertWebkitLogData(.WEBVIEW_CONTENT_START, _param)
         // end 웹킷로그
     }
     
@@ -860,11 +821,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         let loadTime : Double = round((Date().timeIntervalSince1970-START_TIME)*1000)/1000
         
         // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:didFinish:)"
         let _param = "\(loadTime)초\n\(webView.url?.absoluteString ?? "")"
-        let _description : String = "탐색이 완료되었음을 알립니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        SQLiteService.insertWebkitLogData(.WEBVIEW_FINISH, _param)
         // end 웹킷로그
                 
         // 프로그레스바 숨김
@@ -890,13 +848,7 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
 
     // 웹컨텐츠 프로세스 종료
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webViewWebContentProcessDidTerminate(_:)"
-        let _param = "\(webView.url?.absoluteString ?? "")"
-        let _description : String = "웹뷰의 콘텐츠 프로세스가 종료되었음을 알립니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
+
     }
     
 //    // 웹 탐색중 에러
@@ -909,11 +861,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         let err = error as NSError
         
         // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:didFailProvisionalNavigation:withError:)"
         let _param = "\(webView.url?.absoluteString ?? "")\n\(err.code)\n\(err.localizedDescription)"
-        let _description : String = "탐색 중에 오류가 발생했음을 알립니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        SQLiteService.insertWebkitLogData(.WEBVIEW_ERROR, _param)
         // end 웹킷로그
 
         switch err.code {
@@ -942,23 +891,14 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
 
     
     func webView(_ webView: WKWebView, authenticationChallenge challenge: URLAuthenticationChallenge, shouldAllowDeprecatedTLS decisionHandler: @escaping (Bool) -> Void) {
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:authenticationChallenge:shouldAllowDeprecatedTLS:)"
-        let _param = "\(webView.url?.absoluteString ?? "")"
-        let _description : String = "더 이상 사용되지 않는 버전의 TLS를 계속 사용할지 묻습니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
+        
     }
 
     // SSL 인증요청에 대한 응답
     func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:didReceive:completionHandler:)"
         let _param = "\(webView.url?.absoluteString ?? "")"
-        let _description : String = "인증에 응답하도록 요청합니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
+        SQLiteService.insertWebkitLogData(.WEBVIEW_SSL, _param)
         // end 웹킷로그
         
         if let serverTrust : SecTrust = challenge.protectionSpace.serverTrust {
@@ -970,20 +910,17 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     // URL이 로드 될때 웹탐색을 허용할지 취소할지 결정 (목적지는 알고 있지만 아직 이동은 하지 않은 상태에서 이동 허가제어 가능)
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request : URLRequest = navigationAction.request
-        
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:decidePolicyFor:decisionHandler:)"
-        let _param = "\(request.url?.absoluteString ?? "")"
-        let _description : String = "지정된 액션 정보를 기반으로 새로운 콘텐츠로 허가를 요청합니다"
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
 
         guard let url: URL = request.url else {
             return
         }
 
         if( checkRedirectUrl(url: url) ) {
+            // start 웹킷로그
+            let _param = "\(request.url?.absoluteString ?? "")"
+            SQLiteService.insertWebkitLogData(.WEBVIEW_DECIDE_ACTION1, _param)
+            // end 웹킷로그
+            
             decisionHandler(.cancel)
         }
         else {
@@ -994,14 +931,6 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     @available(iOS 13.0, *)
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
         let request : URLRequest = navigationAction.request
-        
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:decidePolicyFor:preferences:decisionHandler:)"
-        let _param = "\(request.url?.absoluteString ?? "")"
-        let _description : String = "지정된 액션 정보를 기반으로 새로운 콘텐츠로 허가를 요청합니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
         
         // 모바일/PC 모드 설정
         if( appDelegate.isMobile ) {
@@ -1016,6 +945,11 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         }
         
         if( checkRedirectUrl(url: url) ) {
+            // start 웹킷로그
+            let _param = "\(request.url?.absoluteString ?? "")"
+            SQLiteService.insertWebkitLogData(.WEBVIEW_DECIDE_ACTION2, _param)
+            // end 웹킷로그
+            
             decisionHandler(.cancel, preferences)
         }
         else {
@@ -1074,14 +1008,6 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     // 응답이 완료된후 웹탐색을 허용할지 취소할지 결정
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         let response = navigationResponse.response
-
-        // start 웹킷로그
-        let _date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let _function : String = "webView(_:decidePolicyFor:decisionHandler:)"
-        let _param = "\(response.url?.absoluteString ?? "")\n\(response.mimeType ?? "")"
-        let _description : String = "탐색 요청에 대한 응답 이후 새로운 콘텐츠로 허가를 요청합니다."
-        SQLiteService.insertWebkitLogData(params: [_date, _function, _param, _description])
-        // end 웹킷로그
                 
         guard let url: URL = response.url else {
             decisionHandler(.cancel)
@@ -1094,8 +1020,12 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         // 파일 다운로드
         let downloadType = checkDownloadUrl(ext: ext, mimeType: mimeType)
         if( downloadType != DefineCode.URL_DOWNLOAD_NONE ) {
-            showDownloadConfirmDialog(downloadType: downloadType, url: url)
+            // start 웹킷로그
+            let _param = "\(response.url?.absoluteString ?? "")\n\(response.mimeType ?? "")"
+            SQLiteService.insertWebkitLogData(.WEBVIEW_DECIDE_ACTION2, _param)
+            // end 웹킷로그
             
+            self.showDownloadConfirmDialog(downloadType: downloadType, url: url)
             self.showWebViewLoadingBar(isShow: false, _progress: 0)
             decisionHandler(.cancel)
             return;

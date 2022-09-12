@@ -13,7 +13,7 @@ class BRColor {
     
     // 배경색
     static func background() -> UIColor {
-        return colorByString(rgb: "#EEEEEE")
+        return colorByString(rgb: "#F2F2F2")
     }
     
     // 상태바 배경색
@@ -28,6 +28,12 @@ class BRColor {
     
     // 테이블 로그섹션 배경색
     static func bgTableSection() -> UIColor {
+        return colorByString(rgb: "#F2F2F2")
+    }
+    
+    
+    // 테두리
+    static func border() -> UIColor {
         return colorByString(rgb: "#EEEEEE")
     }
     
@@ -42,6 +48,10 @@ class BRColor {
     }
     
     static func date() -> UIColor {
+        return colorByString(rgb: "#666666")
+    }
+    
+    static func description() -> UIColor {
         return colorByString(rgb: "#888888")
     }
 

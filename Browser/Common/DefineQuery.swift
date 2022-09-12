@@ -92,27 +92,38 @@ class DefineQuery {
     // 콘솔로그 전체 데이터 삭제
     public static let DELETE_CONSOLE_LOG_DATA_ALL = "DELETE FROM CONSOLE_LOG_TBL"
     
+    
     // 웹킷로그 테이블 생성
     public static let CREATE_WEBKIT_LOG_TABLE = "CREATE TABLE IF NOT EXISTS WEBKIT_LOG_TBL ( " +
+                                                "       INSERT_TIME VARCHAR(14)   NOT NULL , " +
+                                                "       URL         VARCHAR(200)  NOT NULL , " +
                                                 "       LOG_DATE    VARCHAR(14)   NOT NULL , " +
-                                                "       _FUNCTION    VARCHAR(500)  , " +
+                                                "       _FUNCTION   VARCHAR(500)  , " +
                                                 "       PARAMS      VARCHAR(5000) , " +
-                                                "       DESCRIPTION VARCHAR(5000) " +
+                                                "       DESCRIPTION VARCHAR(5000)   " +
                                                 ");"
     
     // 웹킷로그 테이블 삭제
     public static let DROP_WEBKIT_LOG_TABLE = "DROP TABLE IF EXISTS WEBKIT_LOG_TBL"
     
     // 웹킷로그 데이터 입력
-    public static let INSERT_WEBKIT_LOG = "INSERT INTO WEBKIT_LOG_TBL(LOG_DATE, _FUNCTION, PARAMS, DESCRIPTION) VALUES(?, ?, ?, ?)"
+    public static let INSERT_WEBKIT_LOG = "INSERT INTO WEBKIT_LOG_TBL(INSERT_TIME, URL, LOG_DATE, _FUNCTION, PARAMS, DESCRIPTION) VALUES(?, ?, ?, ?, ?, ?)"
+    
+    // 웹킷로그 그룹 조회
+    public static let SELECT_WEBKIT_LOG_GROUP = "SELECT   INSERT_TIME, URL " +
+                                                "FROM     WEBKIT_LOG_TBL   " +
+                                                "GROUP BY INSERT_TIME, URL " +
+                                                "ORDER BY INSERT_TIME DESC "
     
     // 웹킷로그 데이터 조회
     public static let SELECT_WEBKIT_LOG = "SELECT   LOG_DATE, _FUNCTION, PARAMS, DESCRIPTION " +
-                                          "FROM     WEBKIT_LOG_TBL " +
-                                          "ORDER BY LOG_DATE DESC"
+                                          "FROM     WEBKIT_LOG_TBL          " +
+                                          "WHERE    INSERT_TIME=? AND URL=? " +
+                                          "ORDER BY LOG_DATE"
     
     // 웹킷로그 전체 데이터 삭제
     public static let DELETE_WEBKIT_LOG_DATA_ALL = "DELETE FROM WEBKIT_LOG_TBL"
+    
     
     // 즐겨찾기 테이블 생성
     public static let CREATE_BOOKMARK_TABLE = "CREATE TABLE IF NOT EXISTS BOOKMARK_TBL ( " +

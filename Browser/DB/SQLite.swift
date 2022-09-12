@@ -13,7 +13,7 @@ class SQLite {
     
     static let shared = SQLite()    // 싱글톤
     
-    public static let DB_VERSION = 12
+    public static let DB_VERSION = 16
     private let DB_FILE_NAME = "browser.db"
 
     private let dbUrl : URL?
@@ -64,6 +64,7 @@ class SQLite {
                 }
                 else {
                     let str = item as! String
+                    Log.p("\(String(str.utf8))")
                     sqlite3_bind_text(stmt, Int32(index+1), String(str.utf8), -1, SQLITE_STATIC)
                 }
             }
@@ -113,6 +114,7 @@ class SQLite {
                 }
                 else {
                     let str = item as! String
+                    Log.p("\(str)")
                     sqlite3_bind_text(stmt, Int32(index+1), String(str.utf8), -1, SQLITE_TRANSIENT)
                 }
             }

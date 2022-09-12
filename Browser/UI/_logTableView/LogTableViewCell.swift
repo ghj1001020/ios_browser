@@ -10,9 +10,6 @@ import Foundation
 import UIKit
 
 class LogTableViewCell : UITableViewCell {
-    
-    var section : Int = 0   // 몇번째 섹션인지 인덱스
-    var row : Int = 0 // 몇번째 로우인지 인덱스
 
     @IBOutlet var lbDate: UILabel!
     @IBOutlet var lbTitle: UILabel!

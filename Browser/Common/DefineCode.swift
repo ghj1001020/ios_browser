@@ -77,4 +77,20 @@ class DefineCode {
     // JS 브릿지 코드
     public static let JS_ALERT_POPUP = 0
     public static let JS_CONSOLE_LOG = 1
+
+}
+
+// WEBKIT LOG TYPE코드
+enum WebkitLogType : Int {
+    case JS_TO_NATIVE = 0
+    case NATIVE_TO_JS = 1
+    case NATIVE_TO_JS_RETURN = 2
+    case WEBVIEW_START = 3
+    case WEBVIEW_REDIRECT = 4
+    case WEBVIEW_CONTENT_START = 5
+    case WEBVIEW_FINISH = 6
+    case WEBVIEW_ERROR = 7
+    case WEBVIEW_SSL = 8
+    case WEBVIEW_DECIDE_ACTION1 = 9
+    case WEBVIEW_DECIDE_ACTION2 = 10
 }
