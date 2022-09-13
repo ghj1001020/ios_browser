@@ -58,6 +58,9 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     // 에디트모드 > 즐겨찾기 or 히스토리
     public var isBookmarkMode : Bool = true
     
+    // 콘솔로그 목록
+    public var consoleLogList : [ConsoleLogData] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -653,14 +656,9 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     
     // 콘솔로그 페이지로 이동
     func moveConsoleLog() {
-        let storyboard : UIStoryboard = UIStoryboard(name: "ConsoleLog", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: "ConsoleLog") as? ConsoleLogViewController else {
-            return
-        }
-        
-        controller.modalPresentationStyle = .fullScreen
-        
-        self.present(controller, animated: true, completion: nil)
+        let controller = self.controller(type: ConsoleLogViewController.self, name: "ConsoleLog", id: "consoleLog", bundle: nil)
+        controller?.consoleLogList = consoleLogList
+        self.present(controller)
     }
     
     // 웹킷로그 페이지로 이동
@@ -777,6 +775,8 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     // 웹컨텐츠가 로드되기 시작
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         START_TIME = Date().timeIntervalSince1970
+        
+        consoleLogList.removeAll()
         
         // start 웹킷로그
         let url = "\(webView.url?.absoluteString ?? "")"
@@ -1095,10 +1095,9 @@ extension MainViewController : JsBridgeProtocol {
     // 콘솔로그
     func onJsConsoleLog( params : String ) {
         let date : String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")
-        let url : String = wv_main?.url?.absoluteString ?? ""
         let log : String = params
-        
-        SQLiteService.insertConsoleLogData(params: [date, url, log])
+        let data : ConsoleLogData = ConsoleLogData(date: date, log: log)
+        consoleLogList.append(data)
     }
 }
 

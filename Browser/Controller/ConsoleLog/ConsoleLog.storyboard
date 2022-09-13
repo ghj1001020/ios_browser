@@ -12,7 +12,7 @@
         <!--Console Log View Controller-->
         <scene sceneID="AI1-86-lqc">
             <objects>
-                <viewController storyboardIdentifier="ConsoleLog" id="W3a-hX-GWv" customClass="ConsoleLogViewController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="consoleLog" id="W3a-hX-GWv" customClass="ConsoleLogViewController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ic4-bv-9n8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,80 +26,6 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="akZ-BS-iQu" customClass="LogTableView" customModule="Browser" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="414" height="768"/>
-                                <color key="backgroundColor" red="0.92157477139999999" green="0.92155742650000005" blue="0.92156922819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="sectionIndexColor" red="0.8980452418" green="0.89802831409999995" blue="0.89803975820000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="consoleLogCell" id="py9-yD-Ued" customClass="ConsoleLogTableCell" customModule="Browser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="119"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="py9-yD-Ued" id="E70-ey-GUd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwE-8A-gY0">
-                                                    <rect key="frame" x="12" y="16" width="390" height="103"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wq-2j-oc8">
-                                                            <rect key="frame" x="351" y="20" width="27" height="16"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.2196078431372549" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="url" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hZ-0F-6dw">
-                                                            <rect key="frame" x="12" y="38" width="366" height="16"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="log" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asg-SM-KvM">
-                                                            <rect key="frame" x="12" y="60" width="366" height="23"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="6hZ-0F-6dw" secondAttribute="trailing" constant="12" id="0DD-Uu-rI4"/>
-                                                        <constraint firstAttribute="bottom" secondItem="asg-SM-KvM" secondAttribute="bottom" constant="20" id="7tY-MM-Swg"/>
-                                                        <constraint firstItem="asg-SM-KvM" firstAttribute="leading" secondItem="UwE-8A-gY0" secondAttribute="leading" constant="12" id="9si-AD-IXB"/>
-                                                        <constraint firstItem="asg-SM-KvM" firstAttribute="top" secondItem="6hZ-0F-6dw" secondAttribute="bottom" constant="6" id="ZMk-3e-oJr"/>
-                                                        <constraint firstAttribute="trailing" secondItem="1wq-2j-oc8" secondAttribute="trailing" constant="12" id="lPT-Hl-h2S"/>
-                                                        <constraint firstAttribute="trailing" secondItem="asg-SM-KvM" secondAttribute="trailing" constant="12" id="py6-41-kfX"/>
-                                                        <constraint firstItem="1wq-2j-oc8" firstAttribute="top" secondItem="UwE-8A-gY0" secondAttribute="top" constant="20" id="rRh-jb-zsc"/>
-                                                        <constraint firstItem="6hZ-0F-6dw" firstAttribute="top" secondItem="1wq-2j-oc8" secondAttribute="bottom" constant="2" id="wkm-4l-Mqx"/>
-                                                        <constraint firstItem="6hZ-0F-6dw" firstAttribute="leading" secondItem="UwE-8A-gY0" secondAttribute="leading" constant="12" id="y7v-ic-ghs"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="UwE-8A-gY0" secondAttribute="trailing" constant="12" id="4gO-J9-LNC"/>
-                                                <constraint firstItem="UwE-8A-gY0" firstAttribute="top" secondItem="E70-ey-GUd" secondAttribute="top" constant="16" id="9aQ-K5-CeJ"/>
-                                                <constraint firstItem="UwE-8A-gY0" firstAttribute="leading" secondItem="E70-ey-GUd" secondAttribute="leading" constant="12" id="RaP-fO-isd"/>
-                                                <constraint firstAttribute="bottom" secondItem="UwE-8A-gY0" secondAttribute="bottom" id="fEq-Wj-nKG"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="lbDate" destination="1wq-2j-oc8" id="yZw-ew-qmF"/>
-                                            <outlet property="lbLog" destination="asg-SM-KvM" id="mJI-hx-sct"/>
-                                            <outlet property="lbUrl" destination="6hZ-0F-6dw" id="PV4-h3-zhz"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="W3a-hX-GWv" id="T2j-YG-QsH"/>
                                     <outlet property="delegate" destination="W3a-hX-GWv" id="QdW-wG-X9g"/>
@@ -120,6 +46,7 @@
                     </view>
                     <connections>
                         <outlet property="logTable" destination="akZ-BS-iQu" id="ZNt-Nm-d2w"/>
+                        <outlet property="titleBarView" destination="t6r-da-y7f" id="Nb3-iA-Tla"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnm-eu-Q8H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

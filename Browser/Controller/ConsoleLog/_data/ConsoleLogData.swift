@@ -10,12 +10,10 @@ import Foundation
 
 class ConsoleLogData {
     let date : String
-    let url : String
     let log : String
     
-    init(date: String, url: String, log: String) {
+    init(date: String, log: String) {
         self.date = date
-        self.url = url
         self.log = log
     }
 }

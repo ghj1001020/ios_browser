@@ -31,6 +31,8 @@
 		C224AD6328CBA3E40004B11F /* WebkitLogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C224AD6228CBA3E40004B11F /* WebkitLogTableViewCell.xib */; };
 		C224AD6528CBA3F70004B11F /* WebkitLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD6428CBA3F70004B11F /* WebkitLogTableViewCell.swift */; };
 		C224AD6828CC43BF0004B11F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD6728CC43BF0004B11F /* CardView.swift */; };
+		C224AD6C28CF641E0004B11F /* ConsoleLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224AD6B28CF641E0004B11F /* ConsoleLogTableViewCell.swift */; };
+		C224AD6E28CF64310004B11F /* ConsoleLogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C224AD6D28CF64310004B11F /* ConsoleLogTableViewCell.xib */; };
 		C22D0EC8269F29E900C9C748 /* HJCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */; };
 		C22D0ECA26A05FEC00C9C748 /* Bookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */; };
 		C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */; };
@@ -48,7 +50,6 @@
 		C285D074265936D800E6A12B /* ConsoleLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C285D073265936D800E6A12B /* ConsoleLog.storyboard */; };
 		C285D0772659377900E6A12B /* ConsoleLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D0762659377900E6A12B /* ConsoleLogViewController.swift */; };
 		C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D07A2659402200E6A12B /* ConsoleLogData.swift */; };
-		C285D07E265AA7F500E6A12B /* ConsoleLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D07D265AA7F500E6A12B /* ConsoleLogTableCell.swift */; };
 		C285D083265FDF2B00E6A12B /* WebkitLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D082265FDF2B00E6A12B /* WebkitLogData.swift */; };
 		C285D08726638D2700E6A12B /* WebkitLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C285D08626638D2700E6A12B /* WebkitLog.storyboard */; };
 		C285D08A26638DD300E6A12B /* WebkitLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285D08926638DD300E6A12B /* WebkitLogViewController.swift */; };
@@ -135,6 +136,8 @@
 		C224AD6228CBA3E40004B11F /* WebkitLogTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebkitLogTableViewCell.xib; sourceTree = "<group>"; };
 		C224AD6428CBA3F70004B11F /* WebkitLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebkitLogTableViewCell.swift; sourceTree = "<group>"; };
 		C224AD6728CC43BF0004B11F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		C224AD6B28CF641E0004B11F /* ConsoleLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogTableViewCell.swift; sourceTree = "<group>"; };
+		C224AD6D28CF64310004B11F /* ConsoleLogTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsoleLogTableViewCell.xib; sourceTree = "<group>"; };
 		C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJCheckBox.swift; sourceTree = "<group>"; };
 		C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bookmark.storyboard; sourceTree = "<group>"; };
 		C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +157,6 @@
 		C285D073265936D800E6A12B /* ConsoleLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConsoleLog.storyboard; sourceTree = "<group>"; };
 		C285D0762659377900E6A12B /* ConsoleLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogViewController.swift; sourceTree = "<group>"; };
 		C285D07A2659402200E6A12B /* ConsoleLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogData.swift; sourceTree = "<group>"; };
-		C285D07D265AA7F500E6A12B /* ConsoleLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogTableCell.swift; sourceTree = "<group>"; };
 		C285D082265FDF2B00E6A12B /* WebkitLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebkitLogData.swift; sourceTree = "<group>"; };
 		C285D08626638D2700E6A12B /* WebkitLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebkitLog.storyboard; sourceTree = "<group>"; };
 		C285D08926638DD300E6A12B /* WebkitLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebkitLogViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +316,8 @@
 				C224AD5D28C88E900004B11F /* LogTableViewCell.swift */,
 				C224AD6228CBA3E40004B11F /* WebkitLogTableViewCell.xib */,
 				C224AD6428CBA3F70004B11F /* WebkitLogTableViewCell.swift */,
+				C224AD6D28CF64310004B11F /* ConsoleLogTableViewCell.xib */,
+				C224AD6B28CF641E0004B11F /* ConsoleLogTableViewCell.swift */,
 			);
 			path = _logTableView;
 			sourceTree = "<group>";
@@ -388,7 +392,6 @@
 				C285D07926593F7B00E6A12B /* _data */,
 				C285D073265936D800E6A12B /* ConsoleLog.storyboard */,
 				C285D0762659377900E6A12B /* ConsoleLogViewController.swift */,
-				C285D07D265AA7F500E6A12B /* ConsoleLogTableCell.swift */,
 			);
 			path = ConsoleLog;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				C224AD5A28C8722F0004B11F /* LogTableViewCell.xib in Resources */,
 				C27444C825582AA2002AF201 /* History.storyboard in Resources */,
 				C224AD4B28C551DF0004B11F /* BRAppBar.xib in Resources */,
+				C224AD6E28CF64310004B11F /* ConsoleLogTableViewCell.xib in Resources */,
 				C224AD4128C3CFFF0004B11F /* MenuBottomSheetController.storyboard in Resources */,
 				C285D074265936D800E6A12B /* ConsoleLog.storyboard in Resources */,
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
@@ -656,8 +660,8 @@
 				C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */,
 				C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */,
 				C224AD6828CC43BF0004B11F /* CardView.swift in Sources */,
+				C224AD6C28CF641E0004B11F /* ConsoleLogTableViewCell.swift in Sources */,
 				C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */,
-				C285D07E265AA7F500E6A12B /* ConsoleLogTableCell.swift in Sources */,
 				C2FECC31242F4D1500FD1878 /* AppConfig.swift in Sources */,
 				C224AD4528C43F7D0004B11F /* HJTableView.swift in Sources */,
 				C22D0EC8269F29E900C9C748 /* HJCheckBox.swift in Sources */,

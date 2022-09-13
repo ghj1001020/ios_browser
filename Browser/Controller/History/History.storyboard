@@ -52,7 +52,7 @@
                     </view>
                     <connections>
                         <outlet property="tableHistory" destination="Hui-38-6sO" id="Ifz-cL-3QL"/>
-                        <outlet property="titleBarView" destination="CJ8-tN-5UB" id="yFp-4F-1ya"/>
+                        <outlet property="titleBarView" destination="CJ8-tN-5UB" id="YQX-fI-rly"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odS-px-Tru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

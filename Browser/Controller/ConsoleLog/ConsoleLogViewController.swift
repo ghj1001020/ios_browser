@@ -10,12 +10,9 @@ import UIKit
 
 class ConsoleLogViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
         
-    @IBOutlet var logTable: UITableView! 
+    @IBOutlet var logTable: UITableView!
     
-    private var logData : [ConsoleLogData] = {
-        return SQLiteService.selectConsoleLogData()
-    }()
-    
+    public var consoleLogList : [ConsoleLogData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,27 +24,20 @@ class ConsoleLogViewController: BaseViewController, UITableViewDelegate, UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return logData.count
+        return consoleLogList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "consoleLogCell") as? ConsoleLogTableCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "consoleCell") as? ConsoleLogTableViewCell else {
             return UITableViewCell()
         }
+        
+        cell.initUI()
                 
-        let date = Util.convertDateFormat(date: logData[indexPath.row].date, fromFormat: "yyyyMMddHHmmss", toFormat: "yyyy-MM-dd HH:mm:ss")
+        let date = Util.convertDateFormat(date: consoleLogList[indexPath.row].date, fromFormat: "yyyyMMddHHmmss", toFormat: "yyyy-MM-dd HH:mm:ss")
         cell.lbDate.text = date
-        cell.lbUrl.text = logData[indexPath.row].url
-        cell.lbLog.text = logData[indexPath.row].log
+        cell.lbConsole.text = consoleLogList[indexPath.row].log
         
         return cell
-    }
-    
-    
-    // 전체 콘솔로그 삭제
-    override func onDeleteButtonClick() {
-        SQLiteService.deleteConsoleLogDataAll()
-        self.logData = SQLiteService.selectConsoleLogData()
-        self.logTable.reloadData()
     }
 }

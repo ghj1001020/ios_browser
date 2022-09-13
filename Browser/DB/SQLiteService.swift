@@ -17,19 +17,16 @@ class SQLiteService {
         // 히스토리 테이블
         _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_HISTORY_TABLE)
         let tbl1 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_HISTORY_TABLE)
-        // 콘솔로그 테이블
-        _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_CONSOLE_LOG_TABLE)
-        let tbl2 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_CONSOLE_LOG_TABLE)
         // 웹킷로그 테이블
         _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_WEBKIT_LOG_TABLE)
-        let tbl3 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_WEBKIT_LOG_TABLE)
+        let tbl2 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_WEBKIT_LOG_TABLE)
         // 즐겨찾기 테이블
         _ = SQLite.shared.execSQL(sql: DefineQuery.DROP_BOOKMARK_TABLE)
-        let tbl4 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_BOOKMARK_TABLE)
+        let tbl3 = SQLite.shared.execSQL(sql: DefineQuery.CREATE_BOOKMARK_TABLE)
         
         SQLite.shared.close()
         
-        return tbl1 && tbl2 && tbl3 && tbl4
+        return tbl1 && tbl2 && tbl3
     }
     
     // HISTORY_TBL에 데이터 입력
@@ -190,39 +187,6 @@ class SQLiteService {
         return urlList
     }
     
-    // CONSOLE_LOG_TBL
-    public static func insertConsoleLogData(params: [Any]) {
-        SQLite.shared.open()
-        _ = SQLite.shared.execSQL(sql: DefineQuery.INSERT_CONSOLE_LOG, params: params)
-        SQLite.shared.close()
-    }
-    
-    // 콘솔로그 목록 조회
-    public static func selectConsoleLogData() -> [ConsoleLogData] {
-        var consoleLogList : [ConsoleLogData] = []
-        
-        SQLite.shared.open()
-        SQLite.shared.select(sql: DefineQuery.SELECT_CONSOLE_LOG) { (stmt: OpaquePointer?) in
-            while sqlite3_step(stmt) == SQLITE_ROW {
-                let date : String = String(cString: sqlite3_column_text(stmt, 0))
-                let url : String = String(cString: sqlite3_column_text(stmt, 1))
-                let message : String = String(cString: sqlite3_column_text(stmt, 2))
-                
-                let data = ConsoleLogData(date: date, url: url, log: message)
-                consoleLogList.append(data)
-            }
-        }
-        SQLite.shared.close()
-        
-        return consoleLogList
-    }
-    
-    // 콘솔로그 데이터 모두 삭제
-    public static func deleteConsoleLogDataAll() {
-        SQLite.shared.open()
-        _ = SQLite.shared.execSQL(sql: DefineQuery.DELETE_CONSOLE_LOG_DATA_ALL)
-        SQLite.shared.close()
-    }
     
     // 웹킷로그 테이블에 데이터 입력
     public static func insertWebkitLogData(_ code: WebkitLogType, _ params: String, _ time: String = Util.dateToString(date: Date(), format: "yyyyMMddHHmmss")) {

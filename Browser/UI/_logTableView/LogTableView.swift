@@ -44,6 +44,9 @@ class LogTableView: UITableView {
         let webkitCell = UINib(nibName: "WebkitLogTableViewCell", bundle: nil)
         self.register(webkitCell, forCellReuseIdentifier: "webkitCell")
 
+        let consoleCell = UINib(nibName: "ConsoleLogTableViewCell", bundle: nil)
+        self.register(consoleCell, forCellReuseIdentifier: "consoleCell")
+
         
         // divider 제거
         self.separatorStyle = .none
