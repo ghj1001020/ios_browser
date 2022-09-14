@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+enum BRAppBarType {
+    case NORMAL
+    case BACK
+}
+
 protocol BRAppBarProtocol {
     func onBackButtonClick()
     func onDeleteButtonClick()
@@ -18,6 +24,8 @@ class BRAppBar: UIView {
     public var delegate : BRAppBarProtocol? = nil
     
     @IBOutlet var lbTitle: UILabel!
+    @IBOutlet var btnDelete: UIButton!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,10 +44,17 @@ class BRAppBar: UIView {
         self.addSubview(view)
     }
     
-    func initUI() {
+    func initUI(_ type: BRAppBarType) {
         self.backgroundColor = BRColor.bgAppBar()
         self.lbTitle.textColor = BRColor.black()
         self.lbTitle.font = self.lbTitle.font.withSize(19)
+        
+        if(type == .BACK) {
+            btnDelete.isHidden = true
+        }
+        else {
+            btnDelete.isHidden = false
+        }
     }
     
     func setTitle(_ title: String) {

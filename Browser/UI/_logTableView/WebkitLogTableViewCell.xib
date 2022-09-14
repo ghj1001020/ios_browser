@@ -71,7 +71,7 @@ message.body : aaaaaa</string>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="q68-Qm-qTe" firstAttribute="leading" secondItem="oFC-QX-bk1" secondAttribute="leading" constant="15" id="22G-Wm-wND"/>
                         <constraint firstAttribute="bottom" secondItem="0eT-Y4-1YZ" secondAttribute="bottom" constant="15" id="4Gy-WZ-3UH"/>

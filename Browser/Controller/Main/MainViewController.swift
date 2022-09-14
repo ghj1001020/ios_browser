@@ -657,6 +657,9 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     // 콘솔로그 페이지로 이동
     func moveConsoleLog() {
         let controller = self.controller(type: ConsoleLogViewController.self, name: "ConsoleLog", id: "consoleLog", bundle: nil)
+        
+        consoleLogList.append(ConsoleLogData(date: "20220914215430", log: "123123"))
+        
         controller?.consoleLogList = consoleLogList
         self.present(controller)
     }

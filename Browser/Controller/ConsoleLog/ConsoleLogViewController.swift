@@ -17,7 +17,7 @@ class ConsoleLogViewController: BaseViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setAppBar()
+        setAppBar(.BACK)
         setAppBarTitle("콘솔로그")
         setStatusBar()
     }
@@ -39,5 +39,9 @@ class ConsoleLogViewController: BaseViewController, UITableViewDelegate, UITable
         cell.lbConsole.text = consoleLogList[indexPath.row].log
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
     }
 }

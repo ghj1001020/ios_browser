@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-Ov-kQh" customClass="CardView" customModule="Browser" customModuleProvider="target">
-                    <rect key="frame" x="12" y="8" width="390" height="72"/>
+                    <rect key="frame" x="12" y="8" width="390" height="79"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022-09-07 15:33:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRz-ff-akb">
                             <rect key="frame" x="15" y="15" width="132.5" height="16"/>
@@ -24,13 +24,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDE-Vk-FUb">
-                            <rect key="frame" x="15" y="37" width="360" height="20"/>
+                            <rect key="frame" x="15" y="37" width="360" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="GRz-ff-akb" firstAttribute="leading" secondItem="jqw-Ov-kQh" secondAttribute="leading" constant="15" id="fdO-fb-6XC"/>
                         <constraint firstItem="nDE-Vk-FUb" firstAttribute="top" secondItem="GRz-ff-akb" secondAttribute="bottom" constant="6" id="ij6-ET-kPa"/>
@@ -44,7 +44,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="jqw-Ov-kQh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="SN5-NB-7at"/>
-                <constraint firstAttribute="bottom" secondItem="jqw-Ov-kQh" secondAttribute="bottom" constant="8" id="eDH-iR-5Y6"/>
+                <constraint firstAttribute="bottom" secondItem="jqw-Ov-kQh" secondAttribute="bottom" constant="1" id="eDH-iR-5Y6"/>
                 <constraint firstItem="jqw-Ov-kQh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="gaT-wt-2jx"/>
                 <constraint firstAttribute="trailing" secondItem="jqw-Ov-kQh" secondAttribute="trailing" constant="12" id="rA1-Px-rtv"/>
             </constraints>
@@ -53,7 +53,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="lbConsole" destination="nDE-Vk-FUb" id="AVz-Gk-h5i"/>
-                <outlet property="lbDate" destination="nDE-Vk-FUb" id="BPy-7W-aLm"/>
+                <outlet property="lbDate" destination="GRz-ff-akb" id="RKq-tF-BdZ"/>
             </connections>
             <point key="canvasLocation" x="132" y="71"/>
         </view>

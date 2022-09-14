@@ -28,7 +28,7 @@ class BaseViewController: UIViewController, BRAppBarProtocol {
     }
     
     // 앱바 설정
-    func setAppBar() {
+    func setAppBar(_ type: BRAppBarType = .NORMAL) {
         guard let xib = Bundle.main.loadNibNamed("BRAppBar", owner: self, options: nil)?.first as? BRAppBar else  {
             return
         }
@@ -36,7 +36,7 @@ class BaseViewController: UIViewController, BRAppBarProtocol {
         xib.frame = self.titleBarView.bounds
         xib.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         titleBar = xib
-        titleBar?.initUI()
+        titleBar?.initUI(type)
         titleBar?.delegate = self
         self.titleBarView.addSubview(titleBar!)
     }

@@ -47,6 +47,7 @@ class LogTableView: UITableView {
         let consoleCell = UINib(nibName: "ConsoleLogTableViewCell", bundle: nil)
         self.register(consoleCell, forCellReuseIdentifier: "consoleCell")
 
+        self.backgroundColor = BRColor.background()
         
         // divider 제거
         self.separatorStyle = .none

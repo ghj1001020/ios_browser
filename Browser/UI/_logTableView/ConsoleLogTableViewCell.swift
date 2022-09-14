@@ -25,7 +25,7 @@ class ConsoleLogTableViewCell: UITableViewCell {
     
     func initLayout() {
         self.selectionStyle = .none
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = BRColor.background()
     }
     
     func initUI() {
