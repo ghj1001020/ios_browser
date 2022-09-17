@@ -40,7 +40,7 @@ var pages = {
         });
         
         $("#btnDownload").click( function() {
-            
+            location.href = $("#txtDownload").text();
         });
 	} ,
     

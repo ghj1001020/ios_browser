@@ -42,6 +42,18 @@ class IndexViewController: UIViewController, UITextFieldDelegate {
         indexPageSearch()
     }
     
+    @IBAction func onTestPage(_ sender: UIButton) {
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "Main") as? MainViewController else {
+            return
+        }
+        
+        controller.modalPresentationStyle = .fullScreen
+        controller.isTestPage = true
+        self.present(controller, animated: false, completion: nil )
+    }
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         

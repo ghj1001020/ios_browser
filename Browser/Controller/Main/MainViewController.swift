@@ -36,6 +36,7 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     var jsBridge : JsBridge!
     var isEditMode : Bool = false
     var indexSearch : String = ""
+    var isTestPage : Bool = false
     
     var START_TIME : Double = 0 // 웹뷰로드 시간
     
@@ -105,7 +106,18 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
         wv_main?.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)    // .new - 값이 변경될때마다 이벤트를 받음
         
         // 기본 웹페이지 로딩
-        loadUrl(_url: indexSearch )
+        if(isTestPage) {
+            let htmlPath = Bundle.main.path(forResource: "BridgePage", ofType: "html", inDirectory: "www")
+
+            if(htmlPath != nil) {
+                let htmlUrl = URL(fileURLWithPath: htmlPath!)
+                let request = URLRequest(url: htmlUrl)
+                wv_main?.load(request)
+            }
+        }
+        else {
+            loadUrl(_url: indexSearch )
+        }
     }
     
     // 웹뷰 url 로딩
@@ -510,7 +522,7 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
                     }
                 }
                 else if( type == DefineCode.URL_DOWNLOAD_FILE ) {
-                    self.showFileDownloadViewController()
+                    self.showFileDownloadViewController(documentUrl)
                 }
             }
             catch {
@@ -521,26 +533,16 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     }
     
     // 파일다운로드 UIActivityViewController 노출
-    func showFileDownloadViewController() {
+    func showFileDownloadViewController(_ contentUrl : URL) {
         DispatchQueue.main.async {
-            do {
-                let dirUrl : URL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-
-                let contents  = try FileManager.default.contentsOfDirectory(at: dirUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-                for content in contents {
-                    let downloadView = UIActivityViewController(activityItems: [content], applicationActivities: nil)
-                    downloadView.excludedActivityTypes = [.addToReadingList, .airDrop, .assignToContact, .copyToPasteboard, .mail, .message, .openInIBooks, .postToFacebook, .postToFlickr, .postToTencentWeibo, .postToTwitter, .postToVimeo, .postToWeibo, .print , .saveToCameraRoll]
-                    
-                    if #available(iOS 11.0, *) {
-                        downloadView.excludedActivityTypes?.append(.markupAsPDF)
-                    }
-
-                    self.present( downloadView, animated: true, completion: nil )
-                }
+            let downloadView = UIActivityViewController(activityItems: [contentUrl], applicationActivities: nil)
+            downloadView.excludedActivityTypes = [.addToReadingList, .airDrop, .assignToContact, .copyToPasteboard, .mail, .message, .openInIBooks, .postToFacebook, .postToFlickr, .postToTencentWeibo, .postToTwitter, .postToVimeo, .postToWeibo, .print , .saveToCameraRoll]
+            
+            if #available(iOS 11.0, *) {
+                downloadView.excludedActivityTypes?.append(.markupAsPDF)
             }
-            catch {
-                Log.p("downloadView err=\(error.localizedDescription)" )
-            }
+
+            self.present( downloadView, animated: true, completion: nil )
         }
     }
     
@@ -960,7 +962,12 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
     }
     
     func checkRedirectUrl( url : URL) -> Bool {
-        let ext : String = url.pathExtension.lowercased()
+        var ext : String = url.pathExtension.lowercased()
+        if(ext.isEmpty) {
+            if let index = url.absoluteString.lastIndex(of: ".") {
+                ext = String(url.absoluteString[url.absoluteString.index(index, offsetBy: 1)...])
+            }
+        }
         
         // 파일 다운로드
         let downloadType = checkDownloadUrl(ext: ext, mimeType: "")
@@ -1017,8 +1024,13 @@ extension MainViewController : WKUIDelegate , WKNavigationDelegate {
         }
         
         let mimeType : String = (response.mimeType ?? "").lowercased()
-        let ext : String = url.pathExtension.lowercased()
-
+        var ext : String = url.pathExtension.lowercased()
+        if(ext.isEmpty) {
+            if let index = url.absoluteString.lastIndex(of: ".") {
+                ext = String(url.absoluteString[url.absoluteString.index(index, offsetBy: 1)...])
+            }
+        }
+        
         // 파일 다운로드
         let downloadType = checkDownloadUrl(ext: ext, mimeType: mimeType)
         if( downloadType != DefineCode.URL_DOWNLOAD_NONE ) {

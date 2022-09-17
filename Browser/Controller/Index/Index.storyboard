@@ -71,14 +71,27 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPR-An-dZi">
+                                        <rect key="frame" x="324" y="766" width="70" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="확인페이지">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onTestPage:" destination="VXj-Pz-gxN" eventType="touchUpInside" id="7Dy-NH-ifd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.062745098039215685" green="0.45490196078431372" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="845-Bo-uNW" firstAttribute="top" secondItem="bkL-CY-lTg" secondAttribute="top" constant="54" id="8a9-6l-hMs"/>
                                     <constraint firstAttribute="trailing" secondItem="98X-cY-CA6" secondAttribute="trailing" constant="16" id="IEQ-SZ-A37"/>
                                     <constraint firstItem="845-Bo-uNW" firstAttribute="leading" secondItem="bkL-CY-lTg" secondAttribute="leading" constant="16" id="JGv-UO-XF4"/>
+                                    <constraint firstAttribute="trailing" secondItem="EPR-An-dZi" secondAttribute="trailing" constant="20" id="S0k-nb-af2"/>
                                     <constraint firstItem="98X-cY-CA6" firstAttribute="top" secondItem="845-Bo-uNW" secondAttribute="bottom" constant="18" id="eQD-Eg-N0Z"/>
                                     <constraint firstItem="98X-cY-CA6" firstAttribute="leading" secondItem="bkL-CY-lTg" secondAttribute="leading" constant="16" id="nTC-jh-UWM"/>
+                                    <constraint firstAttribute="bottom" secondItem="EPR-An-dZi" secondAttribute="bottom" constant="20" id="yru-EJ-fie"/>
                                 </constraints>
                             </view>
                         </subviews>
