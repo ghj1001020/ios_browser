@@ -23,6 +23,10 @@ class BookmarkViewController : BaseViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setAppBar()
+        setAppBarTitle("북마크")
+        setStatusBar()
     }
     
     override func onBackButtonClick() {
@@ -31,37 +35,33 @@ class BookmarkViewController : BaseViewController, UITableViewDelegate, UITableV
     }
     
     override func onDeleteButtonClick() {
-        
-    }
-    @IBAction func onBack(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func onBookmarkDeleteAll(_ sender: UIButton) {
-        let action1 = UIAlertAction(title: "취소", style: .cancel)
-        let action2 = UIAlertAction(title: "확인", style: .default) { (action: UIAlertAction) in
+        let alert = AlertUtil.ActionSheet(self)
+        alert.addAction("전체 삭제") {
             SQLiteService.deleteBookmarkDataAll()
             self.bookmarkData.removeAll()
             self.tblBookmark.reloadData()
         }
-        _ = Util.showAlertDialog(controller: self, title: "", message: "전체 삭제 하시겠습니까?", action1: action1, action2: action2)
+        alert.show()
+    }
+        
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
     }
     
-        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookmarkData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell") as? BookmarkTableCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell") as? BookmarkTableViewCell else {
             return UITableViewCell()
         }
         
+        cell.initUI()
+        
         cell.lbUrl.text = bookmarkData[indexPath.row].url
         cell.lbTitle.text = bookmarkData[indexPath.row].title
-        if( indexPath.row >= bookmarkData.count-1 ) {
-            cell.divider.isHidden = true
-        }
+        cell.divider.isHidden = indexPath.row == bookmarkData.count-1 ? true : false
         return cell
     }
     
@@ -83,14 +83,19 @@ class BookmarkViewController : BaseViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // 삭제
         if editingStyle == .delete {
-            let url: String = bookmarkData[indexPath.row].url
-            let isDeleted = SQLiteService.deleteBookmarkData(url: url)
-            if( isDeleted ) {
-                tblBookmark.beginUpdates()
-                bookmarkData.remove(at: indexPath.row)
-                tblBookmark.deleteRows(at: [indexPath], with: .fade)
-                tblBookmark.endUpdates()
+            let alert = AlertUtil.Alert(self, "", "삭제 하시겠습니까?")
+            alert.setPositive("확인") {
+                let url: String = self.bookmarkData[indexPath.row].url
+                let isDeleted = SQLiteService.deleteBookmarkData(url: url)
+                if( isDeleted ) {
+                    self.tblBookmark.beginUpdates()
+                    self.bookmarkData.remove(at: indexPath.row)
+                    self.tblBookmark.deleteRows(at: [indexPath], with: .fade)
+                    self.tblBookmark.endUpdates()
+                }
             }
+            alert.setNegative()
+            alert.show()
         }
     }
 }

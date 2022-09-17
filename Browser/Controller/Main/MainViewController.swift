@@ -1102,6 +1102,7 @@ extension MainViewController : URLItemProtocol {
     func onDismissViewController(controller: UIViewController) {
         // 즐겨찾기 여부 확인
         if( controller is BookmarkViewController ) {
+            setBookmarkList()
             if let item = wv_main.backForwardList.currentItem {
                 chkBookmark.isChecked = SQLiteService.selectBookmarkCntByURL(url: item.url.absoluteString)
             }

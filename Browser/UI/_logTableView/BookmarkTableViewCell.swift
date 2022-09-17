@@ -15,7 +15,7 @@ class BookmarkTableViewCell : UITableViewCell {
     @IBOutlet var lbUrl: UILabel!
     @IBOutlet var divider: HJDivider!
     
-    func initI() {
+    func initUI() {
         lbTitle.numberOfLines = 0
         lbUrl.numberOfLines = 0
         lbTitle.textColor = BRColor.text()

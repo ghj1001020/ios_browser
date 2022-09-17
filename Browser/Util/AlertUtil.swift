@@ -13,9 +13,9 @@ class AlertUtil {
     
     // 얼럿
     public class Alert {
+        var alert : UIAlertController
+        
         var controller : UIViewController
-        var title : String = ""
-        var message : String = ""
         var positiveText : String? = nil
         var negativeText : String? = nil
         var positiveDelegate : (()->Void)? = nil
@@ -23,40 +23,21 @@ class AlertUtil {
 
         
         init(_ controller: UIViewController, _ title: String="", _ message: String="") {
+            self.alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             self.controller = controller
-            self.title = title
-            self.message = message
         }
         
         func setTitle(_ text: String) {
-            self.title = text
+            self.alert.title = text
         }
         
         func setMessage(_ text: String) {
-            self.message = text
+            self.alert.message = text
         }
         
         func setPositive(_ text: String="확인", _ delegate: (()->Void)?=nil) {
             self.positiveText = text
             self.positiveDelegate = delegate
-        }
-        
-        func setNegative(_ text: String="취소", _ delegate: (()->Void)?=nil) {
-            self.negativeText = text
-            self.negativeDelegate = delegate
-        }
-        
-        func show() {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            
-            if( negativeText != nil) {
-                let action = UIAlertAction(title: negativeText, style: .cancel) { (action: UIAlertAction) in
-                    if let callback = self.negativeDelegate {
-                        callback()
-                    }
-                }
-                alert.addAction(action)
-            }
             
             if(positiveText != nil) {
                 let action = UIAlertAction(title: positiveText, style: .default) { (action: UIAlertAction) in
@@ -66,7 +47,23 @@ class AlertUtil {
                 }
                 alert.addAction(action)
             }
+        }
+        
+        func setNegative(_ text: String="취소", _ delegate: (()->Void)?=nil) {
+            self.negativeText = text
+            self.negativeDelegate = delegate
             
+            if( negativeText != nil) {
+                let action = UIAlertAction(title: negativeText, style: .cancel) { (action: UIAlertAction) in
+                    if let callback = self.negativeDelegate {
+                        callback()
+                    }
+                }
+                alert.addAction(action)
+            }
+        }
+        
+        func show() {
             if(negativeText == nil && positiveText == nil) {
                 let action = UIAlertAction(title: "확인", style: .default)
                 alert.addAction(action)
@@ -75,6 +72,7 @@ class AlertUtil {
             controller.present(alert, animated: true, completion: nil)
         }
     }
+
     
     // 하단 액션시트
     public class ActionSheet {
