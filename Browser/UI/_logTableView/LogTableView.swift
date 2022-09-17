@@ -46,6 +46,12 @@ class LogTableView: UITableView {
 
         let consoleCell = UINib(nibName: "ConsoleLogTableViewCell", bundle: nil)
         self.register(consoleCell, forCellReuseIdentifier: "consoleCell")
+        
+        let cookieCell = UINib(nibName: "CookieTableViewCell", bundle: nil)
+        self.register(cookieCell, forCellReuseIdentifier: "cookieCell")
+        
+        let bookmarkCell = UINib(nibName: "BookmarkTableViewCell", bundle: nil)
+        self.register(bookmarkCell, forCellReuseIdentifier: "bookmarkCell")
 
         self.backgroundColor = BRColor.background()
         

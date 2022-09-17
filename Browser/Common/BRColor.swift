@@ -32,6 +32,12 @@ class BRColor {
     }
     
     
+    // 버튼이펙트
+    static func effect() -> UIColor {
+        return colorByString(rgb: "#000000", alpha: 0.2)
+    }
+    
+    
     // 테두리
     static func border() -> UIColor {
         return colorByString(rgb: "#EEEEEE")
@@ -45,6 +51,10 @@ class BRColor {
     // 글자색
     static func text() -> UIColor {
         return colorByString(rgb: "#101010")
+    }
+    
+    static func subText() -> UIColor {
+        return colorByString(rgb: "#676767")
     }
     
     static func date() -> UIColor {

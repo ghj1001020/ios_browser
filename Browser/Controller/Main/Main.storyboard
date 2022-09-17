@@ -50,7 +50,7 @@
                                                 <color key="textColor" red="0.12156862745098039" green="0.12941176470588234" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgk-3q-FaV" userLabel="refresh">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgk-3q-FaV" userLabel="refresh" customClass="BRImageButton" customModule="Browser" customModuleProvider="target">
                                                 <rect key="frame" x="358" y="0.0" width="56" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="IMc-3E-T9W"/>
@@ -162,7 +162,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smm-RH-9cf" userLabel="bottomMenu">
                                 <rect key="frame" x="0.0" y="765" width="414" height="48"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAD-g7-N2g" userLabel="btn_back">
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAD-g7-N2g" userLabel="btn_back" customClass="BRImageButton" customModule="Browser" customModuleProvider="target">
                                         <rect key="frame" x="16" y="0.0" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="AQy-Fi-D0c"/>
@@ -183,7 +183,7 @@
                                             <constraint firstAttribute="height" id="9YS-86-Cb3"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwQ-Pj-hCb" userLabel="btn_next">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwQ-Pj-hCb" userLabel="btn_next" customClass="BRImageButton" customModule="Browser" customModuleProvider="target">
                                         <rect key="frame" x="99.5" y="0.0" width="48" height="48"/>
                                         <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="ic_next"/>
@@ -195,7 +195,7 @@
                                         <rect key="frame" x="147.5" y="48" width="35.5" height="0.0"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBA-eC-Ibw" userLabel="btn_home">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBA-eC-Ibw" userLabel="btn_home" customClass="BRImageButton" customModule="Browser" customModuleProvider="target">
                                         <rect key="frame" x="183" y="0.0" width="48" height="48"/>
                                         <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" image="ic_home"/>
@@ -207,7 +207,7 @@
                                         <rect key="frame" x="231" y="48" width="35.5" height="0.0"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k08-6Q-lW1" userLabel="btn_bookmark">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k08-6Q-lW1" userLabel="btn_bookmark" customClass="BRImageButton" customModule="Browser" customModuleProvider="target">
                                         <rect key="frame" x="266.5" y="0.0" width="48" height="48"/>
                                         <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" image="ic_toolbar_bookmark"/>
@@ -219,7 +219,7 @@
                                         <rect key="frame" x="314.5" y="48" width="35.5" height="0.0"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-dt-xr8" userLabel="btn_more">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-dt-xr8" userLabel="btn_more" customClass="BRImageButton" customModule="Browser" customModuleProvider="target">
                                         <rect key="frame" x="350" y="0.0" width="48" height="48"/>
                                         <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" image="ic_more"/>

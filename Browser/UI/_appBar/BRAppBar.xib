@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBm-ju-G8j">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBm-ju-G8j" customClass="BRImageButton" customModule="Browser" customModuleProvider="target">
                     <rect key="frame" x="8" y="1" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="n93-Z6-A6h"/>
@@ -32,7 +32,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J46-av-Bbm">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J46-av-Bbm" customClass="BRImageButton" customModule="Browser" customModuleProvider="target">
                     <rect key="frame" x="366" y="5" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="W2c-eP-NCj"/>

@@ -9,9 +9,10 @@
 import UIKit
 
 
-class BookmarkViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BookmarkViewController : BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tblBookmark: UITableView!
+    
     // 즐겨찾기 목록 데이터
     private var bookmarkData : [BookmarkData] = {
         return SQLiteService.selectBookmarkData()
@@ -24,10 +25,16 @@ class BookmarkViewController : UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
     }
     
-    
-    @IBAction func onBack(_ sender: UIButton) {
+    override func onBackButtonClick() {
         delegate?.onDismissViewController(controller: self)
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func onDeleteButtonClick() {
+        
+    }
+    @IBAction func onBack(_ sender: UIButton) {
+        
     }
     
     @IBAction func onBookmarkDeleteAll(_ sender: UIButton) {
@@ -39,6 +46,7 @@ class BookmarkViewController : UIViewController, UITableViewDelegate, UITableVie
         }
         _ = Util.showAlertDialog(controller: self, title: "", message: "전체 삭제 하시겠습니까?", action1: action1, action2: action2)
     }
+    
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookmarkData.count

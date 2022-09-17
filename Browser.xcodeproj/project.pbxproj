@@ -36,7 +36,6 @@
 		C22D0EC8269F29E900C9C748 /* HJCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */; };
 		C22D0ECA26A05FEC00C9C748 /* Bookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */; };
 		C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */; };
-		C22D0ECE26A23EDF00C9C748 /* BookmarkTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ECD26A23EDF00C9C748 /* BookmarkTableCell.swift */; };
 		C22D0ED326A267C800C9C748 /* BookmarkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D0ED226A267C800C9C748 /* BookmarkData.swift */; };
 		C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23D460D256D2F9300EF835C /* Launch.storyboard */; };
 		C2443EFD24B1CDF500E5778E /* DefineCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2443EFC24B1CDF500E5778E /* DefineCode.swift */; };
@@ -73,11 +72,15 @@
 		C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */; };
 		C2A8DEA0253482B000A78EBB /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE9F253482B000A78EBB /* www */; };
 		C2AA46532756D62600F213EB /* DefaultsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA46522756D62600F213EB /* DefaultsUtil.swift */; };
+		C2BCB25728D28BD900F1CB50 /* BRImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB25628D28BD900F1CB50 /* BRImageButton.swift */; };
+		C2BCB25B28D3D64000F1CB50 /* CookieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB25A28D3D64000F1CB50 /* CookieTableViewCell.swift */; };
+		C2BCB25D28D3D6D000F1CB50 /* CookieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2BCB25C28D3D6D000F1CB50 /* CookieTableViewCell.xib */; };
+		C2BCB25F28D55D8900F1CB50 /* BookmarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2BCB25E28D55D8900F1CB50 /* BookmarkTableViewCell.xib */; };
+		C2BCB26128D55DBD00F1CB50 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB26028D55DBD00F1CB50 /* BookmarkTableViewCell.swift */; };
 		C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2DB7AB3256967D8002A5897 /* Index.storyboard */; };
 		C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB7AB6256967F6002A5897 /* IndexViewController.swift */; };
 		C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CE824E030E3001CAE44 /* Cookie.storyboard */; };
 		C2F43CEB24E03102001CAE44 /* CookieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CEA24E03102001CAE44 /* CookieViewController.swift */; };
-		C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F43CEC24E6F4DE001CAE44 /* CookieTableCell.swift */; };
 		C2FECC28242F0A0800FD1878 /* LogUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FECC27242F0A0800FD1878 /* LogUtil.swift */; };
 		C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FECC29242F0A6600FD1878 /* StringExt.swift */; };
 		C2FECC2D242F4B3900FD1878 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FECC2C242F4B3900FD1878 /* CustomUI.swift */; };
@@ -141,7 +144,6 @@
 		C22D0EC7269F29E900C9C748 /* HJCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJCheckBox.swift; sourceTree = "<group>"; };
 		C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bookmark.storyboard; sourceTree = "<group>"; };
 		C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
-		C22D0ECD26A23EDF00C9C748 /* BookmarkTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableCell.swift; sourceTree = "<group>"; };
 		C22D0ED226A267C800C9C748 /* BookmarkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkData.swift; sourceTree = "<group>"; };
 		C23D460D256D2F9300EF835C /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		C2443EFC24B1CDF500E5778E /* DefineCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineCode.swift; sourceTree = "<group>"; };
@@ -180,11 +182,15 @@
 		C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialogController.swift; sourceTree = "<group>"; };
 		C2A8DE9F253482B000A78EBB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		C2AA46522756D62600F213EB /* DefaultsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsUtil.swift; sourceTree = "<group>"; };
+		C2BCB25628D28BD900F1CB50 /* BRImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRImageButton.swift; sourceTree = "<group>"; };
+		C2BCB25A28D3D64000F1CB50 /* CookieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieTableViewCell.swift; sourceTree = "<group>"; };
+		C2BCB25C28D3D6D000F1CB50 /* CookieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CookieTableViewCell.xib; sourceTree = "<group>"; };
+		C2BCB25E28D55D8900F1CB50 /* BookmarkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarkTableViewCell.xib; sourceTree = "<group>"; };
+		C2BCB26028D55DBD00F1CB50 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 		C2DB7AB3256967D8002A5897 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		C2DB7AB6256967F6002A5897 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		C2F43CE824E030E3001CAE44 /* Cookie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cookie.storyboard; sourceTree = "<group>"; };
 		C2F43CEA24E03102001CAE44 /* CookieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieViewController.swift; sourceTree = "<group>"; };
-		C2F43CEC24E6F4DE001CAE44 /* CookieTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieTableCell.swift; sourceTree = "<group>"; };
 		C2FECC27242F0A0800FD1878 /* LogUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtil.swift; sourceTree = "<group>"; };
 		C2FECC29242F0A6600FD1878 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		C2FECC2C242F4B3900FD1878 /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
@@ -318,6 +324,10 @@
 				C224AD6428CBA3F70004B11F /* WebkitLogTableViewCell.swift */,
 				C224AD6D28CF64310004B11F /* ConsoleLogTableViewCell.xib */,
 				C224AD6B28CF641E0004B11F /* ConsoleLogTableViewCell.swift */,
+				C2BCB25C28D3D6D000F1CB50 /* CookieTableViewCell.xib */,
+				C2BCB25A28D3D64000F1CB50 /* CookieTableViewCell.swift */,
+				C2BCB25E28D55D8900F1CB50 /* BookmarkTableViewCell.xib */,
+				C2BCB26028D55DBD00F1CB50 /* BookmarkTableViewCell.swift */,
 			);
 			path = _logTableView;
 			sourceTree = "<group>";
@@ -344,7 +354,6 @@
 				C22D0ED126A2679400C9C748 /* _data */,
 				C22D0EC926A05FEC00C9C748 /* Bookmark.storyboard */,
 				C22D0ECB26A0601800C9C748 /* BookmarkViewController.swift */,
-				C22D0ECD26A23EDF00C9C748 /* BookmarkTableCell.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -425,6 +434,7 @@
 		C285D0922665205200E6A12B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C2BCB25528D28BCB00F1CB50 /* _button */,
 				C224AD6628CC3B2E0004B11F /* _card */,
 				C224AD5F28CB46E60004B11F /* _statusBar */,
 				C224AD5428C86F980004B11F /* _logTableView */,
@@ -492,6 +502,14 @@
 			path = HtmlElement;
 			sourceTree = "<group>";
 		};
+		C2BCB25528D28BCB00F1CB50 /* _button */ = {
+			isa = PBXGroup;
+			children = (
+				C2BCB25628D28BD900F1CB50 /* BRImageButton.swift */,
+			);
+			path = _button;
+			sourceTree = "<group>";
+		};
 		C2DB7AB22569678D002A5897 /* Index */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,7 +524,6 @@
 			children = (
 				C2F43CE824E030E3001CAE44 /* Cookie.storyboard */,
 				C2F43CEA24E03102001CAE44 /* CookieViewController.swift */,
-				C2F43CEC24E6F4DE001CAE44 /* CookieTableCell.swift */,
 			);
 			path = Cookie;
 			sourceTree = "<group>";
@@ -623,6 +640,7 @@
 				C224AD5A28C8722F0004B11F /* LogTableViewCell.xib in Resources */,
 				C27444C825582AA2002AF201 /* History.storyboard in Resources */,
 				C224AD4B28C551DF0004B11F /* BRAppBar.xib in Resources */,
+				C2BCB25D28D3D6D000F1CB50 /* CookieTableViewCell.xib in Resources */,
 				C224AD6E28CF64310004B11F /* ConsoleLogTableViewCell.xib in Resources */,
 				C224AD4128C3CFFF0004B11F /* MenuBottomSheetController.storyboard in Resources */,
 				C285D074265936D800E6A12B /* ConsoleLog.storyboard in Resources */,
@@ -633,6 +651,7 @@
 				C29E52D8267EE15B00909229 /* HtmlElement.storyboard in Resources */,
 				C21B845624279F5100A1C057 /* Main.storyboard in Resources */,
 				C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */,
+				C2BCB25F28D55D8900F1CB50 /* BookmarkTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,13 +669,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C22D0ECE26A23EDF00C9C748 /* BookmarkTableCell.swift in Sources */,
 				C2FECC2A242F0A6600FD1878 /* StringExt.swift in Sources */,
 				C224AD6528CBA3F70004B11F /* WebkitLogTableViewCell.swift in Sources */,
 				C224AD3D28C3C9930004B11F /* BottomSheetController.swift in Sources */,
 				C2939AF02624FFEC00CF9389 /* SQLite.swift in Sources */,
+				C2BCB26128D55DBD00F1CB50 /* BookmarkTableViewCell.swift in Sources */,
 				C285D08A26638DD300E6A12B /* WebkitLogViewController.swift in Sources */,
 				C224AD3F28C3CFD00004B11F /* MenuBottomSheetController.swift in Sources */,
+				C2BCB25728D28BD900F1CB50 /* BRImageButton.swift in Sources */,
 				C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */,
 				C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */,
 				C224AD6828CC43BF0004B11F /* CardView.swift in Sources */,
@@ -698,7 +718,7 @@
 				C2FECC2F242F4C2000FD1878 /* Util.swift in Sources */,
 				C29E52D5267DF8C600909229 /* HJTextView.swift in Sources */,
 				C29E52D12678E82400909229 /* HJButton.swift in Sources */,
-				C2F43CED24E6F4DE001CAE44 /* CookieTableCell.swift in Sources */,
+				C2BCB25B28D3D64000F1CB50 /* CookieTableViewCell.swift in Sources */,
 				C224AD4D28C552C50004B11F /* BRAppBar.swift in Sources */,
 				C2939AE92624815E00CF9389 /* DefineQuery.swift in Sources */,
 				C27444D1255AB4D9002AF201 /* PreferenceUtil.swift in Sources */,

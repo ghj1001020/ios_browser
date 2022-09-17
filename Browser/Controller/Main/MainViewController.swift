@@ -74,6 +74,8 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     }
     
     func initLayout() {
+        btnNext.isHidden = true
+        
         // txt_mode 클릭 설정
         let tapEditMode = UITapGestureRecognizer(target: self, action: #selector(onTapChangeToEditMode(gesture:)) )
         lbWebTitle.addGestureRecognizer(tapEditMode)
@@ -584,15 +586,9 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     
     // 쿠키 페이지로 이동
     func moveCookie() {
-        let storyboard : UIStoryboard = UIStoryboard(name: "Cookie", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: "Cookie") as? CookieViewController else {
-            return
-        }
-        
-        controller.modalPresentationStyle = .fullScreen
-        
-        controller.url = wv_main?.url?.absoluteString
-        self.present(controller, animated: true, completion: nil )
+        let controller = self.controller(type: CookieViewController.self, name: "Cookie", id: "cookie", bundle: nil)
+        controller?.url = wv_main?.url?.absoluteString
+        self.present(controller)
     }
     
     // 프린트
@@ -657,9 +653,6 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     // 콘솔로그 페이지로 이동
     func moveConsoleLog() {
         let controller = self.controller(type: ConsoleLogViewController.self, name: "ConsoleLog", id: "consoleLog", bundle: nil)
-        
-        consoleLogList.append(ConsoleLogData(date: "20220914215430", log: "123123"))
-        
         controller?.consoleLogList = consoleLogList
         self.present(controller)
     }

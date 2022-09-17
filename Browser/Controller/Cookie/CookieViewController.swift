@@ -11,7 +11,7 @@ import UIKit
 import WebKit
 
 
-class CookieViewController : UIViewController , UITableViewDataSource , UITableViewDelegate {
+class CookieViewController : BaseViewController , UITableViewDataSource , UITableViewDelegate {
     
     var cookieData : [(key:String , value:String)] = []
     
@@ -20,11 +20,13 @@ class CookieViewController : UIViewController , UITableViewDataSource , UITableV
     
     
     override func viewDidLoad() {
-        getCookies()
+        super.viewDidLoad()
         
-        cookieTable.tableFooterView = UIView()  // 비어있는 셀의 divider 제거
-        cookieTable.dataSource = self
-        cookieTable.delegate = self
+        setAppBar(.BACK)
+        setAppBarTitle("쿠키")
+        setStatusBar()
+        
+        getCookies()
     }
     
     // 해당 URL의 쿠키 가져오기
@@ -66,28 +68,29 @@ class CookieViewController : UIViewController , UITableViewDataSource , UITableV
             }
         }
     }
-    
-    @IBAction func onBack(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cookieData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cookieCell") as? CookieTableCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cookieCell") as? CookieTableViewCell else {
             return UITableViewCell()
         }
+        
+        cell.initUI()
         
         let key : String = (cookieData[indexPath.row]).key
         let value : String = (cookieData[indexPath.row]).value
         
-        cell.cookieKey.text = key
-        cell.cookieValue.text = value
+        cell.lbKey.text = key
+        cell.lbValue.text = value
+        cell.divider.isHidden = indexPath.row == cookieData.count-1 ? true : false
                 
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
 }
