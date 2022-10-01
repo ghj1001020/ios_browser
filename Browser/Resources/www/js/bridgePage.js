@@ -13,11 +13,18 @@ var pages = {
 	initInterface : function() {
         // Web -> App 호출
 		$("#btnPopup").click( function() {
+		    var os = pages.checkMobileOs();
+
             var json = {
                 title : "알림" ,
                 message : "웹 -> 앱 호출 팝업 ......"
             };
-            webkit.messageHandlers.appAlertPopup.postMessage( JSON.stringify(json) );
+		    if( os == "android" ) {
+                window.browserApp.appAlertPopup( JSON.stringify(json) )
+		    }
+		    else if( os == "ios" ) {
+                webkit.messageHandlers.appAlertPopup.postMessage( JSON.stringify(json) );
+		    }
 		});
         
         $("#btnSms").click( function() {

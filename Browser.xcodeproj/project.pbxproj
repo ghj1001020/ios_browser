@@ -70,13 +70,13 @@
 		C29E52DA267EE17D00909229 /* HtmlElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E52D9267EE17D00909229 /* HtmlElementViewController.swift */; };
 		C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */; };
 		C2A8DE77253189FE00A78EBB /* ErrorDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */; };
-		C2A8DEA0253482B000A78EBB /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2A8DE9F253482B000A78EBB /* www */; };
 		C2AA46532756D62600F213EB /* DefaultsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA46522756D62600F213EB /* DefaultsUtil.swift */; };
 		C2BCB25728D28BD900F1CB50 /* BRImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB25628D28BD900F1CB50 /* BRImageButton.swift */; };
 		C2BCB25B28D3D64000F1CB50 /* CookieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB25A28D3D64000F1CB50 /* CookieTableViewCell.swift */; };
 		C2BCB25D28D3D6D000F1CB50 /* CookieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2BCB25C28D3D6D000F1CB50 /* CookieTableViewCell.xib */; };
 		C2BCB25F28D55D8900F1CB50 /* BookmarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2BCB25E28D55D8900F1CB50 /* BookmarkTableViewCell.xib */; };
 		C2BCB26128D55DBD00F1CB50 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB26028D55DBD00F1CB50 /* BookmarkTableViewCell.swift */; };
+		C2BCB26328E7E08F00F1CB50 /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2BCB26228E7E08F00F1CB50 /* www */; };
 		C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2DB7AB3256967D8002A5897 /* Index.storyboard */; };
 		C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB7AB6256967F6002A5897 /* IndexViewController.swift */; };
 		C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CE824E030E3001CAE44 /* Cookie.storyboard */; };
@@ -180,13 +180,13 @@
 		C29E52D9267EE17D00909229 /* HtmlElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlElementViewController.swift; sourceTree = "<group>"; };
 		C2A8DE73253189E300A78EBB /* ErrorDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ErrorDialog.storyboard; sourceTree = "<group>"; };
 		C2A8DE76253189FE00A78EBB /* ErrorDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialogController.swift; sourceTree = "<group>"; };
-		C2A8DE9F253482B000A78EBB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		C2AA46522756D62600F213EB /* DefaultsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsUtil.swift; sourceTree = "<group>"; };
 		C2BCB25628D28BD900F1CB50 /* BRImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRImageButton.swift; sourceTree = "<group>"; };
 		C2BCB25A28D3D64000F1CB50 /* CookieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieTableViewCell.swift; sourceTree = "<group>"; };
 		C2BCB25C28D3D6D000F1CB50 /* CookieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CookieTableViewCell.xib; sourceTree = "<group>"; };
 		C2BCB25E28D55D8900F1CB50 /* BookmarkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarkTableViewCell.xib; sourceTree = "<group>"; };
 		C2BCB26028D55DBD00F1CB50 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
+		C2BCB26228E7E08F00F1CB50 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		C2DB7AB3256967D8002A5897 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		C2DB7AB6256967F6002A5897 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		C2F43CE824E030E3001CAE44 /* Cookie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cookie.storyboard; sourceTree = "<group>"; };
@@ -380,7 +380,7 @@
 		C25487BB24E97D2400F850AC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C2A8DE9F253482B000A78EBB /* www */,
+				C2BCB26228E7E08F00F1CB50 /* www */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -633,7 +633,6 @@
 			files = (
 				C22D0ECA26A05FEC00C9C748 /* Bookmark.storyboard in Resources */,
 				C224AD5828C872170004B11F /* LogTableViewSection.xib in Resources */,
-				C2A8DEA0253482B000A78EBB /* www in Resources */,
 				C21B843C242715D200A1C057 /* Assets.xcassets in Resources */,
 				C29E52CB2676A59A00909229 /* ScriptInputDialog.storyboard in Resources */,
 				C23D460E256D2F9300EF835C /* Launch.storyboard in Resources */,
@@ -647,6 +646,7 @@
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
 				C285D08726638D2700E6A12B /* WebkitLog.storyboard in Resources */,
+				C2BCB26328E7E08F00F1CB50 /* www in Resources */,
 				C224AD6328CBA3E40004B11F /* WebkitLogTableViewCell.xib in Resources */,
 				C29E52D8267EE15B00909229 /* HtmlElement.storyboard in Resources */,
 				C21B845624279F5100A1C057 /* Main.storyboard in Resources */,
@@ -868,7 +868,7 @@
 				CODE_SIGN_ENTITLEMENTS = Browser/Browser.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.6;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -880,7 +880,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghj.Browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -896,7 +896,7 @@
 				CODE_SIGN_ENTITLEMENTS = Browser/Browser.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.6;
 				DEVELOPMENT_TEAM = WGWMP4P875;
 				INFOPLIST_FILE = Browser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -908,7 +908,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghj.Browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
