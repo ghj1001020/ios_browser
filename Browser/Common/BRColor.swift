@@ -54,7 +54,7 @@ class BRColor {
     }
     
     static func subText() -> UIColor {
-        return colorByString(rgb: "#676767")
+        return colorByString(rgb: "#535252")
     }
     
     static func date() -> UIColor {

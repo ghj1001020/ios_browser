@@ -35,6 +35,11 @@ class DefineCode {
             "code": DefineCode.MORE_MENU_COOKIE
         ] ,
         [
+            "img" : "ic_toolbar_storage" ,
+            "name": "Storage" ,
+            "code": DefineCode.MORE_MENU_STORAGE
+        ] ,
+        [
             "img" : "ic_toolbar_exe" ,
             "name": "스크립트 실행" ,
             "code": DefineCode.MORE_MENU_EXE
@@ -45,14 +50,14 @@ class DefineCode {
             "code": DefineCode.MORE_MENU_HTML_ELEMENT
         ] ,
         [
-            "img" : "ic_toolbar_desktop" ,
-            "name": "PC/모바일전환" ,
-            "code": DefineCode.MORE_MENU_PC_MOBILE_MODE
-        ] ,
-        [
             "img" : "ic_toolbar_printer" ,
             "name": "프린터" ,
             "code": DefineCode.MORE_MENU_PRINT
+        ] ,
+        [
+            "img" : "ic_toolbar_setting" ,
+            "name": "설정" ,
+            "code": DefineCode.MORE_MENU_SETTING
         ]
     ]
     
@@ -66,12 +71,13 @@ class DefineCode {
     // 더보기 메뉴코드
     public static let MORE_MENU_COOKIE = "00"
     public static let MORE_MENU_PRINT = "01"
-    public static let MORE_MENU_PC_MOBILE_MODE = "02"
+    public static let MORE_MENU_STORAGE = "02"
     public static let MORE_MENU_HISTORY = "03"
     public static let MORE_MENU_CONSOLE_LOG = "04"
     public static let MORE_MENU_WEBKIT_LOG = "05"
     public static let MORE_MENU_EXE = "06"
     public static let MORE_MENU_HTML_ELEMENT = "07"
+    public static let MORE_MENU_SETTING = "07"
     
     
     // JS 브릿지 코드

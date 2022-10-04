@@ -69,7 +69,7 @@ class LogTableView: UITableView {
         self.sectionFooterHeight = .zero
         self.estimatedSectionFooterHeight = .zero
         // 테이블뷰 하단 여백제거
-        self.tableFooterView = UIView(frame: .zero)
-        self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -18, right: 0)
+//        self.tableFooterView = UIView(frame: .zero)
+//        self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }

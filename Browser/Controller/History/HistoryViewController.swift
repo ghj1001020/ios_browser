@@ -58,6 +58,9 @@ class HistoryViewController: BaseViewController, UISearchResultsUpdating, LogTab
         searchController.dismiss(animated: false, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return historyList.count

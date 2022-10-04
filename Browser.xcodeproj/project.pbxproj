@@ -77,6 +77,8 @@
 		C2BCB25F28D55D8900F1CB50 /* BookmarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2BCB25E28D55D8900F1CB50 /* BookmarkTableViewCell.xib */; };
 		C2BCB26128D55DBD00F1CB50 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB26028D55DBD00F1CB50 /* BookmarkTableViewCell.swift */; };
 		C2BCB26328E7E08F00F1CB50 /* www in Resources */ = {isa = PBXBuildFile; fileRef = C2BCB26228E7E08F00F1CB50 /* www */; };
+		C2BCB26628EB957100F1CB50 /* Storage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BCB26528EB957100F1CB50 /* Storage.storyboard */; };
+		C2BCB26A28EB95AC00F1CB50 /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB26928EB95AC00F1CB50 /* StorageViewController.swift */; };
 		C2DB7AB4256967D8002A5897 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2DB7AB3256967D8002A5897 /* Index.storyboard */; };
 		C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB7AB6256967F6002A5897 /* IndexViewController.swift */; };
 		C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F43CE824E030E3001CAE44 /* Cookie.storyboard */; };
@@ -187,6 +189,8 @@
 		C2BCB25E28D55D8900F1CB50 /* BookmarkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarkTableViewCell.xib; sourceTree = "<group>"; };
 		C2BCB26028D55DBD00F1CB50 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 		C2BCB26228E7E08F00F1CB50 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		C2BCB26528EB957100F1CB50 /* Storage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storage.storyboard; sourceTree = "<group>"; };
+		C2BCB26928EB95AC00F1CB50 /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		C2DB7AB3256967D8002A5897 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		C2DB7AB6256967F6002A5897 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		C2F43CE824E030E3001CAE44 /* Cookie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cookie.storyboard; sourceTree = "<group>"; };
@@ -463,6 +467,7 @@
 		C2939AF8262BD2EE00CF9389 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C2BCB26428EB955E00F1CB50 /* Storage */,
 				C2DB7AB22569678D002A5897 /* Index */,
 				C2F43CE724E030C6001CAE44 /* Cookie */,
 				C21B845424279F1C00A1C057 /* Main */,
@@ -508,6 +513,15 @@
 				C2BCB25628D28BD900F1CB50 /* BRImageButton.swift */,
 			);
 			path = _button;
+			sourceTree = "<group>";
+		};
+		C2BCB26428EB955E00F1CB50 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				C2BCB26528EB957100F1CB50 /* Storage.storyboard */,
+				C2BCB26928EB95AC00F1CB50 /* StorageViewController.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		C2DB7AB22569678D002A5897 /* Index */ = {
@@ -645,6 +659,7 @@
 				C285D074265936D800E6A12B /* ConsoleLog.storyboard in Resources */,
 				C2F43CE924E030E3001CAE44 /* Cookie.storyboard in Resources */,
 				C2A8DE74253189E300A78EBB /* ErrorDialog.storyboard in Resources */,
+				C2BCB26628EB957100F1CB50 /* Storage.storyboard in Resources */,
 				C285D08726638D2700E6A12B /* WebkitLog.storyboard in Resources */,
 				C2BCB26328E7E08F00F1CB50 /* www in Resources */,
 				C224AD6328CBA3E40004B11F /* WebkitLogTableViewCell.xib in Resources */,
@@ -679,6 +694,7 @@
 				C2BCB25728D28BD900F1CB50 /* BRImageButton.swift in Sources */,
 				C22D0ECC26A0601800C9C748 /* BookmarkViewController.swift in Sources */,
 				C285D07B2659402200E6A12B /* ConsoleLogData.swift in Sources */,
+				C2BCB26A28EB95AC00F1CB50 /* StorageViewController.swift in Sources */,
 				C224AD6828CC43BF0004B11F /* CardView.swift in Sources */,
 				C224AD6C28CF641E0004B11F /* ConsoleLogTableViewCell.swift in Sources */,
 				C2DB7AB7256967F6002A5897 /* IndexViewController.swift in Sources */,

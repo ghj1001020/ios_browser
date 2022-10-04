@@ -26,6 +26,9 @@ class WebkitLogViewController: BaseViewController, LogTableSectionDelegate, UITa
         setStatusBar()
     }
 
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return webkitLogList.count

@@ -558,8 +558,8 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
             onPrint()
             
         // 데스크탑<->모바일 모드
-        case DefineCode.MORE_MENU_PC_MOBILE_MODE:
-            onPcMobileMode()
+        case DefineCode.MORE_MENU_STORAGE:
+            moveStorage()
             
         // 방문기록
         case DefineCode.MORE_MENU_HISTORY:
@@ -580,6 +580,10 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
         // 웹HTML 소스보기
         case DefineCode.MORE_MENU_HTML_ELEMENT:
             onHtmlElement()
+            
+        // 설정
+        case DefineCode.MORE_MENU_SETTING:
+            moveSetting()
             
         default: break
             
@@ -702,6 +706,27 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
             controller?.element = source
             self.present(controller)
         }
+    }
+    
+    // Storage 메뉴
+    func moveStorage() {
+        self.wv_main.evaluateJavaScript("javascript:JSON.stringify(localStorage);") { (any1: Any?, error: Error?) in
+            let local : String = (any1 as? String) ?? ""
+                        
+            self.wv_main.evaluateJavaScript("javascript:JSON.stringify(sessionStorage);") { (any2: Any?, error: Error?) in
+                let session : String = (any2 as? String) ?? ""
+
+                let controller = self.controller(type: StorageViewController.self, name: "Storage", id: "storage", bundle: nil)
+                controller?.localStorage = local
+                controller?.sessionStorage = session
+                self.present(controller)
+            }
+        }
+    }
+    
+    // 설정메뉴
+    func moveSetting() {
+        
     }
     
     // 앱 -> 웹에 메시지 전달

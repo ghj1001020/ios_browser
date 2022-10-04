@@ -18,14 +18,16 @@ class CookieTableViewCell : UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.selectionStyle = .none
     }
     
     func initUI() {
-        lbKey.font = UIFont.systemFont(ofSize: 16)
+        lbKey.font = UIFont.systemFont(ofSize: 15)
         lbKey.textColor = BRColor.subText()
         lbValue.font = UIFont.systemFont(ofSize: 16)
         lbValue.textColor = BRColor.text()
