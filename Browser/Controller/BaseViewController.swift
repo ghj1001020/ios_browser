@@ -12,6 +12,8 @@ class BaseViewController: UIViewController, BRAppBarProtocol {
     
     @IBOutlet var titleBarView: UIView!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var baseProtocol : BaseProtocol? = nil
     // 앱바
     private var titleBar: BRAppBar? = nil
 
@@ -87,4 +89,8 @@ class BaseViewController: UIViewController, BRAppBarProtocol {
 
     // 더보기
     func onDeleteButtonClick() {}
+}
+
+protocol BaseProtocol {
+    func onDismiss(vc: BaseViewController, data: [String:Any]);
 }

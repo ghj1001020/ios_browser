@@ -77,7 +77,7 @@ class DefineCode {
     public static let MORE_MENU_WEBKIT_LOG = "05"
     public static let MORE_MENU_EXE = "06"
     public static let MORE_MENU_HTML_ELEMENT = "07"
-    public static let MORE_MENU_SETTING = "07"
+    public static let MORE_MENU_SETTING = "08"
     
     
     // JS 브릿지 코드

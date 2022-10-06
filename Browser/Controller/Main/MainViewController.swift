@@ -10,11 +10,9 @@ import UIKit
 import WebKit
 
 
-class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialogProtocol, ScriptInputDialogProtocol {
+class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialogProtocol, ScriptInputDialogProtocol, BaseProtocol {
     
     private let TAG : String = "MainViewController"
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     var wv_main: WKWebView!
     @IBOutlet var view_web: UIView!
@@ -629,9 +627,14 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
             return
         }
         
+        appDelegate.isMobile = !appDelegate.isMobile
+        
         // 커스텀 user-agent
         if( appDelegate.isMobile ) {
-//            wv_main.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
+            wv_main.customUserAgent = ""
+            wv_main.reload()
+        }
+        else {
             wv_main.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS) AppleWebKit (KHTML, like Gecko) Safari"
                         
             url = url.replacingOccurrences(of: "^https://m.", with: "https://www.", options: .regularExpression, range: nil)
@@ -639,14 +642,7 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
             
             loadUrl(_url: url)
         }
-        else {
-            wv_main.customUserAgent = ""
-            
-            wv_main.reload()
-        }
-        Log.p("customUserAgent \(wv_main.customUserAgent)")
-
-        appDelegate.isMobile = !appDelegate.isMobile
+        Log.p("customUserAgent \(wv_main.customUserAgent ?? "")")
     }
     
     // 방문기록 페이지로 이동
@@ -712,7 +708,7 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     func moveStorage() {
         self.wv_main.evaluateJavaScript("javascript:JSON.stringify(localStorage);") { (any1: Any?, error: Error?) in
             let local : String = (any1 as? String) ?? ""
-                        
+            
             self.wv_main.evaluateJavaScript("javascript:JSON.stringify(sessionStorage);") { (any2: Any?, error: Error?) in
                 let session : String = (any2 as? String) ?? ""
 
@@ -726,7 +722,10 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
     
     // 설정메뉴
     func moveSetting() {
-        
+        let controller = self.controller(type: SettingViewController.self, name: "Setting", id: "setting", bundle: nil)
+        controller?.userAgent = (wv_main.value(forKey: "userAgent") as? String) ?? ""
+        controller?.baseProtocol = self
+        self.present(controller)
     }
     
     // 앱 -> 웹에 메시지 전달
@@ -751,6 +750,16 @@ class MainViewController : BaseViewController , UITextFieldDelegate , MenuDialog
             
             if result is String {
                 _ = Util.showAlertDialog(controller: self, title: "", message: result as! String, action1: nil, action2: nil)
+            }
+        }
+    }
+    
+    // 컨트롤러 dismiss 후 콜백
+    func onDismiss(vc: BaseViewController, data: [String : Any]) {
+        if(vc is SettingViewController) {
+            let isChanged : Bool = (data["isChanged"] as? Bool) ?? false
+            if(isChanged) {
+                onPcMobileMode()
             }
         }
     }
